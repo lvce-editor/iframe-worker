@@ -6,13 +6,13 @@ import pluginTypeScript from '@babel/preset-typescript'
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-  input: 'src/testWorkerMain.ts',
+  input: 'src/iframeWorkerMain.ts',
   preserveEntrySignatures: 'strict',
   treeshake: {
     propertyReadSideEffects: false,
   },
   output: {
-    file: 'dist/dist/testWorkerMain.js',
+    file: 'dist/dist/iframeWorkerMain.js',
     format: 'es',
     freeze: false,
     generatedCode: {
