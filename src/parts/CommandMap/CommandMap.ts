@@ -2,6 +2,7 @@ import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetWebViewBaseUrl from '../GetWebViewBaseUrl/GetWebViewBaseUrl.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
+import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
 import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as Location from '../Location/Location.ts'
@@ -12,6 +13,7 @@ export const commandMap = {
   'Location.getProtocol': Location.getProtocol,
   'WebView.getBaseUrl': GetWebViewBaseUrl.getWebViewBaseUrl,
   'WebView.getFrameAncestors': GetWebViewFrameAncestors.getWebViewFrameAncestors,
+  'WebView.getHtml': GetWebViewHtml.getWebViewHtml,
   'WebView.getIframeSrc': GetIframeSrc.getIframeSrc,
   'WebView.getOrigin': GetWebViewOrigin.getWebViewOrigin,
   'WebView.getSandbox': GetWebViewSandBox.getIframeSandbox,
