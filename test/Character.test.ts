@@ -5,8 +5,10 @@ test('Backslash', () => {
   expect(Character.Backslash).toBe('\\')
 })
 
-
-
 test('Slash', () => {
   expect(Character.Slash).toBe('/')
+})
+
+test('Semicolon', () => {
+  expect(Character.SemiColon).toBe(';')
 })
