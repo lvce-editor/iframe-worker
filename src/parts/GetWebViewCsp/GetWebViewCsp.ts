@@ -1,4 +1,4 @@
-import * as GetContentSecurityPolicy from '../GetContentSecurityPolicy/GetContentSecurityPolicy.js'
+import * as GetContentSecurityPolicy from '../GetContentSecurityPolicy/GetContentSecurityPolicy.ts'
 
 export const getWebViewCsp = (webView: any) => {
   if (webView && webView.contentSecurityPolicy) {
