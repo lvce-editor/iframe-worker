@@ -1,4 +1,5 @@
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
+import * as GetWebViewBaseUrl from '../GetWebViewBaseUrl/GetWebViewBaseUrl.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
 import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
@@ -9,6 +10,7 @@ export const commandMap = {
   'Location.getHost': Location.getHost,
   'Location.getOrigin': Location.getOrigin,
   'Location.getProtocol': Location.getProtocol,
+  'WebView.getBaseUrl': GetWebViewBaseUrl.getWebViewBaseUrl,
   'WebView.getFrameAncestors': GetWebViewFrameAncestors.getWebViewFrameAncestors,
   'WebView.getIframeSrc': GetIframeSrc.getIframeSrc,
   'WebView.getOrigin': GetWebViewOrigin.getWebViewOrigin,
