@@ -1,9 +1,9 @@
 import * as GetIframeSrcRemote from '../GetIframeSrcRemote/GetIframeSrcRemote.ts'
 import * as GetIframeSrcWeb from '../GetIframeSrcWeb/GetIframeSrcWeb.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
-import * as Platform from '../Platform/Platform.js'
-import * as PlatformType from '../PlatformType/PlatformType.js'
-import { VError } from '../VError/VError.js'
+import * as Platform from '../Platform/Platform.ts'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
+import { VError } from '../VError/VError.ts'
 
 export const getIframeSrc = (
   webViews: any,

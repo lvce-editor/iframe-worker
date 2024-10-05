@@ -1,4 +1,4 @@
-import * as PlatformType from '../PlatformType/PlatformType.js'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Sandbox from '../Sandbox/Sandbox.ts'
 
 export const getIframeSandbox = (webView: any, platform: any): readonly string[] => {
