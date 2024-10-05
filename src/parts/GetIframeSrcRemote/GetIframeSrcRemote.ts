@@ -1,10 +1,10 @@
 import * as CreateLocalHostUrl from '../CreateLocalHostUrl/CreateLocalHostUrl.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
 import * as Platform from '../Platform/Platform.js'
-import * as PlatformType from '../PlatformType/PlatformType.js'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Scheme from '../Scheme/Scheme.ts'
 
-const getWebView = (webViews, webViewId) => {
+const getWebView = (webViews: any, webViewId: any) => {
   for (const webView of webViews) {
     if (webView.id === webViewId) {
       return webView
@@ -13,7 +13,7 @@ const getWebView = (webViews, webViewId) => {
   return undefined
 }
 
-const getWebViewPath = (webViews, webViewId) => {
+const getWebViewPath = (webViews: any, webViewId: any) => {
   const webView = getWebView(webViews, webViewId)
   if (!webView) {
     return ''
@@ -21,7 +21,7 @@ const getWebViewPath = (webViews, webViewId) => {
   return webView.path
 }
 
-const getWebViewUri = (webViews, webViewId) => {
+const getWebViewUri = (webViews: any, webViewId: any) => {
   const webViewPath = getWebViewPath(webViews, webViewId)
   if (!webViewPath) {
     return ''
@@ -33,7 +33,15 @@ const getWebViewUri = (webViews, webViewId) => {
   return webViewPath
 }
 
-export const getIframeSrcRemote = (webViews, webViewPort, webViewId, locationProtocol, locationHost, isGitpod, root) => {
+export const getIframeSrcRemote = (
+  webViews: any,
+  webViewPort: any,
+  webViewId: any,
+  locationProtocol: string,
+  locationHost: string,
+  isGitpod: boolean,
+  root: string,
+) => {
   const webView = getWebView(webViews, webViewId)
   const webViewUri = getWebViewUri(webViews, webViewId)
   if (!webViewUri) {

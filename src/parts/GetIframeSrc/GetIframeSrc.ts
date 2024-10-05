@@ -5,7 +5,16 @@ import * as Platform from '../Platform/Platform.js'
 import * as PlatformType from '../PlatformType/PlatformType.js'
 import { VError } from '../VError/VError.js'
 
-export const getIframeSrc = (webViews, webViewId, webViewPort, root, isGitpod, locationProtocol, locationHost, locationOrigin) => {
+export const getIframeSrc = (
+  webViews: any,
+  webViewId: any,
+  webViewPort: any,
+  root: string,
+  isGitpod: boolean,
+  locationProtocol: string,
+  locationHost: string,
+  locationOrigin: string,
+) => {
   try {
     const webView = GetWebView.getWebView(webViews, webViewId)
     if (Platform.platform === PlatformType.Web) {
