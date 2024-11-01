@@ -1,11 +1,11 @@
-export const getOrigin = () => {
+export const getOrigin = (): string => {
   return location.origin
 }
 
-export const getHost = () => {
+export const getHost = (): string => {
   return location.host
 }
 
-export const getProtocol = () => {
+export const getProtocol = (): string => {
   return location.protocol
 }

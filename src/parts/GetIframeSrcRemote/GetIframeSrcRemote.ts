@@ -13,7 +13,7 @@ const getWebView = (webViews: any, webViewId: any) => {
   return undefined
 }
 
-const getWebViewPath = (webViews: any, webViewId: any) => {
+const getWebViewPath = (webViews: any, webViewId: any): string => {
   const webView = getWebView(webViews, webViewId)
   if (!webView) {
     return ''
@@ -21,7 +21,7 @@ const getWebViewPath = (webViews: any, webViewId: any) => {
   return webView.path
 }
 
-const getWebViewUri = (webViews: any, webViewId: any) => {
+const getWebViewUri = (webViews: any, webViewId: any): string => {
   const webViewPath = getWebViewPath(webViews, webViewId)
   if (!webViewPath) {
     return ''
