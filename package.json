@@ -1,7 +1,7 @@
 {
   "name": "@lvce-editor/iframe-worker",
   "version": "0.0.0-dev",
-  "description": "",
+  "description": "Web Worker to manage creation and lifecycle of iframes in Lvce Editor",
   "main": "src/iframeWorkerMain.ts",
   "type": "module",
   "directories": {
