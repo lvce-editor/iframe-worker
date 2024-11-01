@@ -5,7 +5,7 @@ import * as IpcChild from '../IpcChild/IpcChild.ts'
 import * as IpcChildType from '../IpcChildType/IpcChildType.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
 
-export const listen = async () => {
+export const listen = async (): Promise<void> => {
   Command.register(CommandMap.commandMap)
   const ipc = await IpcChild.listen({ method: IpcChildType.Auto() })
   HandleIpc.handleIpc(ipc)
