@@ -1,1 +1,1 @@
-export { handleJsonRpcMessage, invoke, resolve, send, invokeAndTransfer } from '@lvce-editor/json-rpc'
+export { handleJsonRpcMessage, invoke, resolve, invokeAndTransfer } from '@lvce-editor/json-rpc'
