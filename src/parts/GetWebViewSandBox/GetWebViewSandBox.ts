@@ -9,6 +9,5 @@ export const getIframeSandbox = (webView: any, platform: any): readonly string[]
   if (platform === PlatformType.Web) {
     return [Sandbox.AllowScripts, ...extensionSandbox]
   }
-  // TODO set something for electron
-  return [...extensionSandbox]
+  return [Sandbox.AllowScripts, Sandbox.AllowSameOrigin, ...extensionSandbox]
 }
