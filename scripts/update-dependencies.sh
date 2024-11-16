@@ -16,7 +16,7 @@ fi
 
 function updateDependencies {
   echo "updating dependencies..."
-  OUTPUT=`ncu -u -x @types/node -x rollup @babel/preset-typescript execa`
+  OUTPUT=`ncu -u -x @types/node -x rollup -x @babel/preset-typescript -x execa `
   SUB='All dependencies match the latest package versions'
   if [[ "$OUTPUT" == *"$SUB"* ]]; then
     echo "$OUTPUT"
