@@ -5,7 +5,7 @@ import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Scheme from '../Scheme/Scheme.ts'
 
-const getWebView = (webViews: any, webViewId: any):any => {
+const getWebView = (webViews: any, webViewId: any): any => {
   for (const webView of webViews) {
     if (webView.id === webViewId) {
       return webView
@@ -42,19 +42,21 @@ export const getIframeSrcRemote = (
   locationHost: string,
   isGitpod: boolean,
   root: string,
+  platform = Platform.platform,
 ): IframeSrcInfo | undefined => {
   const webView = getWebView(webViews, webViewId)
   const webViewUri = getWebViewUri(webViews, webViewId)
+  console.log({ webViews, webViewId })
   if (!webViewUri) {
     return undefined
   }
   let iframeSrc = webViewUri
   let webViewRoot = webViewUri
-  if (Platform.platform === PlatformType.Electron) {
+  if (platform === PlatformType.Electron) {
     const relativePath = new URL(webViewUri).pathname.replace('/index.html', '')
     iframeSrc = `${Scheme.WebView}://-${relativePath}/`
     // TODO
-  } else if (Platform.platform === PlatformType.Remote) {
+  } else if (platform === PlatformType.Remote) {
     const relativePath = new URL(webViewUri).pathname.replace('/index.html', '')
     if (webViewUri.startsWith('file://')) {
       // ignore

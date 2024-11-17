@@ -15,10 +15,11 @@ export const getIframeSrc = (
   locationProtocol: string,
   locationHost: string,
   locationOrigin: string,
+  platform = Platform.platform,
 ): IframeSrcInfo | undefined => {
   try {
     const webView = GetWebView.getWebView(webViews, webViewId)
-    if (Platform.platform === PlatformType.Web) {
+    if (platform === PlatformType.Web) {
       return GetIframeSrcWeb.getIframeSrc(webView, locationOrigin)
     }
     return GetIframeSrcRemote.getIframeSrcRemote(webViews, webViewPort, webViewId, locationProtocol, locationHost, isGitpod, root)
