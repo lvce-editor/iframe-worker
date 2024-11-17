@@ -1,4 +1,4 @@
-import * as SharedProcess from '../SharedProcess/SharedProcess.js'
+import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 
 export const registerProtocol = async () => {
   await SharedProcess.invoke('WebViewServer.registerProtocol')

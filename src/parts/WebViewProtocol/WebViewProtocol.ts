@@ -1,5 +1,5 @@
-import * as Platform from '../Platform/Platform.js'
-import * as PlatformType from '../PlatformType/PlatformType.js'
+import * as Platform from '../Platform/Platform.ts'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as WebViewProtocolElectron from '../WebViewProtocolElectron/WebViewProtocolElectron.ts'
 import * as WebViewProtocolRemote from '../WebViewProtocolRemote/WebViewProtocolRemote.ts'
 import * as WebViewProtocolWeb from '../WebViewProtocolWeb/WebViewProtocolWeb.ts'

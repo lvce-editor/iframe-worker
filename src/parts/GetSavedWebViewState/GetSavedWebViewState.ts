@@ -1,6 +1,6 @@
-import * as ExtensionHostState from '../ExtensionHost/ExtensionHostState.js'
+import * as ExtensionHostState from '../ExtensionHost/ExtensionHostState.ts'
 
-export const getSavedWebViewState = async (id:string) => {
+export const getSavedWebViewState = async (id: string) => {
   const states = await ExtensionHostState.getSavedState()
   if (!states) {
     return undefined
