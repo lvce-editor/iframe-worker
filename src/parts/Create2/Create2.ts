@@ -33,7 +33,7 @@ export const create2 = async ({
   previewServerId: number
   uri: string
   isGitpod: boolean
-}) => {
+}): Promise<any> => {
   let root = ''
   if (Platform.platform === PlatformType.Remote) {
     root = await SharedProcess.invoke('Platform.getRoot')
