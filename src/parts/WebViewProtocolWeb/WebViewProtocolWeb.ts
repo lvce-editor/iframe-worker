@@ -1,3 +1,3 @@
-export const register = async () => {
+export const register = async (): Promise<void> => {
   // noop
 }

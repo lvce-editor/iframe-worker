@@ -7,7 +7,7 @@ export const register = async (
   webViewRoot: string,
   csp: string,
   iframeContent: string,
-) => {
+): Promise<void> => {
   // TODO apply something similar for electron
   // TODO pass webview root, so that only these resources can be accessed
   // TODO pass csp configuration to server
