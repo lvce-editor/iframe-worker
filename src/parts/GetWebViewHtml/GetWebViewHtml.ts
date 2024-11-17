@@ -17,7 +17,7 @@ export const getWebViewHtml = (baseUrl: string, locationOrigin: string, elements
     }
   }
   const middleHtml = middle.join('\n    ')
-  let html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html>
   <head>
     ${middleHtml}
