@@ -4,7 +4,7 @@ import * as WebViewProtocolElectron from '../WebViewProtocolElectron/WebViewProt
 import * as WebViewProtocolRemote from '../WebViewProtocolRemote/WebViewProtocolRemote.ts'
 import * as WebViewProtocolWeb from '../WebViewProtocolWeb/WebViewProtocolWeb.ts'
 
-const getModule = (platform: number) => {
+const getModule = (platform: number): any => {
   switch (platform) {
     case PlatformType.Remote:
       return WebViewProtocolRemote
@@ -23,7 +23,7 @@ export const register = async (
   webViewRoot: string,
   csp: string,
   iframeContent: string,
-) => {
+): Promise<void> => {
   const module = getModule(Platform.platform)
   return module.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent)
 }
