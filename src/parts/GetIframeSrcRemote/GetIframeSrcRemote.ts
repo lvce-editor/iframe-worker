@@ -5,7 +5,7 @@ import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Scheme from '../Scheme/Scheme.ts'
 
-const getWebView = (webViews: any, webViewId: any) => {
+const getWebView = (webViews: any, webViewId: any):any => {
   for (const webView of webViews) {
     if (webView.id === webViewId) {
       return webView
