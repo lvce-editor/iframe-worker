@@ -87,7 +87,7 @@ export const create2 = async ({
   await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless)
 
   await RendererProcess.invoke('WebView.load', id)
-  const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort)
+  const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform)
 
   const portType = ''
   await SetPort.setPort(id, port1, origin, portType)
