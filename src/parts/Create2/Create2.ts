@@ -10,9 +10,9 @@ import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
-import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
+import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
@@ -35,14 +35,27 @@ export const create2 = async ({
   isGitpod: boolean
 }): Promise<any> => {
   let root = ''
-  if (Platform.platform === PlatformType.Remote) {
+
+  if (platform === PlatformType.Remote) {
     root = await SharedProcess.invoke('Platform.getRoot')
   }
+
   const webViews = await GetWebViews.getWebViews()
   const locationProtocol = Location.getProtocol()
   const locationHost = Location.getHost()
   const locationOrigin = Location.getOrigin()
-  const iframeResult = GetIframeSrc.getIframeSrc(webViews, webViewId, webViewPort, root, isGitpod, locationProtocol, locationHost, locationOrigin)
+  const iframeResult = GetIframeSrc.getIframeSrc(
+    webViews,
+    webViewId,
+    webViewPort,
+    root,
+    isGitpod,
+    locationProtocol,
+    locationHost,
+    locationOrigin,
+    platform,
+  )
+
   if (!iframeResult) {
     return undefined
   }
@@ -64,9 +77,9 @@ export const create2 = async ({
   const iframeCsp = platform === PlatformType.Web ? csp : ''
   const credentialless = true
 
-  // TODO ask renderer worker to activate
-  // await ExtensionHostManagement.activateByEvent(`onWebView:${webViewId}`)
-  const { port1 } = GetPortTuple.getPortTuple()
+  await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
+
+  const { port1, port2 } = GetPortTuple.getPortTuple()
   const portId = Id.create()
 
   await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent)
@@ -79,8 +92,7 @@ export const create2 = async ({
   const portType = ''
   await SetPort.setPort(id, port1, origin, portType)
 
-  // TODO
-  // await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin)
+  await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin)
 
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
