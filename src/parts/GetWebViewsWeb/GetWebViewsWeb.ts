@@ -1,4 +1,4 @@
-export const getWebViewsWeb = async () => {
+export const getWebViewsWeb = async (): Promise<readonly any[]> => {
   // const url = `${AssetDir.assetDir}/config/webViews.json`
   // TODO move this to shared-process-web / network-process-web
   // TODO handle error ?
