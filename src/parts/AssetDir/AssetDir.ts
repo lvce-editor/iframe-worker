@@ -1,7 +1,7 @@
 import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
-const getAssetDir = () => {
+const getAssetDir = (): string => {
   // @ts-ignore
   if (typeof ASSET_DIR !== 'undefined') {
     // @ts-ignore
