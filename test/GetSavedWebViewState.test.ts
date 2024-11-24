@@ -1,9 +1,15 @@
 import { expect, jest, test } from '@jest/globals'
-import * as GetSavedWebViewState from '../src/parts/GetSavedWebViewState/GetSavedWebViewState.ts'
-import * as ExtensionHostState from '../src/parts/ExtensionHost/ExtensionHostState.ts'
+
+jest.unstable_mockModule('../src/parts/ExtensionHost/ExtensionHostState.ts', () => {
+  return {
+    getSavedState: jest.fn(),
+  }
+})
+
+const GetSavedWebViewState = await import('../src/parts/GetSavedWebViewState/GetSavedWebViewState.ts')
+const ExtensionHostState = await import('../src/parts/ExtensionHost/ExtensionHostState.ts')
 
 test('no states', async () => {
-  jest.spyOn(ExtensionHostState, 'getSavedState').mockResolvedValue(undefined)
   expect(await GetSavedWebViewState.getSavedWebViewState('test-id')).toBe(undefined)
 })
 
