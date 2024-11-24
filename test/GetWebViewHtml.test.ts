@@ -5,7 +5,8 @@ test('empty elements', () => {
   const baseUrl = ''
   const locationOrigin = 'http://localhost:3000'
   const elements: readonly any[] = []
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -23,7 +24,8 @@ test('script element', () => {
       src: '/main.js',
     },
   ]
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -43,7 +45,8 @@ test('style element', () => {
       href: '/styles.css',
     },
   ]
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -61,7 +64,8 @@ test('title element', () => {
       value: 'test',
     },
   ]
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -84,7 +88,8 @@ test('multiple elements', () => {
       path: '/styles.css',
     },
   ]
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -105,7 +110,8 @@ test('unknown element type', () => {
       src: '/file.txt',
     },
   ]
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe(`<!DOCTYPE html>
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
     <meta charset=\"utf-8\">
@@ -118,5 +124,6 @@ test('no elements', () => {
   const baseUrl = '/test'
   const locationOrigin = 'http://localhost:3000'
   const elements: any = undefined
-  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements)).toBe('')
+  const assetDir = ''
+  expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe('')
 })
