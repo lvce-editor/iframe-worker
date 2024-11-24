@@ -1,6 +1,6 @@
 import * as AssetDir from '../AssetDir/AssetDir.ts'
 
-export const getWebViewHtml = (baseUrl: string, locationOrigin: string, elements: any[]): string => {
+export const getWebViewHtml = (baseUrl: string, locationOrigin: string, elements: readonly any[]): string => {
   if (!elements) {
     return ''
   }
