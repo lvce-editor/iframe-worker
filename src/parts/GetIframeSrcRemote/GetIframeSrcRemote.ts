@@ -47,7 +47,6 @@ export const getIframeSrcRemote = (
 ): IframeSrcInfo | undefined => {
   const webView = getWebView(webViews, webViewId)
   const webViewUri = getWebViewUri(webViews, webViewId)
-  console.log({ webViews, webViewId })
   if (!webViewUri) {
     return undefined
   }
