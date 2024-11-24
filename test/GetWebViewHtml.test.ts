@@ -9,7 +9,7 @@ test('empty elements', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
   </head>
 </html>
 `)
@@ -28,7 +28,7 @@ test('script element', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
     <script type="module" src="http://localhost:3000/js/preview-injected.js"></script>
     <script type="module" src="http://localhost:3000/test/undefined"></script>
   </head>
@@ -49,7 +49,7 @@ test('style element', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
   </head>
 </html>
 `)
@@ -68,7 +68,7 @@ test('title element', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
     <title>test</title>
   </head>
 </html>
@@ -92,7 +92,7 @@ test('multiple elements', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
     <script type="module" src="http://localhost:3000/js/preview-injected.js"></script>
     <script type="module" src="http://localhost:3000/test/undefined"></script>
     <link rel="stylesheet" href="http://localhost:3000/test//styles.css" />
@@ -114,7 +114,7 @@ test('unknown element type', () => {
   expect(GetWebViewHtml.getWebViewHtml(baseUrl, locationOrigin, elements, assetDir)).toBe(`<!DOCTYPE html>
 <html>
   <head>
-    <meta charset=\"utf-8\">
+    <meta charset="utf-8">
   </head>
 </html>
 `)
