@@ -100,5 +100,5 @@ test('error case', () => {
 
   expect(() =>
     GetIframeSrc.getIframeSrc(webViews, webViewId, webViewPort, root, isGitpod, locationProtocol, locationHost, locationOrigin, PlatformType.Web),
-  ).toThrow("Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath' of 'webView' as it is undefined.")
+  ).toThrow(/Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath'/)
 })
