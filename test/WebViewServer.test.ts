@@ -1,11 +1,12 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import * as WebViewServer from '../src/parts/WebViewServer/WebViewServer.ts'
 
 const SharedProcess = {
   invoke: jest.fn(),
 }
 
 jest.unstable_mockModule('../src/parts/SharedProcess/SharedProcess.ts', () => SharedProcess)
+
+const WebViewServer = await import('../src/parts/WebViewServer/WebViewServer.ts')
 
 beforeEach(async () => {
   SharedProcess.invoke.mockReset()
