@@ -35,6 +35,7 @@ test('web platform', () => {
   const locationHost = 'localhost:3000'
   const locationOrigin = 'http://localhost:3000'
   const expectedResult = { srcDoc: 'test' }
+  const assetDir = ''
 
   GetWebView.getWebView.mockReturnValue(webView)
   GetIframeSrcWeb.getIframeSrc.mockReturnValue(expectedResult)
@@ -49,6 +50,7 @@ test('web platform', () => {
     locationHost,
     locationOrigin,
     PlatformType.Web,
+    assetDir,
   )
 
   expect(result).toBe(undefined)
@@ -65,6 +67,7 @@ test('remote platform', () => {
   const locationOrigin = 'http://localhost:3000'
   const webView = { id: 1 }
   const expectedResult = { srcDoc: 'test' }
+  const assetDir = ''
 
   GetWebView.getWebView.mockReturnValue(webView)
   GetIframeSrcRemote.getIframeSrcRemote.mockReturnValue(expectedResult)
@@ -79,6 +82,7 @@ test('remote platform', () => {
     locationHost,
     locationOrigin,
     PlatformType.Remote,
+    assetDir,
   )
 
   expect(result).toBe(undefined)
@@ -93,12 +97,24 @@ test('error case', () => {
   const locationProtocol = 'http:'
   const locationHost = 'localhost:3000'
   const locationOrigin = 'http://localhost:3000'
+  const assetDir = ''
 
   GetWebView.getWebView.mockImplementation(() => {
     throw new Error('test error')
   })
 
   expect(() =>
-    GetIframeSrc.getIframeSrc(webViews, webViewId, webViewPort, root, isGitpod, locationProtocol, locationHost, locationOrigin, PlatformType.Web),
+    GetIframeSrc.getIframeSrc(
+      webViews,
+      webViewId,
+      webViewPort,
+      root,
+      isGitpod,
+      locationProtocol,
+      locationHost,
+      locationOrigin,
+      PlatformType.Web,
+      assetDir,
+    ),
   ).toThrow(/Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath'/)
 })
