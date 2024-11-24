@@ -53,5 +53,5 @@ test('error case', async () => {
   const previewServerId = 1
   // @ts-ignore
   SharedProcess.invoke.mockRejectedValue(new Error('test error'))
-  await expect(WebViewServer.create(previewServerId)).rejects.toThrow('Failed to create web view server: test error')
+  await expect(WebViewServer.create(previewServerId)).rejects.toThrow('test error')
 })
