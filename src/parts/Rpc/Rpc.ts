@@ -1,19 +1,23 @@
-const state = {
+import type { Rpc } from '@lvce-editor/rpc'
+
+interface State {
+  rpc: any
+}
+
+const state: State = {
   rpc: undefined,
 }
 
 export const invoke = (method: string, ...params: any[]): Promise<any> => {
   const rpc = state.rpc
-  // @ts-ignore
   return rpc.invoke(method, ...params)
 }
 
 export const invokeAndTransfer = (method: string, ...params: any[]): Promise<any> => {
   const rpc = state.rpc
-  // @ts-ignore
   return rpc.invokeAndTransfer(method, ...params)
 }
 
-export const setRpc = (rpc: any): void => {
+export const setRpc = (rpc: Rpc): void => {
   state.rpc = rpc
 }
