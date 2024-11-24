@@ -2,7 +2,7 @@ import { beforeEach, expect, jest, test } from '@jest/globals'
 import * as Rpc from '../src/parts/Rpc/Rpc.ts'
 import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
-const mockRpc = {
+const mockRpc: any = {
   invokeAndTransfer: jest.fn(),
 }
 
