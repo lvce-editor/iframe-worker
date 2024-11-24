@@ -1,0 +1,56 @@
+import { beforeEach, expect, jest, test } from '@jest/globals'
+import * as WebViewServer from '../src/parts/WebViewServer/WebViewServer.ts'
+
+const SharedProcess = {
+  invoke: jest.fn(),
+}
+
+jest.unstable_mockModule('../src/parts/SharedProcess/SharedProcess.ts', () => SharedProcess)
+
+beforeEach(async () => {
+  SharedProcess.invoke.mockReset()
+})
+
+test('registerProtocol', async () => {
+  await WebViewServer.registerProtocol()
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.registerProtocol')
+})
+
+test('create', async () => {
+  const previewServerId = 1
+  await WebViewServer.create(previewServerId)
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.create', previewServerId)
+})
+
+test('start', async () => {
+  const previewServerId = 1
+  const webViewPort = '3000'
+  await WebViewServer.start(previewServerId, webViewPort)
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.start', previewServerId, webViewPort)
+})
+
+test('setHandler', async () => {
+  const previewServerId = 1
+  const frameAncestors = 'http://localhost:3000'
+  const webViewRoot = '/test/root'
+  const contentSecurityPolicy = "default-src 'none'"
+  const iframeContent = '<html></html>'
+
+  await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, contentSecurityPolicy, iframeContent)
+
+  expect(SharedProcess.invoke).toHaveBeenCalledWith(
+    'WebViewServer.setHandler',
+    previewServerId,
+    frameAncestors,
+    webViewRoot,
+    contentSecurityPolicy,
+    iframeContent,
+  )
+})
+
+test('error case', async () => {
+  const previewServerId = 1
+  // @ts-ignore
+  SharedProcess.invoke.mockRejectedValue(new Error('test error'))
+  await expect(WebViewServer.create(previewServerId)).rejects.toThrow('Failed to create web view server: test error')
+})
