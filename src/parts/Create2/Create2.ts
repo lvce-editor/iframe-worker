@@ -15,6 +15,7 @@ import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
+import * as AssetDir from '../AssetDir/AssetDir.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const create2 = async ({
@@ -25,6 +26,7 @@ export const create2 = async ({
   uri,
   platform,
   isGitpod,
+  assetDir = AssetDir.assetDir,
 }: {
   platform: number
   id: number
@@ -33,6 +35,7 @@ export const create2 = async ({
   previewServerId: number
   uri: string
   isGitpod: boolean
+  assetDir?: string
 }): Promise<any> => {
   let root = ''
 
@@ -54,6 +57,7 @@ export const create2 = async ({
     locationHost,
     locationOrigin,
     platform,
+    assetDir,
   )
 
   if (!iframeResult) {
