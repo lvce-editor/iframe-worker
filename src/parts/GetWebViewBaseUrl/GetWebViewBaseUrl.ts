@@ -15,7 +15,10 @@ const getDefaultBaseUrl = (webView: any): string => {
   return ''
 }
 
-export const getWebViewBaseUrl = (webView: any): string => {
+export const getWebViewBaseUrl = (webView: any, locationOrigin: string): string => {
   const defaultBaseUrl = getDefaultBaseUrl(webView)
+  if (defaultBaseUrl.startsWith(locationOrigin)) {
+    return defaultBaseUrl.slice(locationOrigin.length)
+  }
   return defaultBaseUrl
 }
