@@ -79,8 +79,8 @@ export const create2 = async ({
 
   const csp = GetWebViewCsp.getWebViewCsp(webView)
   const sandbox = GetWebViewSandBox.getIframeSandbox(webView, platform)
-  const permissionPolicy=GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)
-  const permissionPolicyString=permissionPolicy.join('; ')
+  const permissionPolicy = GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)
+  const permissionPolicyString = permissionPolicy.join('; ')
   const iframeCsp = platform === PlatformType.Web ? csp : ''
   const credentialless = true
 
