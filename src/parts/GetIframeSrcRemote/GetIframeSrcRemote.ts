@@ -1,6 +1,6 @@
+import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as CreateLocalHostUrl from '../CreateLocalHostUrl/CreateLocalHostUrl.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
-import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Scheme from '../Scheme/Scheme.ts'
