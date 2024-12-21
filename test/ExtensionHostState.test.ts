@@ -14,8 +14,7 @@ jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
 const ExtensionHostState = await import('../src/parts/ExtensionHost/ExtensionHostState.ts')
 
 beforeEach(() => {
-  ExtensionHostWorker.invoke.mockReset()
-  Rpc.invoke.mockReset()
+  jest.resetAllMocks()
 })
 
 test('saveState', async () => {
