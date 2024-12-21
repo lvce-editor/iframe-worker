@@ -19,6 +19,8 @@ beforeEach(() => {
 
 test('saveState', async () => {
   const mockState = { value: 123 }
+  // @ts-ignore
+  ExtensionHostWorker.invoke.mockResolvedValue(mockState)
   const result = await ExtensionHostState.saveState()
   expect(ExtensionHostWorker.invoke).toHaveBeenCalledWith('SaveState.saveState')
   expect(result).toBe(mockState)
@@ -26,6 +28,8 @@ test('saveState', async () => {
 
 test('getSavedState', async () => {
   const mockState = { value: 123 }
+  // @ts-ignore
+  Rpc.invoke.mockResolvedValue(mockState)
   const result = await ExtensionHostState.getSavedState()
   expect(Rpc.invoke).toHaveBeenCalledWith('WebView.getSavedState')
   expect(result).toBe(mockState)
