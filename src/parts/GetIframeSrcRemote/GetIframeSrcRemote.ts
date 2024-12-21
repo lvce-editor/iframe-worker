@@ -22,7 +22,7 @@ const getWebViewPath = (webViews: any, webViewId: any): string => {
   return webView.path
 }
 
-const isWindowsPath = (path: string) => {
+const isWindowsPath = (path: string): boolean => {
   return path.startsWith('A:/') || path.startsWith('B:/') || path.startsWith('C:/') || path.startsWith('D:/') || path.startsWith('E:/')
 }
 
