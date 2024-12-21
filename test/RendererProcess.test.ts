@@ -20,7 +20,7 @@ test('invoke', async () => {
   Rpc.invoke.mockResolvedValue(mockResult)
   const result = await RendererProcess.invoke('test.command', 'arg1', 'arg2')
   expect(result).toBe(mockResult)
-  expect(Rpc.invoke).toHaveBeenCalledWith('test.command', 'arg1', 'arg2')
+  expect(Rpc.invoke).toHaveBeenCalledWith('WebView.compatRendererProcessInvoke', 'test.command', 'arg1', 'arg2')
 })
 
 test('invokeAndTransfer', async () => {
@@ -30,7 +30,7 @@ test('invokeAndTransfer', async () => {
   Rpc.invokeAndTransfer.mockResolvedValue(mockResult)
   const result = await RendererProcess.invokeAndTransfer('test.command', transferable, 'arg1')
   expect(result).toBe(mockResult)
-  expect(Rpc.invokeAndTransfer).toHaveBeenCalledWith('test.command', transferable, 'arg1')
+  expect(Rpc.invokeAndTransfer).toHaveBeenCalledWith('WebView.compatRendererProcessInvokeAndTransfer', 'test.command', transferable, 'arg1')
 })
 
 test('invoke - error case', async () => {
