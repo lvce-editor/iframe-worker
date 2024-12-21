@@ -52,6 +52,9 @@ export const getIframeSrcRemote = (
   }
   let iframeSrc = webViewUri
   let webViewRoot = webViewUri
+
+  // TODO simplify path handling, always use uris so that paths on windows, linux and macos are the same
+
   if (platform === PlatformType.Electron) {
     const relativePath = new URL(webViewUri).pathname.replace('/index.html', '')
     iframeSrc = `${Scheme.WebView}://-${relativePath}/`
@@ -61,6 +64,8 @@ export const getIframeSrcRemote = (
     if (webViewUri.startsWith('file://')) {
       // ignore
       webViewRoot = webViewUri.slice('file://'.length).replace('/index.html', '')
+    } else if (relativePath.startsWith('C:/')) {
+      webViewRoot = relativePath
     } else {
       webViewRoot = root + relativePath
     }
