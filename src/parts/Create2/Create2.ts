@@ -5,6 +5,7 @@ import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewSt
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
+import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
 import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
@@ -82,7 +83,7 @@ export const create2 = async ({
   const permissionPolicy = GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)
   const permissionPolicyString = permissionPolicy.join('; ')
   const iframeCsp = platform === PlatformType.Web ? csp : ''
-  const credentialless = true
+  const credentialless = GetCredentialLess.getCredentialLess(locationHost)
 
   await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
 
