@@ -53,6 +53,16 @@ beforeEach(() => {
       id: 'test-webview',
       contentSecurityPolicy: ["default-src 'none'"],
       sandbox: ['allow-scripts'],
+      elements: [
+        {
+          type: 'title',
+          value: 'Test',
+        },
+        {
+          type: 'script',
+          path: 'index.js',
+        },
+      ],
     },
   ])
 })
@@ -71,13 +81,20 @@ test.only('create2 - basic functionality', async () => {
   const result = await Create2.create2(params)
 
   expect(GetWebViews.getWebViews).toHaveBeenCalled()
-  // expect(Rpc.invoke).toHaveBeenCalledWith('ExtensionHostManagement.activateByEvent', 'onWebView:test-webview')
-  // expect(WebViewProtocol.register).toHaveBeenCalled()
-  // expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
-  // expect(ExtensionHostWorker.invokeAndTransfer).toHaveBeenCalled()
-  // expect(ExtensionHostWorker.invoke).toHaveBeenCalled()
-  console.log({ result })
+  expect(Rpc.invoke).toHaveBeenCalledWith('ExtensionHostManagement.activateByEvent', 'onWebView:test-webview')
+  expect(WebViewProtocol.register).toHaveBeenCalled()
+  expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
+  expect(ExtensionHostWorker.invokeAndTransfer).toHaveBeenCalled()
+  expect(ExtensionHostWorker.invoke).toHaveBeenCalled()
   expect(result).toBeDefined()
+  expect(result).toEqual({
+    csp: "default-src 'none';",
+    iframeSrc: expect.any(String),
+    origin: '*',
+    portId: 1,
+    sandbox: ['allow-scripts', 'allow-scripts'],
+    srcDoc: '',
+  })
 })
 
 test('create2 - remote platform', async () => {
