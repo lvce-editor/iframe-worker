@@ -67,7 +67,7 @@ beforeEach(() => {
   ])
 })
 
-test.only('create2 - basic functionality', async () => {
+test('create2 - basic functionality', async () => {
   const params = {
     id: 1,
     webViewPort: '3000',
