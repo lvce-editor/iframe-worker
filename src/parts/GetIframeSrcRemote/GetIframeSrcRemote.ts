@@ -22,6 +22,10 @@ const getWebViewPath = (webViews: any, webViewId: any): string => {
   return webView.path
 }
 
+const isWindowsPath = (path: string): boolean => {
+  return path.startsWith('A:/') || path.startsWith('B:/') || path.startsWith('C:/') || path.startsWith('D:/') || path.startsWith('E:/')
+}
+
 const getWebViewUri = (webViews: any, webViewId: any): string => {
   const webViewPath = getWebViewPath(webViews, webViewId)
   if (!webViewPath) {
@@ -64,7 +68,7 @@ export const getIframeSrcRemote = (
     if (webViewUri.startsWith('file://')) {
       // ignore
       webViewRoot = webViewUri.slice('file://'.length).replace('/index.html', '')
-    } else if (relativePath.startsWith('C:/')) {
+    } else if (isWindowsPath(relativePath)) {
       webViewRoot = relativePath
     } else {
       webViewRoot = root + relativePath
