@@ -70,7 +70,9 @@ export const getIframeSrcRemote = (
   // TODO either
   // - load webviews the same as in web using blob urls
   // - load webviews from a pattern like /webviews/:id/:fileName
-  iframeContent = iframeContent.replaceAll('/media/', '/').replaceAll('//', '/')
+  if (!webView.path) {
+    iframeContent = iframeContent.replaceAll('/media/', '/').replaceAll('//', '/')
+  }
   return {
     srcDoc: '',
     iframeSrc,
