@@ -1,3 +1,4 @@
+import * as AssetDir from '../AssetDir/AssetDir.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
@@ -5,10 +6,11 @@ import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewSt
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
+import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
+import * as GetWebViewPermissionPolicy from '../GetWebViewPermissionPolicy/GetWebViewPermissionPolicy.ts'
 import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
-import * as GetWebViewPermissionPolicy from '../GetWebViewPermissionPolicy/GetWebViewPermissionPolicy.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
@@ -16,7 +18,6 @@ import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
-import * as AssetDir from '../AssetDir/AssetDir.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const create2 = async ({
@@ -82,7 +83,7 @@ export const create2 = async ({
   const permissionPolicy = GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)
   const permissionPolicyString = permissionPolicy.join('; ')
   const iframeCsp = platform === PlatformType.Web ? csp : ''
-  const credentialless = true
+  const credentialless = GetCredentialLess.getCredentialLess(locationHost)
 
   await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
 

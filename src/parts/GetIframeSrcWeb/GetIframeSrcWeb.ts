@@ -1,7 +1,7 @@
+import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as GetBlobUrl from '../GetBlobUrl/GetBlobUrl.ts'
 import * as GetWebViewBaseUrl from '../GetWebViewBaseUrl/GetWebViewBaseUrl.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
-import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 
 export const getIframeSrc = (webView: any, locationOrigin: string, assetDir: string): IframeSrcInfo | undefined => {
   const baseUrl = GetWebViewBaseUrl.getWebViewBaseUrl(webView, locationOrigin)

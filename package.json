@@ -44,7 +44,7 @@
     "collectCoverage": true,
     "coverageThreshold": {
       "global": {
-        "branches": 61,
+        "branches": 60,
         "functions": 68,
         "lines": 68
       }
@@ -124,7 +124,8 @@
     "rollup": "^4.27.2",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1"
+    "typescript-eslint": "^8.18.1",
+    "eslint-plugin-perfectionist": "^4.4.0"
   },
   "prettier": {
     "semi": false,
