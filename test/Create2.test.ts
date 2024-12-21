@@ -53,6 +53,7 @@ beforeEach(() => {
       id: 'test-webview',
       contentSecurityPolicy: ["default-src 'none'"],
       sandbox: ['allow-scripts'],
+      path: '/test',
       elements: [
         {
           type: 'title',
