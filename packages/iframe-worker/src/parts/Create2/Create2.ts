@@ -16,10 +16,10 @@ import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
+import * as Scheme from '../Scheme/Scheme.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
-import * as Scheme from '../Scheme/Scheme.ts'
 
 export const create2 = async ({
   id,
