@@ -23,7 +23,7 @@ const getWebViewPath = (webViews: any, webViewId: any): string => {
 }
 
 const isWindowsPath = (path: string): boolean => {
-  return path.startsWith('A:/') || path.startsWith('B:/') || path.startsWith('C:/') || path.startsWith('D:/') || path.startsWith('E:/')
+  return path.startsWith('A:\\') || path.startsWith('B:\\') || path.startsWith('C:\\') || path.startsWith('D:\\') || path.startsWith('E:\\')
 }
 
 const getWebViewUri = (webViews: any, webViewId: any): string => {
