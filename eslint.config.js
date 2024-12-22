@@ -30,7 +30,7 @@ export default tseslint.config(
       'scripts',
       'rollup.config.js',
       'eslint.config.js',
-      'packages/text-search-worker/src/textSearchWorkerMain.ts',
+      'packages/iframe-worker/src/iframeWorkerMain.ts',
     ],
   },
   {
