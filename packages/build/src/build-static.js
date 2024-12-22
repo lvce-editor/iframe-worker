@@ -16,7 +16,7 @@ const { commitHash } = await sharedProcess.exportStatic({
 })
 
 await cp(
-  join(root, '.tmp', 'dist', 'dist', 'iframeWorkerWorkerMain.js'),
+  join(root, '.tmp', 'dist', 'dist', 'iframeWorkerMain.js'),
   join(root, 'dist', commitHash, 'packages', 'iframe-worker', 'dist', 'iframeWorkerMain.js'),
 )
 
