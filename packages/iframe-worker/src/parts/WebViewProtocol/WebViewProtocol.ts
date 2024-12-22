@@ -1,5 +1,4 @@
 import * as GetWebViewProtocolModule from '../GetWebViewProtocolModule/GetWebViewProtocolModule.ts'
-import * as Platform from '../Platform/Platform.ts'
 
 export const register = async (
   previewServerId: number,
@@ -8,7 +7,8 @@ export const register = async (
   webViewRoot: string,
   csp: string,
   iframeContent: string,
+  platform: number,
 ): Promise<void> => {
-  const fn = GetWebViewProtocolModule.getModule(Platform.platform)
+  const fn = GetWebViewProtocolModule.getModule(platform)
   return fn(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent)
 }
