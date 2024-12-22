@@ -11,6 +11,7 @@ import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
 import * as GetWebViewPermissionPolicy from '../GetWebViewPermissionPolicy/GetWebViewPermissionPolicy.ts'
 import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
+import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
@@ -72,6 +73,7 @@ export const create2 = async ({
   const { iframeSrc, webViewRoot, srcDoc, iframeContent } = iframeResult
   const frameAncestors = GetWebViewFrameAncestors.getWebViewFrameAncestors(locationProtocol, locationHost)
 
+  const frameTitle = GetWebViewTitle.getWebViewTitle(webView)
   // TODO figure out order for events, e.g.
   // 1. activate extension, create webview and ports in parallel
   // 2. wait for webview to load (?)
@@ -92,7 +94,7 @@ export const create2 = async ({
 
   await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent)
 
-  await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString)
+  await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
 
   await RendererProcess.invoke('WebView.load', id)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform)
