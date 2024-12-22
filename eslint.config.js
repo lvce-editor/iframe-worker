@@ -17,6 +17,23 @@ export default tseslint.config(
     ignores: ['dist', 'coverage', 'scripts', 'rollup.config.js', 'eslint.config.js', 'src/iframeWorkerMain.ts'],
   },
   {
+    ignores: [
+      'dist',
+      '.tmp',
+      '**/build/**',
+      '**/coverage/**',
+      '**/server/**',
+      '**/e2e/**',
+      '**/memory/**',
+      '**/test-integration/**',
+      '**/test-integration-util/**',
+      'scripts',
+      'rollup.config.js',
+      'eslint.config.js',
+      'packages/text-search-worker/src/textSearchWorkerMain.ts',
+    ],
+  },
+  {
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/no-explicit-any': 'off',
