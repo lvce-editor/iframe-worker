@@ -54,7 +54,7 @@ test('webview with no path', () => {
 })
 
 test('webview with file path', () => {
-  const webView = { id: 1, path: '/test/index.html', elements: [] }
+  const webView = { id: 1, path: '/test/index.html', elements: [], uri: 'file:///test' }
   const webViews = [webView]
   const webViewPort = 3000
   const webViewId = 1
@@ -79,13 +79,13 @@ test('webview with file path', () => {
   expect(result).toEqual({
     srcDoc: '',
     iframeSrc: 'http://localhost:3000',
-    webViewRoot: '/test',
+    webViewRoot: 'file:///test',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
   })
 })
 
 test('electron platform', () => {
-  const webView = { id: 1, path: '/test/index.html', elements: [] }
+  const webView = { id: 1, path: '/test/index.html', elements: [], uri: 'file:///test' }
   const webViews = [webView]
   const webViewPort = 3000
   const webViewId = 1
@@ -116,7 +116,7 @@ test('electron platform', () => {
 })
 
 test('windows path', () => {
-  const webView = { id: 1, path: 'C:/test/index.html', elements: [] }
+  const webView = { id: 1, path: 'C:/test/index.html', elements: [], uri: 'file:///c:/test' }
   const webViews = [webView]
   const webViewPort = 3000
   const webViewId = 1
@@ -141,13 +141,13 @@ test('windows path', () => {
   expect(result).toEqual({
     srcDoc: '',
     iframeSrc: 'http://localhost:3000',
-    webViewRoot: '/root/test',
+    webViewRoot: 'file:///c:/test',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
   })
 })
 
 test('no path in webview', () => {
-  const webView = { id: 1, elements: [] }
+  const webView = { id: 1, elements: [], uri: '' }
   const webViews = [webView]
   const webViewPort = 3000
   const webViewId = 1
