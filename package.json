@@ -12,6 +12,7 @@
     "url": "git@github.com:lvce-editor/iframe-worker.git"
   },
   "scripts": {
+    "postinstall": "lerna bootstrap --ci",
     "lint": "eslint .",
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
     "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch",
@@ -109,23 +110,25 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
-    "@eslint/js": "9.14.0",
+    "@eslint/js": "9.17.0",
     "@lvce-editor/rpc": "^1.13.0",
     "@lvce-editor/verror": "^1.6.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.9.0",
-    "eslint": "9.14.0",
-    "execa": "^9.5.1",
+    "eslint": "9.17.0",
+    "execa": "^9.5.2",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
-    "rollup": "^4.27.2",
+    "rollup": "^4.29.1",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",
-    "eslint-plugin-perfectionist": "^4.4.0"
+    "eslint-plugin-perfectionist": "^4.4.0",
+    "@lerna/legacy-package-management": "^8.1.9",
+    "lerna": "^8.1.9"
   },
   "prettier": {
     "semi": false,
