@@ -2,7 +2,7 @@ import { expect, test } from '@jest/globals'
 import * as GetWebViewOrigin from '../src/parts/GetWebViewOrigin/GetWebViewOrigin.ts'
 import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
-const webViewScheme = 'lvce-webview:'
+const webViewScheme = 'lvce-oss-webview'
 
 test('electron platform', () => {
   const webViewPort = 3000

@@ -2,7 +2,7 @@ import { expect, test } from '@jest/globals'
 import * as GetIframeSrcRemote from '../src/parts/GetIframeSrcRemote/GetIframeSrcRemote.ts'
 import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
-const webViewScheme = 'lvce-oss-webview:'
+const webViewScheme = 'lvce-oss-webview'
 
 test('webview not found', () => {
   const webViews: any[] = []
