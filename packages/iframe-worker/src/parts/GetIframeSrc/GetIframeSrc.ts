@@ -16,13 +16,25 @@ export const getIframeSrc = (
   locationOrigin: string,
   platform: number,
   assetDir: string,
+  webViewScheme: string,
 ): IframeSrcInfo | undefined => {
   try {
     const webView = GetWebView.getWebView(webViews, webViewId)
     if (platform === PlatformType.Web) {
       return GetIframeSrcWeb.getIframeSrc(webView, locationOrigin, assetDir)
     }
-    return GetIframeSrcRemote.getIframeSrcRemote(webViews, webViewPort, webViewId, locationProtocol, locationHost, isGitpod, root, platform, assetDir)
+    return GetIframeSrcRemote.getIframeSrcRemote(
+      webViews,
+      webViewPort,
+      webViewId,
+      locationProtocol,
+      locationHost,
+      isGitpod,
+      root,
+      platform,
+      assetDir,
+      webViewScheme,
+    )
   } catch (error) {
     throw new VError(error, `Failed to construct webview iframe src`)
   }

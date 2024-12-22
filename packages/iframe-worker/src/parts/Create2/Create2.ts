@@ -19,6 +19,7 @@ import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
+import * as Scheme from '../Scheme/Scheme.ts'
 
 export const create2 = async ({
   id,
@@ -29,6 +30,7 @@ export const create2 = async ({
   platform,
   isGitpod,
   assetDir = AssetDir.assetDir,
+  webViewScheme = Scheme.WebView,
 }: {
   platform: number
   id: number
@@ -38,6 +40,7 @@ export const create2 = async ({
   uri: string
   isGitpod: boolean
   assetDir?: string
+  webViewScheme?: string
 }): Promise<any> => {
   let root = ''
 
@@ -60,6 +63,7 @@ export const create2 = async ({
     locationOrigin,
     platform,
     assetDir,
+    webViewScheme,
   )
 
   if (!iframeResult) {
@@ -95,7 +99,7 @@ export const create2 = async ({
   await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString)
 
   await RendererProcess.invoke('WebView.load', id)
-  const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform)
+  const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme)
 
   const portType = ''
   await SetPort.setPort(id, port1, origin, portType)
