@@ -1,42 +1,12 @@
-import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as CreateLocalHostUrl from '../CreateLocalHostUrl/CreateLocalHostUrl.ts'
+import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
+import * as GetWebViewUri from '../GetWebViewUri/GetWebViewUri.ts'
+import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
+import * as IsWindowsPath from '../IsWindowsPath/IsWindowsPath.ts'
 import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Scheme from '../Scheme/Scheme.ts'
-
-const getWebView = (webViews: any, webViewId: any): any => {
-  for (const webView of webViews) {
-    if (webView.id === webViewId) {
-      return webView
-    }
-  }
-  return undefined
-}
-
-const getWebViewPath = (webViews: any, webViewId: any): string => {
-  const webView = getWebView(webViews, webViewId)
-  if (!webView) {
-    return ''
-  }
-  return webView.path
-}
-
-const isWindowsPath = (path: string): boolean => {
-  return path.startsWith('A:\\') || path.startsWith('B:\\') || path.startsWith('C:\\') || path.startsWith('D:\\') || path.startsWith('E:\\')
-}
-
-const getWebViewUri = (webViews: any, webViewId: any): string => {
-  const webViewPath = getWebViewPath(webViews, webViewId)
-  if (!webViewPath) {
-    return ''
-  }
-  if (webViewPath.startsWith('/')) {
-    // TODO make it work on windows also
-    return `file://${webViewPath}`
-  }
-  return webViewPath
-}
 
 export const getIframeSrcRemote = (
   webViews: any,
@@ -49,8 +19,8 @@ export const getIframeSrcRemote = (
   platform = Platform.platform,
   assetDir: string,
 ): IframeSrcInfo | undefined => {
-  const webView = getWebView(webViews, webViewId)
-  const webViewUri = getWebViewUri(webViews, webViewId)
+  const webView = GetWebView.getWebView(webViews, webViewId)
+  const webViewUri = GetWebViewUri.getWebViewUri(webViews, webViewId)
   if (!webViewUri) {
     return undefined
   }
@@ -68,7 +38,7 @@ export const getIframeSrcRemote = (
     if (webViewUri.startsWith('file://')) {
       // ignore
       webViewRoot = webViewUri.slice('file://'.length).replace('/index.html', '')
-    } else if (isWindowsPath(relativePath)) {
+    } else if (IsWindowsPath.isWindowsPath(relativePath)) {
       webViewRoot = relativePath
     } else {
       webViewRoot = root + relativePath
