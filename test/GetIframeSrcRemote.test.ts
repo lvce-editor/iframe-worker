@@ -79,7 +79,7 @@ test('webview with file path', () => {
   expect(result).toEqual({
     srcDoc: '',
     iframeSrc: 'http://localhost:3000',
-    webViewRoot: '/test',
+    webViewRoot: 'file:///test',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
   })
 })
