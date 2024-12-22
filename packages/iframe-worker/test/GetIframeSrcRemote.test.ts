@@ -2,6 +2,8 @@ import { expect, test } from '@jest/globals'
 import * as GetIframeSrcRemote from '../src/parts/GetIframeSrcRemote/GetIframeSrcRemote.ts'
 import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
+const webViewScheme = 'lvce-oss-webview'
+
 test('webview not found', () => {
   const webViews: any[] = []
   const webViewPort = 3000
@@ -22,6 +24,7 @@ test('webview not found', () => {
     root,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toBe(undefined)
@@ -48,6 +51,7 @@ test('webview with no path', () => {
     root,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toBe(undefined)
@@ -74,6 +78,7 @@ test('webview with file path', () => {
     root,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toEqual({
@@ -105,6 +110,7 @@ test('electron platform', () => {
     root,
     PlatformType.Electron,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toEqual({
@@ -136,6 +142,7 @@ test('windows path', () => {
     root,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toEqual({
@@ -167,6 +174,7 @@ test('no path in webview', () => {
     root,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toBe(undefined)

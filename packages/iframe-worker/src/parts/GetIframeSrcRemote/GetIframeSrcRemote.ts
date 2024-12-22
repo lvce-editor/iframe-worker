@@ -5,7 +5,6 @@ import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
 import * as GetWebViewUri from '../GetWebViewUri/GetWebViewUri.ts'
 import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
-import * as Scheme from '../Scheme/Scheme.ts'
 
 export const getIframeSrcRemote = (
   webViews: any,
@@ -17,6 +16,7 @@ export const getIframeSrcRemote = (
   root: string,
   platform = Platform.platform,
   assetDir: string,
+  webViewScheme: string,
 ): IframeSrcInfo | undefined => {
   const webView = GetWebView.getWebView(webViews, webViewId)
   const webViewUri = GetWebViewUri.getWebViewUri(webViews, webViewId)
@@ -30,7 +30,7 @@ export const getIframeSrcRemote = (
 
   if (platform === PlatformType.Electron) {
     const relativePath = new URL(webViewUri).pathname.replace('/index.html', '')
-    iframeSrc = `${Scheme.WebView}://-${relativePath}/`
+    iframeSrc = `${webViewScheme}://-${relativePath}/`
     // TODO
   } else if (platform === PlatformType.Remote) {
     webViewRoot = webView.uri

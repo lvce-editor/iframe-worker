@@ -18,6 +18,8 @@ jest.unstable_mockModule('../src/parts/GetIframeSrcWeb/GetIframeSrcWeb.ts', () =
 jest.unstable_mockModule('../src/parts/GetIframeSrcRemote/GetIframeSrcRemote.ts', () => GetIframeSrcRemote)
 jest.unstable_mockModule('../src/parts/GetWebView/GetWebView.ts', () => GetWebView)
 
+const webViewScheme = 'lvce-oss-webview:'
+
 beforeEach(async () => {
   GetIframeSrcWeb.getIframeSrc.mockReset()
   GetIframeSrcRemote.getIframeSrcRemote.mockReset()
@@ -51,6 +53,7 @@ test('web platform', () => {
     locationOrigin,
     PlatformType.Web,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toBe(undefined)
@@ -83,6 +86,7 @@ test('remote platform', () => {
     locationOrigin,
     PlatformType.Remote,
     assetDir,
+    webViewScheme,
   )
 
   expect(result).toBe(undefined)
@@ -115,6 +119,7 @@ test('error case', () => {
       locationOrigin,
       PlatformType.Web,
       assetDir,
+      webViewScheme,
     ),
   ).toThrow(/Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath'/)
 })
