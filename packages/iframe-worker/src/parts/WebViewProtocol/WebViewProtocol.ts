@@ -8,7 +8,8 @@ export const register = async (
   csp: string,
   iframeContent: string,
   platform: number,
+  webViewId: string,
 ): Promise<void> => {
   const fn = GetWebViewProtocolModule.getModule(platform)
-  return fn(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent)
+  return fn(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, webViewId)
 }
