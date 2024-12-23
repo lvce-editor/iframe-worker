@@ -49,6 +49,14 @@ test('setHandler', async () => {
   )
 })
 
+test('setInfo', async () => {
+  const previewServerId = 1
+  const webViewId = 'test-webview'
+  const webViewRoot = '/test/root'
+  await WebViewServer.setInfo(previewServerId, webViewId, webViewRoot)
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.setInfo', previewServerId, webViewId, webViewRoot)
+})
+
 test('error case', async () => {
   const previewServerId = 1
   // @ts-ignore
