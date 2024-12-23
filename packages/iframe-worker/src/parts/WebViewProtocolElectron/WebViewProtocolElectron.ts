@@ -11,5 +11,5 @@ export const register: WebViewProtocolHandler = async (previewServerId, webViewP
   // Then the request handler can decide by domain which webview root to use.
   // Another option would be in electron to check what iframe (webContents)
   // responds to which webviewRoot and setting a webviewRoot per webContents instance
-  await WebViewServer.setInfo(previewServerId, webViewId, webViewRoot)
+  await WebViewServer.setInfo(previewServerId, webViewId, webViewRoot, csp, iframeContent)
 }

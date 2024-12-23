@@ -53,8 +53,10 @@ test('setInfo', async () => {
   const previewServerId = 1
   const webViewId = 'test-webview'
   const webViewRoot = '/test/root'
-  await WebViewServer.setInfo(previewServerId, webViewId, webViewRoot)
-  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.setInfo', previewServerId, webViewId, webViewRoot)
+  const csp = ''
+  const iframeContent = '<h1>hello world</h1>'
+  await WebViewServer.setInfo(previewServerId, webViewId, webViewRoot, csp, iframeContent)
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.setInfo', previewServerId, webViewId, webViewRoot, '', '<h1>hello world</h1>')
 })
 
 test('error case', async () => {

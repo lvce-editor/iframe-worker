@@ -12,8 +12,14 @@ export const start = async (previewServerId: number, webViewPort: string): Promi
   await SharedProcess.invoke('WebViewServer.start', previewServerId, webViewPort)
 }
 
-export const setInfo = async (previewServerId: number, webViewId: string, webViewRoot: string): Promise<void> => {
-  await SharedProcess.invoke('WebViewServer.setInfo', previewServerId, webViewId, webViewRoot)
+export const setInfo = async (
+  previewServerId: number,
+  webViewId: string,
+  webViewRoot: string,
+  contentSecurityPolicy: string,
+  iframeContent: string,
+): Promise<void> => {
+  await SharedProcess.invoke('WebViewServer.setInfo', previewServerId, webViewId, webViewRoot, contentSecurityPolicy, iframeContent)
 }
 
 export const setHandler = async (
