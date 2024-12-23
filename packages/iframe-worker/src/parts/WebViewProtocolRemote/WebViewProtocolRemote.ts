@@ -1,13 +1,7 @@
+import { WebViewProtocolHandler } from '../WebViewProtocolHandler/WebViewProtocolHandler.ts'
 import * as WebViewServer from '../WebViewServer/WebViewServer.ts'
 
-export const register = async (
-  previewServerId: number,
-  webViewPort: string,
-  frameAncestors: string,
-  webViewRoot: string,
-  csp: string,
-  iframeContent: string,
-): Promise<void> => {
+export const register: WebViewProtocolHandler = async (previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent) => {
   // TODO apply something similar for electron
   // TODO pass webview root, so that only these resources can be accessed
   // TODO pass csp configuration to server

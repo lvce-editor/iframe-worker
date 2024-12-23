@@ -26,23 +26,18 @@ export const getIframeSrcRemote = (
   let iframeSrc = webViewUri
   let webViewRoot = webViewUri
 
-  // TODO simplify path handling, always use uris so that paths on windows, linux and macos are the same
-
+  // TODO when running in remote, try scope webviews by path or if possible by domain
   if (platform === PlatformType.Electron) {
-    const relativePath = new URL(webViewUri).pathname.replace('/index.html', '')
-    iframeSrc = `${webViewScheme}://-${relativePath}/`
-    // TODO
+    const webViewId = webView.id
+    iframeSrc = `${webViewScheme}://${webViewId}/`
   } else if (platform === PlatformType.Remote) {
     webViewRoot = webView.uri
     iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)
   }
-  let iframeContent = GetWebViewHtml.getWebViewHtml('', '', webView.elements, assetDir)
+  const iframeContent = GetWebViewHtml.getWebViewHtml('', '', webView.elements, assetDir)
   // TODO either
   // - load webviews the same as in web using blob urls
   // - load webviews from a pattern like /webviews/:id/:fileName
-  if (!webView.path) {
-    iframeContent = iframeContent.replaceAll('/media/', '/').replaceAll('//', '/')
-  }
   return {
     srcDoc: '',
     iframeSrc,
