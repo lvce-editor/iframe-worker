@@ -16,13 +16,23 @@ beforeEach(() => {
 
 test('register', async () => {
   const previewServerId = 1
-  await WebViewProtocolElectron.register(previewServerId)
+  const port = '3000'
+  const root = '/test/root'
+  const frameAncestors = ''
+  const csp = ''
+  const iframeContent = ''
+  await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent)
   expect(WebViewServer.registerProtocol).toHaveBeenCalled()
   expect(WebViewServer.create).toHaveBeenCalledWith(previewServerId)
 })
 
 test('error case', async () => {
   const previewServerId = 1
+  const port = '3000'
+  const root = '/test/root'
+  const frameAncestors = ''
+  const csp = ''
+  const iframeContent = ''
   WebViewServer.registerProtocol.mockImplementation(() => Promise.reject(new Error('test error')))
-  await expect(WebViewProtocolElectron.register(previewServerId)).rejects.toThrow('test error')
+  await expect(WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent)).rejects.toThrow('test error')
 })
