@@ -3,6 +3,7 @@ import { beforeEach, expect, jest, test } from '@jest/globals'
 const WebViewServer = {
   registerProtocol: jest.fn(),
   create: jest.fn(),
+  setInfo: jest.fn(),
 }
 
 jest.unstable_mockModule('../src/parts/WebViewServer/WebViewServer.ts', () => WebViewServer)
@@ -21,7 +22,8 @@ test('register', async () => {
   const frameAncestors = ''
   const csp = ''
   const iframeContent = ''
-  await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent)
+  const webViewId = 'test.test'
+  await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId)
   expect(WebViewServer.registerProtocol).toHaveBeenCalled()
   expect(WebViewServer.create).toHaveBeenCalledWith(previewServerId)
 })
@@ -33,6 +35,9 @@ test('error case', async () => {
   const frameAncestors = ''
   const csp = ''
   const iframeContent = ''
+  const webViewId = 'test.test'
   WebViewServer.registerProtocol.mockImplementation(() => Promise.reject(new Error('test error')))
-  await expect(WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent)).rejects.toThrow('test error')
+  await expect(WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId)).rejects.toThrow(
+    'test error',
+  )
 })

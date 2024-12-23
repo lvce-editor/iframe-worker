@@ -18,7 +18,8 @@ test('register', async () => {
   const root = '/test/root'
   const frameAncestors = ''
   const csp = ''
-  await WebViewProtocolRemote.register(previewServerId, port, frameAncestors, csp, root, csp)
+  const webViewId = 'test.test'
+  await WebViewProtocolRemote.register(previewServerId, port, frameAncestors, csp, root, csp, webViewId)
   expect(SharedProcess.invoke).toHaveBeenCalledTimes(3)
   expect(SharedProcess.invoke).toHaveBeenNthCalledWith(1, 'WebViewServer.create', 1)
   expect(SharedProcess.invoke).toHaveBeenNthCalledWith(2, 'WebViewServer.start', 1, '3000')
@@ -32,5 +33,6 @@ test('error case', async () => {
   const root = '/test/root'
   const frameAncestors = ''
   const csp = ''
-  await expect(WebViewProtocolRemote.register(previewServerId, port, frameAncestors, csp, root, csp)).rejects.toThrow('test error')
+  const webViewId = 'test.test'
+  await expect(WebViewProtocolRemote.register(previewServerId, port, frameAncestors, csp, root, csp, webViewId)).rejects.toThrow('test error')
 })
