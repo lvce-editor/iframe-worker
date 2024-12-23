@@ -29,7 +29,7 @@ export const getIframeSrcRemote = (
   // TODO when running in remote, try scope webviews by path or if possible by domain
   if (platform === PlatformType.Electron) {
     const webViewId = webView.id
-    iframeSrc = `${webViewScheme}://${webViewId}/`
+    iframeSrc = `${webViewScheme}://${webViewId}`
   } else if (platform === PlatformType.Remote) {
     webViewRoot = webView.uri
     iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)
