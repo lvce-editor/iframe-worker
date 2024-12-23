@@ -115,7 +115,7 @@ test('electron platform', () => {
 
   expect(result).toEqual({
     srcDoc: '',
-    iframeSrc: 'lvce-oss-webview://-/test/',
+    iframeSrc: 'lvce-oss-webview://1/',
     webViewRoot: 'file:///test/index.html',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
   })
