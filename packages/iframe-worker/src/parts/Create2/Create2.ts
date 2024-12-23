@@ -96,7 +96,7 @@ export const create2 = async ({
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const portId = Id.create()
 
-  await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform)
+  await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId)
 
   await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
 
