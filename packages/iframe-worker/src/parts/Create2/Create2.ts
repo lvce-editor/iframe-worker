@@ -100,6 +100,9 @@ export const create2 = async ({
 
   await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
 
+  // TODO maybe iframe waitForLoad is not needed. since it cannot be used detect errors anyway
+  // and causes flash of unstyled content, maybe a better way would be to just send the
+  // port and wait for the first port message
   await RendererProcess.invoke('WebView.load', id)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
 
