@@ -26,3 +26,10 @@ test('null allow value', () => {
   }
   expect(GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)).toEqual(['cross-origin-isolated'])
 })
+
+test('duplicate permission policy', () => {
+  const webView = {
+    allow: ['cross-origin-isolated', 'camera=(self)'],
+  }
+  expect(GetWebViewPermissionPolicy.getIframePermissionPolicy(webView)).toEqual(['cross-origin-isolated', 'camera=(self)'])
+})
