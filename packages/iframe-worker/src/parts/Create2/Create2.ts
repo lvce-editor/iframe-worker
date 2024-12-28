@@ -109,7 +109,7 @@ export const create2 = async ({
   const portType = ''
   await SetPort.setPort(id, port1, origin, portType)
 
-  await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin)
+  await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin, webView)
 
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
