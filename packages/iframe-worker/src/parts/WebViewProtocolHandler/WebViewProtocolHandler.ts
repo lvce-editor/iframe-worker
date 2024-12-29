@@ -8,5 +8,6 @@ export interface WebViewProtocolHandler {
     iframeContent: string,
     webViewId: string,
     remotePathPrefix: string,
+    useNewWebViewHandler?: boolean,
   ): Promise<void>
 }

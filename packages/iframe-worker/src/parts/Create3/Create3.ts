@@ -97,7 +97,18 @@ export const create3 = async ({
   const portId = Id.create()
 
   const remotePathPrefix = '/remote'
-  await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId, remotePathPrefix)
+  await WebViewProtocol.register(
+    previewServerId,
+    webViewPort,
+    frameAncestors,
+    webViewRoot,
+    csp,
+    iframeContent,
+    platform,
+    webViewId,
+    remotePathPrefix,
+    useNewWebViewHandler,
+  )
 
   await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
 

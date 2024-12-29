@@ -4,12 +4,16 @@ export const registerProtocol = async (): Promise<void> => {
   await SharedProcess.invoke('WebViewServer.registerProtocol')
 }
 
-export const create = async (previewServerId: number): Promise<void> => {
-  await SharedProcess.invoke('WebViewServer.create', previewServerId)
+export const create = async (previewServerId: number, useNewWebViewHandler?: boolean): Promise<void> => {
+  await SharedProcess.invoke('WebViewServer.create', previewServerId, useNewWebViewHandler)
 }
 
 export const start = async (previewServerId: number, webViewPort: string): Promise<void> => {
   await SharedProcess.invoke('WebViewServer.start', previewServerId, webViewPort)
+}
+
+export const setInfo2 = async (info: any): Promise<void> => {
+  await SharedProcess.invoke('WebViewServer.setInfo2', info)
 }
 
 export const setInfo = async (
