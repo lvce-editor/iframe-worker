@@ -94,7 +94,6 @@ test('create2 - basic functionality', async () => {
     origin: '*',
     portId: 1,
     sandbox: ['allow-scripts', 'allow-scripts'],
-    srcDoc: '',
   })
 })
 
