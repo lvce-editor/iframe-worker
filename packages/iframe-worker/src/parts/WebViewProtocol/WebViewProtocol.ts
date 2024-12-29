@@ -10,7 +10,8 @@ export const register = async (
   platform: number,
   webViewId: string,
   remotePathPrefix: string,
+  useNewWebViewHandler?: boolean,
 ): Promise<void> => {
   const fn = GetWebViewProtocolModule.getModule(platform)
-  return fn(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, webViewId, remotePathPrefix)
+  return fn(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, webViewId, remotePathPrefix, useNewWebViewHandler)
 }

@@ -4,7 +4,7 @@ export const registerProtocol = async (): Promise<void> => {
   await SharedProcess.invoke('WebViewServer.registerProtocol')
 }
 
-export const create = async (previewServerId: number, useNewWebViewHandler: boolean): Promise<void> => {
+export const create = async (previewServerId: number, useNewWebViewHandler?: boolean): Promise<void> => {
   await SharedProcess.invoke('WebViewServer.create', previewServerId, useNewWebViewHandler)
 }
 

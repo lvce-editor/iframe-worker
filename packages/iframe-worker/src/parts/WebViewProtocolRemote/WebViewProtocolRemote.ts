@@ -19,7 +19,9 @@ export const register: WebViewProtocolHandler = async (
   await WebViewServer.create(previewServerId, useNewWebViewHandler) // TODO move this up
   await WebViewServer.start(previewServerId, webViewPort) // TODO move this up
   if (useNewWebViewHandler) {
-    await WebViewServer.setInfo2({})
+    await WebViewServer.setInfo2({
+      webViewRoot,
+    })
   } else {
     await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix)
   }
