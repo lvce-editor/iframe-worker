@@ -7,9 +7,9 @@ import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
 export const getIframeSrcRemote = (
-  webViews: any,
-  webViewPort: any,
-  webViewId: any,
+  webViews: readonly any[],
+  webViewPort: string,
+  webViewId: string,
   locationProtocol: string,
   locationHost: string,
   isGitpod: boolean,
