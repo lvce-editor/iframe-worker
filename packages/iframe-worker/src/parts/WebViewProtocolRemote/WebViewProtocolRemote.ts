@@ -22,7 +22,7 @@ export const register: WebViewProtocolHandler = async (
     await WebViewServer.setInfo2({
       webViewRoot,
       webViewId,
-      cnotentSecurityPolicy: csp,
+      contentSecurityPolicy: csp,
       iframeContent,
       remotePathPrefix,
     })
