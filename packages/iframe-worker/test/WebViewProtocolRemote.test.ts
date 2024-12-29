@@ -22,7 +22,7 @@ test('register', async () => {
   const remotePathPrefix = '/remote'
   await WebViewProtocolRemote.register(previewServerId, port, frameAncestors, csp, root, csp, webViewId, remotePathPrefix)
   expect(SharedProcess.invoke).toHaveBeenCalledTimes(3)
-  expect(SharedProcess.invoke).toHaveBeenNthCalledWith(1, 'WebViewServer.create', 1)
+  expect(SharedProcess.invoke).toHaveBeenNthCalledWith(1, 'WebViewServer.create', 1, undefined)
   expect(SharedProcess.invoke).toHaveBeenNthCalledWith(2, 'WebViewServer.start', 1, '3000')
   expect(SharedProcess.invoke).toHaveBeenNthCalledWith(3, 'WebViewServer.setHandler', 1, '', '', '/test/root', '')
 })

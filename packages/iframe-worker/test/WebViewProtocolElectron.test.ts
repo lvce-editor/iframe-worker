@@ -26,7 +26,7 @@ test('register', async () => {
   const remotePathPrefix = '/remote'
   await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId, remotePathPrefix)
   expect(WebViewServer.registerProtocol).toHaveBeenCalled()
-  expect(WebViewServer.create).toHaveBeenCalledWith(previewServerId)
+  expect(WebViewServer.create).toHaveBeenCalledWith(previewServerId, undefined)
 })
 
 test('error case', async () => {

@@ -20,7 +20,7 @@ test('registerProtocol', async () => {
 test('create', async () => {
   const previewServerId = 1
   await WebViewServer.create(previewServerId)
-  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.create', previewServerId)
+  expect(SharedProcess.invoke).toHaveBeenCalledWith('WebViewServer.create', previewServerId, undefined)
 })
 
 test('start', async () => {

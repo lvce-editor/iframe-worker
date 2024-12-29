@@ -38,6 +38,7 @@ test('register', async () => {
     iframeContent,
     webViewId,
     remotePathPrefix,
+    undefined,
   )
 })
 
