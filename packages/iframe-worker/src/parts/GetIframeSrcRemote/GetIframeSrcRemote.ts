@@ -1,5 +1,6 @@
 import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as CreateLocalHostUrl from '../CreateLocalHostUrl/CreateLocalHostUrl.ts'
+import * as GetIframeSrcRemoteBaseUrl from '../GetIframeSrcRemoteBaseUrl/GetIframeSrcRemoteBaseUrl.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
 import * as GetWebViewUri from '../GetWebViewUri/GetWebViewUri.ts'
@@ -11,6 +12,7 @@ export const getIframeSrcRemote = (
   webViewPort: string,
   webViewId: string,
   locationProtocol: string,
+  locationOrigin: string,
   locationHost: string,
   isGitpod: boolean,
   root: string,
@@ -34,7 +36,8 @@ export const getIframeSrcRemote = (
     webViewRoot = webView.uri
     iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)
   }
-  const iframeContent = GetWebViewHtml.getWebViewHtml('', '', webView.elements, assetDir)
+  const baseUrl = GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin)
+  const iframeContent = GetWebViewHtml.getWebViewHtml(baseUrl, '', webView.elements, assetDir)
   // TODO either
   // - load webviews the same as in web using blob urls
   // - load webviews from a pattern like /webviews/:id/:fileName

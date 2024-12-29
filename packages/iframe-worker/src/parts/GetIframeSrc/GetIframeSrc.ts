@@ -28,6 +28,7 @@ export const getIframeSrc = (
       webViewPort,
       webViewId,
       locationProtocol,
+      locationOrigin,
       locationHost,
       isGitpod,
       root,
