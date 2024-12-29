@@ -27,10 +27,10 @@ beforeEach(async () => {
 })
 
 test('web platform', () => {
-  const webView = { id: 1 }
+  const webView = { id: '1' }
   const webViews: readonly any[] = [webView]
-  const webViewId = 1
-  const webViewPort = 3000
+  const webViewId = '1'
+  const webViewPort = '3000'
   const root = '/root'
   const isGitpod = false
   const locationProtocol = 'http:'
@@ -61,8 +61,8 @@ test('web platform', () => {
 
 test('remote platform', () => {
   const webViews: readonly any[] = []
-  const webViewId = 1
-  const webViewPort = 3000
+  const webViewId = '1'
+  const webViewPort = '3000'
   const root = '/root'
   const isGitpod = false
   const locationProtocol = 'http:'
@@ -94,8 +94,8 @@ test('remote platform', () => {
 
 test('error case', () => {
   const webViews: readonly any[] = []
-  const webViewId = 1
-  const webViewPort = 3000
+  const webViewId = '1'
+  const webViewPort = '3000'
   const root = '/root'
   const isGitpod = false
   const locationProtocol = 'http:'
