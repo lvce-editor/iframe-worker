@@ -9,6 +9,7 @@ test('webview not found', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -19,6 +20,7 @@ test('webview not found', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,
@@ -36,6 +38,7 @@ test('webview with no path', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -46,6 +49,7 @@ test('webview with no path', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,
@@ -63,6 +67,7 @@ test('webview with file path', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -73,6 +78,7 @@ test('webview with file path', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,
@@ -94,6 +100,7 @@ test('electron platform', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -104,6 +111,7 @@ test('electron platform', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,
@@ -125,6 +133,7 @@ test('windows path', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -135,6 +144,7 @@ test('windows path', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,
@@ -156,6 +166,7 @@ test('no path in webview', () => {
   const webViewPort = 3000
   const webViewId = 1
   const locationProtocol = 'http:'
+  const locationOrigin = 'http:localhost:3000'
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const root = '/root'
@@ -166,6 +177,7 @@ test('no path in webview', () => {
     webViewPort,
     webViewId,
     locationProtocol,
+    locationOrigin,
     locationHost,
     isGitpod,
     root,

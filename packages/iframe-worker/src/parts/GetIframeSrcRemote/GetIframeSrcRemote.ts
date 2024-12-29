@@ -21,6 +21,7 @@ export const getIframeSrcRemote = (
   webViewPort: any,
   webViewId: any,
   locationProtocol: string,
+  locationOrigin: string,
   locationHost: string,
   isGitpod: boolean,
   root: string,
@@ -44,7 +45,7 @@ export const getIframeSrcRemote = (
     webViewRoot = webView.uri
     iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)
   }
-  const baseUrl = getBaseUrl(webViewRoot)
+  const baseUrl = getBaseUrl(webViewRoot, locationOrigin)
   const iframeContent = GetWebViewHtml.getWebViewHtml(baseUrl, '', webView.elements, assetDir)
   console.log({ assetDir, locationProtocol, locationHost, root, iframeContent })
   // TODO either
