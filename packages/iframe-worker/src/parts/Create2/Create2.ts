@@ -65,6 +65,7 @@ export const create2 = async ({
     platform,
     assetDir,
     webViewScheme,
+    false,
   )
 
   if (!iframeResult) {

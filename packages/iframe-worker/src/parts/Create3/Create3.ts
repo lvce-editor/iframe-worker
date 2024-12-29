@@ -64,7 +64,7 @@ export const create3 = async ({
     platform,
     assetDir,
     webViewScheme,
-    useNewWebViewHandler,
+    useNewWebViewHandler || false,
   )
 
   if (!iframeResult) {
