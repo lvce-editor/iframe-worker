@@ -71,7 +71,7 @@ export const create3 = async ({
   const webView = GetWebView.getWebView(webViews, webViewId)
 
   // TODO move all of this to iframe worker
-  const { iframeSrc, webViewRoot, srcDoc, iframeContent } = iframeResult
+  const { iframeSrc, webViewRoot, iframeContent } = iframeResult
   const frameAncestors = GetWebViewFrameAncestors.getWebViewFrameAncestors(locationProtocol, locationHost)
 
   const frameTitle = GetWebViewTitle.getWebViewTitle(webView)
@@ -112,7 +112,6 @@ export const create3 = async ({
 
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
   return {
-    srcDoc,
     iframeSrc,
     sandbox,
     portId,
