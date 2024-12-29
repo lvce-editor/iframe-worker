@@ -110,9 +110,7 @@ export const create3 = async ({
 
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
 
-  console.log('before load')
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
-  console.log('after load')
   return {
     srcDoc,
     iframeSrc,
