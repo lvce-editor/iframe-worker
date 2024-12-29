@@ -82,7 +82,6 @@ test('webview with file path', () => {
   )
 
   expect(result).toEqual({
-    srcDoc: '',
     iframeSrc: 'http://localhost:3000',
     webViewRoot: 'file:///test',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
@@ -114,7 +113,6 @@ test('electron platform', () => {
   )
 
   expect(result).toEqual({
-    srcDoc: '',
     iframeSrc: 'lvce-oss-webview://1',
     webViewRoot: 'file:///test/index.html',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',
@@ -146,7 +144,6 @@ test('windows path', () => {
   )
 
   expect(result).toEqual({
-    srcDoc: '',
     iframeSrc: 'http://localhost:3000',
     webViewRoot: 'file:///c:/test',
     iframeContent: '<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8">\n  </head>\n</html>\n',

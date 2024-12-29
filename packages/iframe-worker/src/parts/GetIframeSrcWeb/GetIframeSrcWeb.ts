@@ -9,7 +9,6 @@ export const getIframeSrc = (webView: any, locationOrigin: string, assetDir: str
   if (srcHtml) {
     const blobUrl = GetBlobUrl.getBlobUrl(srcHtml, 'text/html')
     return {
-      srcDoc: '',
       iframeSrc: blobUrl,
       webViewRoot: '',
       iframeContent: '',
