@@ -27,7 +27,7 @@ beforeEach(async () => {
 })
 
 test('web platform', () => {
-  const webView = { id: 1 }
+  const webView = { id: '1' }
   const webViews: readonly any[] = [webView]
   const webViewId = '1'
   const webViewPort = '3000'
