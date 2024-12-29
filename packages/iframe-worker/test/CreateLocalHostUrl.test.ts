@@ -6,7 +6,11 @@ test('gitpod', () => {
   const locationHost = '3000.gitpod.io'
   const isGitpod = true
   const webViewPort = '3001'
-  expect(CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)).toBe('https://3001.gitpod.io')
+  const useNewWebViewHandler = false
+  const webViewId = ''
+  expect(CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort, webViewId, useNewWebViewHandler)).toBe(
+    'https://3001.gitpod.io',
+  )
 })
 
 test('localhost', () => {
@@ -14,5 +18,9 @@ test('localhost', () => {
   const locationHost = 'localhost:3000'
   const isGitpod = false
   const webViewPort = '3001'
-  expect(CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)).toBe('http://localhost:3001')
+  const useNewWebViewHandler = false
+  const webViewId = ''
+  expect(CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort, webViewId, useNewWebViewHandler)).toBe(
+    'http://localhost:3001',
+  )
 })

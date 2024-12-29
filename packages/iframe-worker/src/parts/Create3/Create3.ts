@@ -30,6 +30,7 @@ export const create3 = async ({
   platform,
   assetDir,
   webViewScheme,
+  useNewWebViewHandler,
 }: {
   platform: number
   id: number
@@ -37,6 +38,7 @@ export const create3 = async ({
   isGitpod: boolean
   assetDir: string
   webViewScheme: string
+  useNewWebViewHandler?: boolean
 }): Promise<any> => {
   let root = ''
   if (platform === PlatformType.Remote) {
@@ -62,6 +64,7 @@ export const create3 = async ({
     platform,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   if (!iframeResult) {

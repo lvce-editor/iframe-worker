@@ -17,6 +17,7 @@ export const getIframeSrc = (
   platform: number,
   assetDir: string,
   webViewScheme: string,
+  useNewWebViewHandler?: boolean,
 ): IframeSrcInfo | undefined => {
   try {
     const webView = GetWebView.getWebView(webViews, webViewId)
@@ -35,6 +36,7 @@ export const getIframeSrc = (
       platform,
       assetDir,
       webViewScheme,
+      useNewWebViewHandler,
     )
   } catch (error) {
     throw new VError(error, `Failed to construct webview iframe src`)
