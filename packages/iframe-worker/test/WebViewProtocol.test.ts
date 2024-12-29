@@ -24,11 +24,21 @@ test('register', async () => {
   const iframeContent = '<html></html>'
   const platform = 1
   const webViewId = 'test-webview'
+  const remotePathPrefix = '/remote'
 
-  await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId)
+  await WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId, remotePathPrefix)
 
   expect(GetWebViewProtocolModule.getModule).toHaveBeenCalledWith(platform)
-  expect(mockRegisterFn).toHaveBeenCalledWith(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, webViewId)
+  expect(mockRegisterFn).toHaveBeenCalledWith(
+    previewServerId,
+    webViewPort,
+    frameAncestors,
+    webViewRoot,
+    csp,
+    iframeContent,
+    webViewId,
+    remotePathPrefix,
+  )
 })
 
 test('error case', async () => {
@@ -44,8 +54,9 @@ test('error case', async () => {
   const iframeContent = '<html></html>'
   const platform = 1
   const webViewId = 'test-webview'
+  const remotePathPrefix = '/remote'
 
   await expect(
-    WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId),
+    WebViewProtocol.register(previewServerId, webViewPort, frameAncestors, webViewRoot, csp, iframeContent, platform, webViewId, remotePathPrefix),
   ).rejects.toThrow('test error')
 })

@@ -28,6 +28,7 @@ export const setHandler = async (
   webViewRoot: string,
   contentSecurityPolicy: string,
   iframeContent: string,
+  remotePathPrefix: string,
 ): Promise<void> => {
   await SharedProcess.invoke('WebViewServer.setHandler', previewServerId, frameAncestors, webViewRoot, contentSecurityPolicy, iframeContent)
 }

@@ -7,5 +7,6 @@ export interface WebViewProtocolHandler {
     csp: string,
     iframeContent: string,
     webViewId: string,
+    remotePathPrefix: string,
   ): Promise<void>
 }

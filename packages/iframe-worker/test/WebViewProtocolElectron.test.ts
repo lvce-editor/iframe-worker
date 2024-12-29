@@ -23,7 +23,8 @@ test('register', async () => {
   const csp = ''
   const iframeContent = ''
   const webViewId = 'test.test'
-  await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId)
+  const remotePathPrefix = '/remote'
+  await WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId, remotePathPrefix)
   expect(WebViewServer.registerProtocol).toHaveBeenCalled()
   expect(WebViewServer.create).toHaveBeenCalledWith(previewServerId)
 })
@@ -36,8 +37,9 @@ test('error case', async () => {
   const csp = ''
   const iframeContent = ''
   const webViewId = 'test.test'
+  const remotePathPrefix = '/remote'
   WebViewServer.registerProtocol.mockImplementation(() => Promise.reject(new Error('test error')))
-  await expect(WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId)).rejects.toThrow(
-    'test error',
-  )
+  await expect(
+    WebViewProtocolElectron.register(previewServerId, port, root, frameAncestors, csp, iframeContent, webViewId, remotePathPrefix),
+  ).rejects.toThrow('test error')
 })
