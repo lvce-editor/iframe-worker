@@ -31,7 +31,7 @@ test('webview not found', () => {
 })
 
 test('webview with no path', () => {
-  const webView = { id: 1, elements: [] }
+  const webView = { id: '1', elements: [] }
   const webViews = [webView]
   const webViewPort = '3000'
   const webViewId = '1'
@@ -58,7 +58,7 @@ test('webview with no path', () => {
 })
 
 test('webview with file path', () => {
-  const webView = { id: 1, path: '/test/index.html', elements: [], uri: 'file:///test' }
+  const webView = { id: '1', path: '/test/index.html', elements: [], uri: 'file:///test' }
   const webViews = [webView]
   const webViewPort = '3000'
   const webViewId = '1'
@@ -90,7 +90,7 @@ test('webview with file path', () => {
 })
 
 test('electron platform', () => {
-  const webView = { id: 1, path: '/test/index.html', elements: [], uri: 'file:///test' }
+  const webView = { id: '1', path: '/test/index.html', elements: [], uri: 'file:///test' }
   const webViews = [webView]
   const webViewPort = '3000'
   const webViewId = '1'
@@ -122,7 +122,7 @@ test('electron platform', () => {
 })
 
 test('windows path', () => {
-  const webView = { id: 1, path: 'C:/test/index.html', elements: [], uri: 'file:///c:/test' }
+  const webView = { id: '1', path: 'C:/test/index.html', elements: [], uri: 'file:///c:/test' }
   const webViews = [webView]
   const webViewPort = '3000'
   const webViewId = '1'
@@ -154,7 +154,7 @@ test('windows path', () => {
 })
 
 test('no path in webview', () => {
-  const webView = { id: 1, elements: [], uri: '' }
+  const webView = { id: '1', elements: [], uri: '' }
   const webViews = [webView]
   const webViewPort = '3000'
   const webViewId = '1'
