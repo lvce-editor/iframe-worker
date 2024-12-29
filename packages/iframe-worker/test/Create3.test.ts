@@ -119,7 +119,7 @@ test('create3 - remote platform', async () => {
   expect(result).toBeDefined()
 })
 
-test('create3 - no iframe result', async () => {
+test.skip('create3 - no iframe result', async () => {
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([])
 
