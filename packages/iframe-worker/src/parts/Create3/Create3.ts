@@ -6,6 +6,7 @@ import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewSt
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
+import * as GetWebViewId from '../GetWebViewId/GetWebViewId.ts'
 import * as GetWebViewOrigin from '../GetWebViewOrigin/GetWebViewOrigin.ts'
 import * as GetWebViewPermissionPolicy from '../GetWebViewPermissionPolicy/GetWebViewPermissionPolicy.ts'
 import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
@@ -42,9 +43,12 @@ export const create3 = async ({
   }
 
   const webViews = await GetWebViews.getWebViews()
+  const webViewId = GetWebViewId.getWebViewId(webViews, uri)
   const locationProtocol = Location.getProtocol()
   const locationHost = Location.getHost()
   const locationOrigin = Location.getOrigin()
+  const locationPort = Location.getPort()
+
   const iframeResult = GetIframeSrc.getIframeSrc(
     webViews,
     webViewId,
