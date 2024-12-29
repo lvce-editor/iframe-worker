@@ -1,4 +1,4 @@
-import * as PlatformType from '../PlatformType/PlatformType.js'
+import * as PlatformType from '../PlatformType/PlatformType.ts'
 
 export const getWebViewPort = (platform: number, locationPort: string): string => {
   if (platform === PlatformType.Web) {
