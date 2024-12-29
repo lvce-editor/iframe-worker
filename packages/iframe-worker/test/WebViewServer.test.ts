@@ -36,8 +36,8 @@ test('setHandler', async () => {
   const webViewRoot = '/test/root'
   const contentSecurityPolicy = "default-src 'none'"
   const iframeContent = '<html></html>'
-
-  await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, contentSecurityPolicy, iframeContent)
+  const remotePathPrefix = '/remote'
+  await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, contentSecurityPolicy, iframeContent, remotePathPrefix)
 
   expect(SharedProcess.invoke).toHaveBeenCalledWith(
     'WebViewServer.setHandler',
