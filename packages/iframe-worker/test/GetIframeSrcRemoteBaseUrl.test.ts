@@ -8,7 +8,10 @@ test('same origin http url', () => {
   const webViewId = ''
   const useNewWebViewHandler = false
   const platform = PlatformType.Test
-  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)).toBe('/test')
+  const root = ''
+  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe(
+    '/remote/test',
+  )
 })
 
 test('same origin https url', () => {
@@ -17,7 +20,10 @@ test('same origin https url', () => {
   const webViewId = ''
   const useNewWebViewHandler = false
   const platform = PlatformType.Test
-  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)).toBe('/path')
+  const root = ''
+  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe(
+    '/remote/path',
+  )
 })
 
 test('different origin http url', () => {
@@ -26,7 +32,8 @@ test('different origin http url', () => {
   const webViewId = ''
   const useNewWebViewHandler = false
   const platform = PlatformType.Test
-  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)).toBe(
+  const root = ''
+  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe(
     'http://other-domain.com/test',
   )
 })
@@ -37,7 +44,8 @@ test('relative path', () => {
   const webViewId = ''
   const useNewWebViewHandler = false
   const platform = PlatformType.Test
-  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)).toBe('')
+  const root = ''
+  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe('')
 })
 
 test('empty path', () => {
@@ -46,5 +54,6 @@ test('empty path', () => {
   const webViewId = ''
   const useNewWebViewHandler = false
   const platform = PlatformType.Test
-  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)).toBe('')
+  const root = ''
+  expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe('')
 })

@@ -37,7 +37,7 @@ export const getIframeSrcRemote = (
     webViewRoot = webView.uri
     iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort, webViewId, useNewWebViewHandler)
   }
-  const baseUrl = GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler)
+  const baseUrl = GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)
   const iframeContent = GetWebViewHtml.getWebViewHtml(baseUrl, '', webView.elements, assetDir)
   // TODO either
   // - load webviews the same as in web using blob urls
