@@ -106,7 +106,7 @@ test('create3 - remote platform', async () => {
 
   const params = {
     id: 1,
-    uri: 'test://uri',
+    uri: 'test://example.xyz',
     platform: 3,
     isGitpod: false,
     assetDir: '',
@@ -125,7 +125,7 @@ test('create3 - no iframe result', async () => {
 
   const params = {
     id: 1,
-    uri: 'test://uri',
+    uri: 'test://example.xyz',
     platform: 1,
     isGitpod: false,
     assetDir: '',
@@ -143,7 +143,7 @@ test('error case', async () => {
 
   const params = {
     id: 1,
-    uri: 'test://uri',
+    uri: 'test://example.xyz',
     platform: 1,
     isGitpod: false,
     assetDir: '',
