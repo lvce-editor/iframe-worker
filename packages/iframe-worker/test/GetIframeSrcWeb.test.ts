@@ -17,7 +17,6 @@ test('getIframeSrc', () => {
 
   const result = GetIframeSrcWeb.getIframeSrc(webView, locationOrigin, assetDir)
   expect(result).toEqual({
-    srcDoc: expect.any(String),
     iframeSrc: expect.any(String),
     iframeContent: '',
     webViewRoot: '',
