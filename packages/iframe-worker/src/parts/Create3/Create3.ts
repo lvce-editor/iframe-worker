@@ -1,4 +1,3 @@
-import * as AssetDir from '../AssetDir/AssetDir.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
@@ -17,31 +16,24 @@ import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
-import * as Scheme from '../Scheme/Scheme.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const create3 = async ({
   id,
-  webViewPort,
-  webViewId,
-  previewServerId,
   uri,
-  platform,
   isGitpod,
-  assetDir = AssetDir.assetDir,
-  webViewScheme = Scheme.WebView,
+  platform,
+  assetDir,
+  webViewScheme,
 }: {
   platform: number
   id: number
-  webViewPort: string
-  webViewId: string
-  previewServerId: number
   uri: string
   isGitpod: boolean
-  assetDir?: string
-  webViewScheme?: string
+  assetDir: string
+  webViewScheme: string
 }): Promise<any> => {
   let root = ''
 
