@@ -1,4 +1,4 @@
-export const getWebViewId = async (webViews: readonly any[], uri: string): Promise<string> => {
+export const getWebViewId = (webViews: readonly any[], uri: string): string => {
   if (uri.startsWith('webview://')) {
     const webViewId = uri.slice('webview://'.length)
     return webViewId

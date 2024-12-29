@@ -4,6 +4,7 @@ import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewState.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
+import * as GetPreviewServerId from '../GetPreviewServerId/GetPreviewServerId.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
 import * as GetWebViewId from '../GetWebViewId/GetWebViewId.ts'
@@ -14,6 +15,7 @@ import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
+import * as GetWebViewPort from '../GetWebViewPort/GetWebViewPort.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
@@ -37,18 +39,17 @@ export const create3 = async ({
   webViewScheme: string
 }): Promise<any> => {
   let root = ''
-
   if (platform === PlatformType.Remote) {
     root = await SharedProcess.invoke('Platform.getRoot')
   }
-
   const webViews = await GetWebViews.getWebViews()
   const webViewId = GetWebViewId.getWebViewId(webViews, uri)
   const locationProtocol = Location.getProtocol()
   const locationHost = Location.getHost()
   const locationOrigin = Location.getOrigin()
   const locationPort = Location.getPort()
-
+  const webViewPort = GetWebViewPort.getWebViewPort(platform, locationPort)
+  const previewServerId = GetPreviewServerId.getPreviewServerId()
   const iframeResult = GetIframeSrc.getIframeSrc(
     webViews,
     webViewId,
