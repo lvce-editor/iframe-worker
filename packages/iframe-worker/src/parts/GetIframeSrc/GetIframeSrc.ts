@@ -6,9 +6,9 @@ import * as PlatformType from '../PlatformType/PlatformType.ts'
 import { VError } from '../VError/VError.ts'
 
 export const getIframeSrc = (
-  webViews: any,
-  webViewId: any,
-  webViewPort: any,
+  webViews: readonly any[],
+  webViewId: string,
+  webViewPort: string,
   root: string,
   isGitpod: boolean,
   locationProtocol: string,
