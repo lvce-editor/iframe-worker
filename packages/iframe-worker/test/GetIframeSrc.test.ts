@@ -38,6 +38,7 @@ test('web platform', () => {
   const locationOrigin = 'http://localhost:3000'
   const expectedResult = { srcDoc: 'test' }
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   GetWebView.getWebView.mockReturnValue(webView)
   GetIframeSrcWeb.getIframeSrc.mockReturnValue(expectedResult)
@@ -54,6 +55,7 @@ test('web platform', () => {
     PlatformType.Web,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toBe(undefined)
@@ -71,6 +73,7 @@ test('remote platform', () => {
   const webView = { id: 1 }
   const expectedResult = { srcDoc: 'test' }
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   GetWebView.getWebView.mockReturnValue(webView)
   GetIframeSrcRemote.getIframeSrcRemote.mockReturnValue(expectedResult)
@@ -87,6 +90,7 @@ test('remote platform', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toBe(undefined)
@@ -102,6 +106,7 @@ test('error case', () => {
   const locationHost = 'localhost:3000'
   const locationOrigin = 'http://localhost:3000'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   GetWebView.getWebView.mockImplementation(() => {
     throw new Error('test error')
@@ -120,6 +125,7 @@ test('error case', () => {
       PlatformType.Web,
       assetDir,
       webViewScheme,
+      useNewWebViewHandler,
     ),
   ).toThrow(/Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath'/)
 })

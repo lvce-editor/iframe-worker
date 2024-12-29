@@ -17,7 +17,7 @@ export const getIframeSrc = (
   platform: number,
   assetDir: string,
   webViewScheme: string,
-  useNewWebViewHandler?: boolean,
+  useNewWebViewHandler: boolean,
 ): IframeSrcInfo | undefined => {
   try {
     const webView = GetWebView.getWebView(webViews, webViewId)

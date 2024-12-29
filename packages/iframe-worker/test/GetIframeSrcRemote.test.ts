@@ -14,6 +14,7 @@ test('webview not found', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -27,6 +28,7 @@ test('webview not found', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toBe(undefined)
@@ -43,6 +45,7 @@ test('webview with no path', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -56,6 +59,7 @@ test('webview with no path', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toBe(undefined)
@@ -72,6 +76,7 @@ test('webview with file path', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -85,6 +90,7 @@ test('webview with file path', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toEqual({
@@ -105,6 +111,7 @@ test('electron platform', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -118,6 +125,7 @@ test('electron platform', () => {
     PlatformType.Electron,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toEqual({
@@ -138,6 +146,7 @@ test('windows path', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -151,6 +160,7 @@ test('windows path', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toEqual({
@@ -171,6 +181,7 @@ test('no path in webview', () => {
   const isGitpod = false
   const root = '/root'
   const assetDir = ''
+  const useNewWebViewHandler = false
 
   const result = GetIframeSrcRemote.getIframeSrcRemote(
     webViews,
@@ -184,6 +195,7 @@ test('no path in webview', () => {
     PlatformType.Remote,
     assetDir,
     webViewScheme,
+    useNewWebViewHandler,
   )
 
   expect(result).toBe(undefined)
