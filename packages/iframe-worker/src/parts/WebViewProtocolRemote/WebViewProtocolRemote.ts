@@ -8,14 +8,20 @@ export const register: WebViewProtocolHandler = async (
   webViewRoot,
   csp,
   iframeContent,
+  webViewId,
   remotePathPrefix,
+  useNewWebViewHandler,
 ) => {
   // TODO apply something similar for electron
   // TODO pass webview root, so that only these resources can be accessed
   // TODO pass csp configuration to server
   // TODO pass coop / coep configuration to server
-  await WebViewServer.create(previewServerId) // TODO move this up
+  await WebViewServer.create(previewServerId, useNewWebViewHandler) // TODO move this up
   await WebViewServer.start(previewServerId, webViewPort) // TODO move this up
-  await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix)
+  if (useNewWebViewHandler) {
+    await WebViewServer.setInfo2({})
+  } else {
+    await WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix)
+  }
   // TODO make this work in gitpod also
 }
