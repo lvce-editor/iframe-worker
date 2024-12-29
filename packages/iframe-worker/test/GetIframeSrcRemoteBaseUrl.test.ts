@@ -10,7 +10,7 @@ test('same origin http url', () => {
   const platform = PlatformType.Test
   const root = ''
   expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe(
-    '/test',
+    '/remote/test',
   )
 })
 
@@ -22,7 +22,7 @@ test('same origin https url', () => {
   const platform = PlatformType.Test
   const root = ''
   expect(GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin, platform, webViewId, useNewWebViewHandler, root)).toBe(
-    '/path',
+    '/remote/path',
   )
 })
 
