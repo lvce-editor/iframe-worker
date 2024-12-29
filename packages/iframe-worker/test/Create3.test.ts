@@ -18,6 +18,7 @@ const Location = {
 
 const RendererProcess = {
   invoke: jest.fn(),
+  invokeAndTransfer: jest.fn(),
 }
 
 const Rpc = {
@@ -54,7 +55,10 @@ beforeEach(() => {
       id: 'test-webview',
       contentSecurityPolicy: ["default-src 'none'"],
       sandbox: ['allow-scripts'],
-      path: '/test',
+      path: '/test/index.html',
+      remotePath: '/test/index.html',
+      selector: ['.xyz'],
+      uri: 'test://uri',
       elements: [
         {
           type: 'title',
@@ -72,7 +76,7 @@ beforeEach(() => {
 test('create3 - basic functionality', async () => {
   const params = {
     id: 1,
-    uri: 'test://uri',
+    uri: 'test://example.xyz',
     platform: 1,
     isGitpod: false,
     assetDir: '',
