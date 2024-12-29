@@ -9,3 +9,7 @@ export const getHost = (): string => {
 export const getProtocol = (): string => {
   return location.protocol
 }
+
+export const getPort = (): string => {
+  return location.port
+}
