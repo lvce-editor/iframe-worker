@@ -19,6 +19,7 @@ export const getIframeSrcRemote = (
   platform = Platform.platform,
   assetDir: string,
   webViewScheme: string,
+  useNewWebViewHandler?: boolean,
 ): IframeSrcInfo | undefined => {
   const webView = GetWebView.getWebView(webViews, webViewId)
   const webViewUri = GetWebViewUri.getWebViewUri(webViews, webViewId)
@@ -34,7 +35,7 @@ export const getIframeSrcRemote = (
     iframeSrc = `${webViewScheme}://${webViewId}`
   } else if (platform === PlatformType.Remote) {
     webViewRoot = webView.uri
-    iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort)
+    iframeSrc = CreateLocalHostUrl.createLocalHostUrl(locationProtocol, locationHost, isGitpod, webViewPort, webViewId, useNewWebViewHandler)
   }
   const baseUrl = GetIframeSrcRemoteBaseUrl.getIframeSrcRemoteBaseUrl(webViewRoot, locationOrigin)
   const iframeContent = GetWebViewHtml.getWebViewHtml(baseUrl, '', webView.elements, assetDir)
