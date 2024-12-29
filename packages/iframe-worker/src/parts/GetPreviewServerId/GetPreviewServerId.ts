@@ -1,4 +1,4 @@
-export const getPreviewServerId = () => {
+export const getPreviewServerId = (): number => {
   // TODO
   return 1
 }
