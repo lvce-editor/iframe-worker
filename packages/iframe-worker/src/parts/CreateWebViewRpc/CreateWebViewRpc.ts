@@ -1,6 +1,6 @@
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
-import * as GetWebViewRpc from '../GetWebViewRpc/GetWebViewRpc.ts'
+import * as GetWebViewRpc from '../GetWebViewWorkerRpc/GetWebViewWorkerRpc.ts'
 
 export const createWebViewRpc = async (webView: any, savedState: any, uri: string, portId: number): Promise<any> => {
   if (!webView || !webView.rpc || typeof webView.rpc !== 'string') {
