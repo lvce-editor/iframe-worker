@@ -4,6 +4,7 @@ import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as GetPreviewServerId from '../GetPreviewServerId/GetPreviewServerId.ts'
 import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewState.ts'
+import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
@@ -126,6 +127,8 @@ export const create3 = async ({
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
 
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
+
+  await CreateWebViewRpc.createWebViewRpc(webView)
   return {
     iframeSrc,
     sandbox,
