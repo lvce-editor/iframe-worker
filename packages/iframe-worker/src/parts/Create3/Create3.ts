@@ -94,7 +94,6 @@ export const create3 = async ({
 
   await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
 
-  const { port1, port2 } = GetPortTuple.getPortTuple()
   const portId = Id.create()
 
   const remotePathPrefix = '/remote'
@@ -119,14 +118,20 @@ export const create3 = async ({
   await RendererProcess.invoke('WebView.load', id)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
 
-  const portType = ''
-  await SetPort.setPort(id, port1, origin, portType)
+  const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'
 
-  await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin, webView)
+  if (hasOldRpc) {
+    const { port1, port2 } = GetPortTuple.getPortTuple()
+    const portType = ''
+    await SetPort.setPort(id, port1, origin, portType)
+    await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin, webView)
+  }
 
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
 
-  await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
+  if (hasOldRpc) {
+    await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
+  }
 
   await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
   return {
