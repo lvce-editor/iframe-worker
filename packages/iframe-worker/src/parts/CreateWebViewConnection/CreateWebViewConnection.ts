@@ -2,8 +2,7 @@ import { MessagePortRpcParent, type Rpc } from '@lvce-editor/rpc'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
-export const createWebViewConnection = async (webView: any): Promise<Rpc> => {
-  const { uid, origin } = webView
+export const createWebViewConnection = async (uid: number, origin: string): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
     messagePort: port2,
