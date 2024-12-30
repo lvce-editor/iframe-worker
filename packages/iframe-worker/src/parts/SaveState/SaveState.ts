@@ -1,6 +1,6 @@
 import * as RpcState from '../RpcState/RpcState.ts'
 
-export const saveState = async () => {
+export const saveState = async (): Promise<readonly any[]> => {
   const all = RpcState.getAll()
   const serialized = []
   for (const value of Object.values(all)) {
