@@ -1,3 +1,4 @@
+import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
@@ -126,6 +127,8 @@ export const create3 = async ({
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
 
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
+
+  await CreateWebViewRpc.createWebViewRpc(webView)
   return {
     iframeSrc,
     sandbox,

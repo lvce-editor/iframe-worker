@@ -33,6 +33,10 @@ const WebViewProtocol = {
   register: jest.fn(),
 }
 
+const CreateWebViewRpc = {
+  createWebViewRpc: jest.fn(),
+}
+
 jest.unstable_mockModule('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts', () => ExtensionHostWorker)
 jest.unstable_mockModule('../src/parts/GetWebViews/GetWebViews.ts', () => GetWebViews)
 jest.unstable_mockModule('../src/parts/Location/Location.ts', () => Location)
@@ -40,6 +44,7 @@ jest.unstable_mockModule('../src/parts/RendererProcess/RendererProcess.ts', () =
 jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
 jest.unstable_mockModule('../src/parts/SharedProcess/SharedProcess.ts', () => SharedProcess)
 jest.unstable_mockModule('../src/parts/WebViewProtocol/WebViewProtocol.ts', () => WebViewProtocol)
+jest.unstable_mockModule('../src/parts/CreateWebViewRpc/CreateWebViewRpc.ts', () => CreateWebViewRpc)
 
 const Create3 = await import('../src/parts/Create3/Create3.ts')
 
