@@ -3,7 +3,7 @@ import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as WebViewRpcCommandMap from '../WebViewRpcCommandMap/WebViewRpcCommandMap.ts'
 
-export const getWebViewRpc = async (rpcInfo: any): Promise<Rpc> => {
+export const getWebViewWorkerRpc = async (rpcInfo: any): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
     commandMap: WebViewRpcCommandMap.commandMap,
