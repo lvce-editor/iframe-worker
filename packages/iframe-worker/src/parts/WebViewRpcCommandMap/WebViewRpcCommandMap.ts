@@ -1,9 +1,5 @@
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
-
-const getRemoteUrl = (options: any): Promise<string> => {
-  return ExtensionHostWorker.invoke('WebView.getRemoteUrl', options)
-}
+import * as GetRemoteUrl from '../GetRemoteUrl/GetRemoteUrl.ts'
 
 export const commandMap = {
-  'WebView.getRemoteUrl': getRemoteUrl,
+  'WebView.getRemoteUrl': GetRemoteUrl.getRemoteUrl,
 }
