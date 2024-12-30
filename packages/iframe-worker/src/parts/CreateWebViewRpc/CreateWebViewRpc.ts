@@ -1,8 +1,10 @@
+import type { WebView } from '../WebView/WebView.ts'
 import * as CreateSecondaryWebViewConnection from '../CreateSecondaryWebViewConnection/CreateSecondaryWebViewConnection.ts'
 import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as GetWebViewWorkerRpc from '../GetWebViewWorkerRpc/GetWebViewWorkerRpc.ts'
+import * as RpcState from '../RpcState/RpcState.ts'
 
 export const createWebViewRpc = async (
   webView: any,
@@ -20,6 +22,11 @@ export const createWebViewRpc = async (
     throw new Error(`only web worker rpc is supported for webviews`)
   }
   const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
+  const webViewInfo: WebView = {
+    rpc,
+    webViewId: webView.id,
+  }
+  RpcState.set(portId, webViewInfo)
   await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
 
   // TODO this connection might not be needed
