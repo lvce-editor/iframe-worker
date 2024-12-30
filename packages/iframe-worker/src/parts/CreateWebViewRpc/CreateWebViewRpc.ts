@@ -1,8 +1,9 @@
 import { MessagePortRpcParent } from '@lvce-editor/rpc'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
+import * as WebViewRpcCommandMap from '../WebViewRpcCommandMap/WebViewRpcCommandMap.ts'
 
-export const createWebViewRpc = async (webView: any): Promise<any> => {
+export const createWebViewRpc = async (webView: any, savedState: any, uri: string, portId: number): Promise<any> => {
   if (!webView || !webView.rpc || typeof webView.rpc !== 'string') {
     return
   }
@@ -12,7 +13,7 @@ export const createWebViewRpc = async (webView: any): Promise<any> => {
   }
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
-    commandMap: {},
+    commandMap: WebViewRpcCommandMap.commandMap,
     messagePort: port2,
     isMessagePortOpen: true,
   })
@@ -21,5 +22,6 @@ export const createWebViewRpc = async (webView: any): Promise<any> => {
   // TODO rpc module should start the port
   port2.start()
   await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
-  console.log('did load file')
+
+  await rpc.invoke('WebView.create', { id: portId, savedState, webViewId: webView.id, uri })
 }
