@@ -128,7 +128,7 @@ export const create3 = async ({
 
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
 
-  await CreateWebViewRpc.createWebViewRpc(webView)
+  await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId)
   return {
     iframeSrc,
     sandbox,
