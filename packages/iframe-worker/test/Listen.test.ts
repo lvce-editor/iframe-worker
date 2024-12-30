@@ -2,12 +2,16 @@ import { beforeEach, expect, jest, test } from '@jest/globals'
 
 const WebWorkerRpcClient = {
   create: jest.fn(),
-  // listen: jest.fn(),
+}
+
+const MessagePortRpcParent = {
+  create: jest.fn(),
 }
 
 jest.unstable_mockModule('@lvce-editor/rpc', () => {
   return {
     WebWorkerRpcClient,
+    MessagePortRpcParent,
   }
 })
 
