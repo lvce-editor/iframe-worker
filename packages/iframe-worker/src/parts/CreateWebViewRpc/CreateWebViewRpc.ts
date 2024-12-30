@@ -1,3 +1,4 @@
+import * as CreateSecondaryWebViewConnection from '../CreateSecondaryWebViewConnection/CreateSecondaryWebViewConnection.ts'
 import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
@@ -21,13 +22,11 @@ export const createWebViewRpc = async (
   const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
   await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
 
-  const webViewRpc = await CreateWebViewConnection.createWebViewConnection(webViewUid, origin)
-  console.log({ webViewRpc })
+  // TODO this connection might not be needed
+  await CreateWebViewConnection.createWebViewConnection(webViewUid, origin)
 
-  // @ts-ignore
   const { port1, port2 } = GetPortTuple.getPortTuple()
-  // TODO send port1 to webview
-  // TODO send port2 to worker
+  await CreateSecondaryWebViewConnection.createSecondaryWebViewConnection(webViewUid, origin, port1)
   await rpc.invokeAndTransfer('_WebView.setPort', portId, port2)
   await rpc.invoke('_WebView.create', { id: portId, savedState, webViewId: webView.id, uri })
 }
