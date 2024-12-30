@@ -12,6 +12,9 @@ export const getSavedWebViewState = async (id: string): Promise<any> => {
     if (item && item.key && item.key === id && item.value && item.value.state) {
       return item.value.state
     }
+    if (item && item.key && item.key === id && item.value) {
+      return item.value
+    }
   }
   return undefined
 }
