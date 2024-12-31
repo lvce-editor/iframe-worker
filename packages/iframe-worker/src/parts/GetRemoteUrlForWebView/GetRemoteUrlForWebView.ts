@@ -1,4 +1,7 @@
 import type { GetRemoteUrlOptions } from '../GetRemoteUrlOptions/GetRemoteUrlOptions.ts'
+import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
+import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
+import * as RpcState from '../RpcState/RpcState.ts'
 
 // TODO if webViewId is provided,
 // 1. read file as blob
@@ -8,13 +11,10 @@ import type { GetRemoteUrlOptions } from '../GetRemoteUrlOptions/GetRemoteUrlOpt
 // 5. provide objectUrl to extension
 
 export const getRemoteUrlForWebView = async (options: GetRemoteUrlOptions): Promise<string> => {
-  throw new Error('not implemented')
-  // TODO webviews should be stored in iframe worker
-  // const webView = ExtensionHostWebViewState.getWebView(options.webViewId as string)
-  // if (!webView) {
-  //   throw new Error(`webview ${options.webViewId} not found`)
-  // }
-  // const [rpc, blob] = await Promise.all([CreateWebViewIpc.createWebViewIpc(webView), Rpc.invoke('FileSystem.getBlob', uri)])
-  // const objectUrl = await rpc.invoke('createObjectUrl', blob)
-  // return objectUrl
+  const webView = RpcState.get(options.id)
+  const rpcPromise = CreateWebViewConnection.createWebViewConnection(webView.webViewUid, webView.origin)
+  const blobPromise = RendererWorker.invoke('FileSystem.getBlob', options.uri)
+  const [rpc, blob] = await Promise.all([rpcPromise, blobPromise])
+  const objectUrl = await rpc.invoke('createObjectUrl', blob)
+  return objectUrl
 }

@@ -26,6 +26,8 @@ export const createWebViewRpc = async (
     rpc,
     webViewId: webView.id,
     portId: portId,
+    webViewUid,
+    origin,
   }
   RpcState.set(portId, webViewInfo)
   await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
