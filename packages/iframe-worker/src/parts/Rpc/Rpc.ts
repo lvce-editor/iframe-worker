@@ -1,23 +1,12 @@
-import type { Rpc } from '@lvce-editor/rpc'
-
-interface State {
-  rpc: any
-}
-
-const state: State = {
-  rpc: undefined,
-}
+import * as RpcId from '../RpcId/RpcId.ts'
+import * as RpcRegistry from '../RpcRegistry/RpcRegistry.ts'
 
 export const invoke = (method: string, ...params: any[]): Promise<any> => {
-  const rpc = state.rpc
+  const rpc = RpcRegistry.get(RpcId.RendererWorker)
   return rpc.invoke(method, ...params)
 }
 
 export const invokeAndTransfer = (method: string, ...params: any[]): Promise<any> => {
-  const rpc = state.rpc
+  const rpc = RpcRegistry.get(RpcId.RendererWorker)
   return rpc.invokeAndTransfer(method, ...params)
-}
-
-export const setRpc = (rpc: Rpc): void => {
-  state.rpc = rpc
 }

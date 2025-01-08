@@ -1,5 +1,6 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import * as Rpc from '../src/parts/Rpc/Rpc.ts'
+import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
 const mockRpc: any = {
@@ -7,7 +8,7 @@ const mockRpc: any = {
 }
 
 beforeEach(async () => {
-  Rpc.setRpc(mockRpc)
+  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 })
 
 test('setPort', async () => {
