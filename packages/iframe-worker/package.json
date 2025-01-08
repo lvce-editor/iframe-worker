@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@lvce-editor/rpc": "^1.13.0",
+    "@lvce-editor/rpc-registry": "^1.0.0",
     "@lvce-editor/verror": "^1.6.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5"
