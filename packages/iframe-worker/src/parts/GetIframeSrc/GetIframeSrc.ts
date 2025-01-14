@@ -1,7 +1,7 @@
+import type { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as GetIframeSrcRemote from '../GetIframeSrcRemote/GetIframeSrcRemote.ts'
 import * as GetIframeSrcWeb from '../GetIframeSrcWeb/GetIframeSrcWeb.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
-import { IframeSrcInfo } from '../IframeSrcInfo/IframeSrcInfo.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import { VError } from '../VError/VError.ts'
 

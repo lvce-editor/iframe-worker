@@ -1,4 +1,4 @@
-import { WebViewProtocolHandler } from '../WebViewProtocolHandler/WebViewProtocolHandler.ts'
+import type { WebViewProtocolHandler } from '../WebViewProtocolHandler/WebViewProtocolHandler.ts'
 import * as WebViewServer from '../WebViewServer/WebViewServer.ts'
 
 export const register: WebViewProtocolHandler = async (

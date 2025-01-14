@@ -1,10 +1,7 @@
-import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import perfectionist from 'eslint-plugin-perfectionist'
+import config from '@lvce-editor/eslint-config'
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
+export default [
+  ...config,
   {
     languageOptions: {
       parserOptions: {
@@ -14,22 +11,15 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ['dist', 'coverage', 'scripts', 'rollup.config.js', 'eslint.config.js', 'src/iframeWorkerMain.ts'],
+    ignores: ['src/iframeWorkerMain.ts'],
   },
   {
     ignores: [
-      'dist',
-      '.tmp',
-      '**/build/**',
-      '**/coverage/**',
       '**/server/**',
       '**/e2e/**',
       '**/memory/**',
       '**/test-integration/**',
       '**/test-integration-util/**',
-      'scripts',
-      'rollup.config.js',
-      'eslint.config.js',
       'packages/iframe-worker/src/iframeWorkerMain.ts',
     ],
   },
@@ -49,21 +39,9 @@ export default tseslint.config(
       '@typescript-eslint/no-deprecated': 'off',
       '@typescript-eslint/no-unnecessary-condition': 'off',
       '@typescript-eslint/no-unnecessary-template-expression': 'off',
+      'n/no-unpublished-import': 'off',
+      'n/no-unsupported-features/node-builtins': 'off',
+      'n/no-extraneous-import': 'off',
     },
   },
-  {
-    plugins: {
-      perfectionist,
-    },
-    rules: {
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          type: 'natural',
-          order: 'asc',
-          newlinesBetween: 'never',
-        },
-      ],
-    },
-  },
-)
+]
