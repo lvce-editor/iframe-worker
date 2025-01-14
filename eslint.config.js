@@ -42,6 +42,8 @@ export default [
       'n/no-unpublished-import': 'off',
       'n/no-unsupported-features/node-builtins': 'off',
       'n/no-extraneous-import': 'off',
+
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     },
   },
 ]
