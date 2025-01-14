@@ -1,4 +1,4 @@
-import { MessagePortRpcParent, Rpc } from '@lvce-editor/rpc'
+import { MessagePortRpcParent, type Rpc } from '@lvce-editor/rpc'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as WebViewRpcCommandMap from '../WebViewRpcCommandMap/WebViewRpcCommandMap.ts'
