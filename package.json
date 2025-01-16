@@ -21,9 +21,8 @@
   "author": "Lvce Editor",
   "license": "MIT",
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
     "@lerna/legacy-package-management": "^8.1.9",
-    "@lvce-editor/eslint-config": "^1.6.0",
+    "@lvce-editor/eslint-config": "^1.9.0",
     "eslint": "^9.18.0",
     "lerna": "^8.1.9",
     "prettier": "^3.4.2",
