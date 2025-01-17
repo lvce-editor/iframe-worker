@@ -11,7 +11,7 @@ export const saveState = async (): Promise<readonly any[]> => {
         value: savedState,
       })
     } catch (error) {
-      console.log(error)
+      console.error(error)
       // TODO maybe log the error
       // ignore
     }
