@@ -10,7 +10,6 @@ export const getModule = (platform: number): WebViewProtocolHandler => {
       return WebViewProtocolRemote.register
     case PlatformType.Electron:
       return WebViewProtocolElectron.register
-    case PlatformType.Web:
     default:
       return WebViewProtocolWeb.register
   }
