@@ -17,6 +17,6 @@ test('remote platform', () => {
   expect(GetWebViewProtocolModule.getModule(PlatformType.Remote)).toBe(WebViewProtocolRemote.register)
 })
 
-test('test platform', () => {
+test('platform', () => {
   expect(GetWebViewProtocolModule.getModule(PlatformType.Test)).toBe(WebViewProtocolWeb.register)
 })
