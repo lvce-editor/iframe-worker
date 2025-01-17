@@ -2,24 +2,24 @@
   "name": "@lvce-editor/iframe-worker",
   "version": "0.0.0-dev",
   "description": "Web Worker to manage creation and lifecycle of iframes in Lvce Editor",
-  "main": "src/iframeWorkerMain.ts",
-  "type": "module",
-  "directories": {
-    "test": "test"
-  },
+  "keywords": [
+    "iframe"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:lvce-editor/iframe-worker.git"
+  },
+  "license": "MIT",
+  "author": "Lvce Editor",
+  "type": "module",
+  "main": "src/iframeWorkerMain.ts",
+  "directories": {
+    "test": "test"
   },
   "scripts": {
     "test": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
     "test:watch": "node --unhandled-rejections=warn --experimental-vm-modules ./node_modules/jest/bin/jest.js --watch"
   },
-  "keywords": [
-    "iframe"
-  ],
-  "author": "Lvce Editor",
-  "license": "MIT",
   "jest": {
     "injectGlobals": false,
     "extensionsToTreatAsEsm": [

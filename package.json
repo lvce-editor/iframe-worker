@@ -2,24 +2,29 @@
   "name": "@lvce-editor/iframe-worker-monorepo",
   "version": "0.0.0-dev",
   "description": "",
-  "main": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Lvce Editor",
   "type": "module",
+  "main": "",
   "scripts": {
-    "postinstall": "lerna bootstrap --ci",
-    "lint": "eslint .",
-    "test": "lerna run test",
-    "test-integration": "lerna run test-integration",
-    "type-check": "tsc -b",
-    "build:watch": "./packages/build/node_modules/.bin/esbuild --format=esm --bundle --external:node:buffer --external:electron --external:ws --external:node:worker_threads --watch packages/iframe-worker/src/iframeWorkerMain.ts --outfile=.tmp/dist/dist/iframeWorkerMain.js",
     "build": "node packages/build/src/build.js",
     "build:static": "node packages/build/src/build-static.js",
+    "build:watch": "./packages/build/node_modules/.bin/esbuild --format=esm --bundle --external:node:buffer --external:electron --external:ws --external:node:worker_threads --watch packages/iframe-worker/src/iframeWorkerMain.ts --outfile=.tmp/dist/dist/iframeWorkerMain.js",
     "dev": "node packages/build/src/dev.js",
+    "format": "prettier --write .",
+    "lint": "eslint .",
     "measure": "cd packages/memory && npm run measure",
-    "format": "prettier --write ."
+    "postinstall": "lerna bootstrap --ci",
+    "test": "lerna run test",
+    "test-integration": "lerna run test-integration",
+    "type-check": "tsc -b"
   },
-  "keywords": [],
-  "author": "Lvce Editor",
-  "license": "MIT",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 150
+  },
   "devDependencies": {
     "@lerna/legacy-package-management": "^8.1.9",
     "@lvce-editor/eslint-config": "^1.9.0",
@@ -27,10 +32,5 @@
     "lerna": "^8.1.9",
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 150
   }
 }

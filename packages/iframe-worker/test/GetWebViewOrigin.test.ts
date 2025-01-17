@@ -20,7 +20,7 @@ test('web platform', () => {
   expect(GetWebViewOrigin.getWebViewOrigin(webViewPort, PlatformType.Web, webViewScheme, webViewId)).toBe('*')
 })
 
-test('test platform', () => {
+test('platform', () => {
   const webViewPort = 3000
   expect(GetWebViewOrigin.getWebViewOrigin(webViewPort, PlatformType.Test, webViewScheme, webViewId)).toBe('*')
 })

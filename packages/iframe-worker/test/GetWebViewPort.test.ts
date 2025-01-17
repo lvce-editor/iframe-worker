@@ -22,7 +22,7 @@ test('remote platform - uses default port', () => {
   expect(GetWebViewPort.getWebViewPort(PlatformType.Remote, locationPort)).toBe('3002')
 })
 
-test('test platform - uses default port', () => {
+test('platform - uses default port', () => {
   const locationPort = '8080'
   expect(GetWebViewPort.getWebViewPort(PlatformType.Test, locationPort)).toBe('3002')
 })
