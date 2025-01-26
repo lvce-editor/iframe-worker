@@ -1,7 +1,7 @@
-import config from '@lvce-editor/eslint-config'
+import * as config from '@lvce-editor/eslint-config'
 
 export default [
-  ...config,
+  ...config.default,
   {
     ignores: ['src/iframeWorkerMain.ts'],
   },
