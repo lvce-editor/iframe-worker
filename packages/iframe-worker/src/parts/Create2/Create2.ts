@@ -33,15 +33,15 @@ export const create2 = async ({
   assetDir = AssetDir.assetDir,
   webViewScheme = Scheme.WebView,
 }: {
-  platform: number
-  id: number
-  webViewPort: string
-  webViewId: string
-  previewServerId: number
-  uri: string
-  isGitpod: boolean
-  assetDir?: string
-  webViewScheme?: string
+  readonly platform: number
+  readonly id: number
+  readonly webViewPort: string
+  readonly webViewId: string
+  readonly previewServerId: number
+  readonly uri: string
+  readonly isGitpod: boolean
+  readonly assetDir?: string
+  readonly webViewScheme?: string
 }): Promise<any> => {
   let root = ''
 

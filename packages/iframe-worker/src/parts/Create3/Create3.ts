@@ -33,13 +33,13 @@ export const create3 = async ({
   webViewScheme,
   useNewWebViewHandler,
 }: {
-  platform: number
-  id: number
-  uri: string
-  isGitpod: boolean
-  assetDir: string
-  webViewScheme: string
-  useNewWebViewHandler?: boolean
+  readonly platform: number
+  readonly id: number
+  readonly uri: string
+  readonly isGitpod: boolean
+  readonly assetDir: string
+  readonly webViewScheme: string
+  readonly useNewWebViewHandler?: boolean
 }): Promise<any> => {
   let root = ''
   if (platform === PlatformType.Remote) {
