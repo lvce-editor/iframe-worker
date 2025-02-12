@@ -1,10 +1,6 @@
-import type { WebView } from '../WebView/WebView.ts'
-import * as CreateSecondaryWebViewConnection from '../CreateSecondaryWebViewConnection/CreateSecondaryWebViewConnection.ts'
-import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
+import * as CreateWebWorkerRpc2 from '../CreateWebWorkerRpc2/CreateWebWorkerRpc2.ts'
+import * as CreateWebWorkerRpcLegacy from '../CreateWebWorkerRpcLegacy/CreateWebWorkerRpcLegacy.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
-import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
-import * as GetWebViewWorkerRpc from '../GetWebViewWorkerRpc/GetWebViewWorkerRpc.ts'
-import * as RpcState from '../RpcState/RpcState.ts'
 
 export const createWebViewRpc = async (
   webView: any,
@@ -18,25 +14,12 @@ export const createWebViewRpc = async (
     return
   }
   const rpcInfo = await ExtensionHostWorker.invoke('WebView.getRpcInfo', webView.rpc)
+  if (rpcInfo && rpcInfo.type === 'web-worker-2') {
+    return CreateWebWorkerRpc2.createWebWorkerRpc2(rpcInfo, webView, savedState, uri, portId, webViewUid, origin)
+  }
+
   if (rpcInfo.type !== 'web-worker') {
     throw new Error(`only web worker rpc is supported for webviews`)
   }
-  const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
-  const webViewInfo: WebView = {
-    rpc,
-    webViewId: webView.id,
-    portId: portId,
-    webViewUid,
-    origin,
-  }
-  RpcState.set(portId, webViewInfo)
-  await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
-
-  // TODO this connection might not be needed
-  await CreateWebViewConnection.createWebViewConnection(webViewUid, origin)
-
-  const { port1, port2 } = GetPortTuple.getPortTuple()
-  await CreateSecondaryWebViewConnection.createSecondaryWebViewConnection(webViewUid, origin, port1)
-  await rpc.invokeAndTransfer('_WebView.setPort', portId, port2)
-  await rpc.invoke('_WebView.create', { id: portId, savedState, webViewId: webView.id, uri })
+  return CreateWebWorkerRpcLegacy.createWebViewRpc(rpcInfo, webView, savedState, uri, portId, webViewUid, origin)
 }
