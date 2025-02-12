@@ -2,7 +2,7 @@ import type { WebView } from '../WebView/WebView.ts'
 import * as CreateSecondaryWebViewConnection from '../CreateSecondaryWebViewConnection/CreateSecondaryWebViewConnection.ts'
 import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
-import * as GetWebViewWorkerRpc from '../GetWebViewWorkerRpc/GetWebViewWorkerRpc.ts'
+import * as GetWebViewWorkerRpc2 from '../GetWebViewWorkerRpc2/GetWebViewWorkerRpc2.ts'
 import * as RpcState from '../RpcState/RpcState.ts'
 
 export const createWebWorkerRpc2 = async (
@@ -14,7 +14,7 @@ export const createWebWorkerRpc2 = async (
   webViewUid: number,
   origin: string,
 ): Promise<any> => {
-  const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
+  const rpc = await GetWebViewWorkerRpc2.getWebViewWorkerRpc2(rpcInfo)
   const webViewInfo: WebView = {
     rpc,
     webViewId: webView.id,
