@@ -1,3 +1,4 @@
+import * as CreateAndLoadWebView from '../CreateAndLoadWebView/CreateAndLoadWebView.ts'
 import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
@@ -18,7 +19,6 @@ import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
-import * as RendererProcess from '../RendererProcess/RendererProcess.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
@@ -109,12 +109,7 @@ export const create3 = async ({
     useNewWebViewHandler,
   )
 
-  await RendererProcess.invoke('WebView.create', id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
-
-  // TODO maybe iframe waitForLoad is not needed. since it cannot be used detect errors anyway
-  // and causes flash of unstyled content, maybe a better way would be to just send the
-  // port and wait for the first port message
-  await RendererProcess.invoke('WebView.load', id)
+  await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
 
   const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'
