@@ -26,6 +26,9 @@ export const getIframeSrcRemote = (
   if (!webViewUri) {
     return undefined
   }
+  if (!webView) {
+    return undefined
+  }
   let iframeSrc = webViewUri
   let webViewRoot = webViewUri
 
