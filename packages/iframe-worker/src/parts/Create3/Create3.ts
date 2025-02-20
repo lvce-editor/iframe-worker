@@ -74,6 +74,7 @@ export const create3 = async ({
 
   const webView = GetWebView.getWebView(webViews, webViewId)
 
+  console.log({ webView })
   const { iframeSrc, webViewRoot, iframeContent } = iframeResult
   const frameAncestors = GetWebViewFrameAncestors.getWebViewFrameAncestors(locationProtocol, locationHost)
 
