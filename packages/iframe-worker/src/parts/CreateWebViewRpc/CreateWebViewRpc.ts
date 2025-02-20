@@ -17,7 +17,7 @@ export const createWebViewRpc = async (
   if (rpcInfo && rpcInfo.type === 'web-worker-2') {
     return CreateWebWorkerRpc2.createWebWorkerRpc2(rpcInfo, webView, savedState, uri, portId, webViewUid, origin)
   }
-
+  // legacy
   if (rpcInfo.type !== 'web-worker') {
     throw new Error(`only web worker rpc is supported for webviews`)
   }
