@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
-    "@lvce-editor/rpc": "^1.22.0",
+    "@lvce-editor/rpc": "^1.23.0",
     "@lvce-editor/rpc-registry": "^1.0.0",
     "@lvce-editor/verror": "^1.6.0",
     "jest": "^29.7.0",
