@@ -9,5 +9,5 @@ export const commandMap = {
   'WebView.create3': Create3.create3,
   'WebView.saveState': SaveState.saveState,
   'WebView.getSecret': GetSecret.getSecret,
-  'WebView.getWebViewInfo': GetWebViewInfo,
+  'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
 }
