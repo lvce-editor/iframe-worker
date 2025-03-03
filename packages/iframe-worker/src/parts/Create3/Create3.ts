@@ -91,6 +91,7 @@ export const create3 = async ({
   const iframeCsp = platform === PlatformType.Web ? csp : ''
   const credentialless = GetCredentialLess.getCredentialLess(locationHost)
 
+  // TODO remove this
   await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
 
   const portId = Id.create()
