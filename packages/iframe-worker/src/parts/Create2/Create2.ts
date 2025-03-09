@@ -1,4 +1,3 @@
-import * as AssetDir from '../AssetDir/AssetDir.ts'
 import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
