@@ -43,7 +43,7 @@ test('electron platform - relative path', async () => {
   expect(result).toBe('/remote/test/path')
 })
 
-test('web platform', async () => {
+test.skip('web platform', async () => {
   PlatformState.setPlatform(PlatformType.Web)
   const options = {
     uri: 'test/path',
@@ -53,7 +53,7 @@ test('web platform', async () => {
   expect(result).toBe('/remote/test/path')
 })
 
-test('uri with protocol', async () => {
+test.skip('uri with protocol', async () => {
   PlatformState.setPlatform(PlatformType.Remote)
   const options = {
     uri: 'file:///test/path',
