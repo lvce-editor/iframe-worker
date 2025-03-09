@@ -30,7 +30,7 @@ export const create2 = async ({
   uri,
   platform,
   isGitpod,
-  assetDir = AssetDir.assetDir,
+  assetDir = '',
   webViewScheme = Scheme.WebView,
 }: {
   readonly platform: number
