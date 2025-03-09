@@ -18,7 +18,7 @@ test('getSecret', async () => {
   const key = 'test-key'
   const result = await GetSecret.getSecret(key)
   expect(result).toBe(mockSecret)
-  expect(mockRpc.invoke).toHaveBeenCalledWith('WebView.getSecret', key)
+  expect(mockRpc.invoke).toHaveBeenCalledWith('WebView.compatRendererWorkerInvoke', 'WebView.getSecret', key)
 })
 
 test('error case', async () => {
