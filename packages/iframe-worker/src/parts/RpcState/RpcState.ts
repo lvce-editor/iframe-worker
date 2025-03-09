@@ -17,3 +17,10 @@ export const get = (id: number): WebView => {
 export const getAll = (): Record<number, WebView> => {
   return rpcs
 }
+
+export const reset = (): void => {
+  for (const key of Object.keys(rpcs)) {
+    // @ts-ignore
+    delete rpcs[key]
+  }
+}
