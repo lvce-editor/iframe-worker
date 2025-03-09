@@ -18,6 +18,7 @@ import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
 import * as Location from '../Location/Location.ts'
+import * as PlatformState from '../PlatformState/PlatformState.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
 import * as SetPort from '../SetPort/SetPort.ts'
@@ -41,6 +42,7 @@ export const create3 = async ({
   readonly webViewScheme: string
   readonly useNewWebViewHandler?: boolean
 }): Promise<any> => {
+  PlatformState.setPlatform(platform)
   let root = ''
   if (platform === PlatformType.Remote) {
     root = await SharedProcess.invoke('Platform.getRoot')
