@@ -4,7 +4,6 @@ import * as GetIframeSrcRemoteBaseUrl from '../GetIframeSrcRemoteBaseUrl/GetIfra
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewHtml from '../GetWebViewHtml/GetWebViewHtml.ts'
 import * as GetWebViewUri from '../GetWebViewUri/GetWebViewUri.ts'
-import * as Platform from '../Platform/Platform.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 
 export const getIframeSrcRemote = (
@@ -16,7 +15,7 @@ export const getIframeSrcRemote = (
   locationHost: string,
   isGitpod: boolean,
   root: string,
-  platform = Platform.platform,
+  platform: number,
   assetDir: string,
   webViewScheme: string,
   useNewWebViewHandler: boolean,
