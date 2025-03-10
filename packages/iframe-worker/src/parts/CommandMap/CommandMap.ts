@@ -3,6 +3,7 @@ import * as Create3 from '../Create3/Create3.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
+import * as WebViewInterceptor from '../WebViewInterceptor/WebViewInterceptor.ts'
 
 export const commandMap = {
   'WebView.create2': Create2.create2,
@@ -10,4 +11,6 @@ export const commandMap = {
   'WebView.saveState': SaveState.saveState,
   'WebView.getSecret': GetSecret.getSecret,
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
+  'WebView.registerInterceptor': WebViewInterceptor.registerInterceptor,
+  'WebView.unregisterInterceptor': WebViewInterceptor.unregisterInterceptor,
 }
