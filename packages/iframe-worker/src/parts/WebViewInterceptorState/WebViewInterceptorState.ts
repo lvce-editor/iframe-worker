@@ -12,3 +12,7 @@ export const remove = (id: number): void => {
 export const getAll = (): readonly any[] => {
   return Object.values(interceptors)
 }
+
+export const isEmpty = () => {
+  return Object.keys(interceptors).length === 0
+}

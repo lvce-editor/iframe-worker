@@ -1,10 +1,10 @@
 import * as WebViewInterceptorState from '../WebViewInterceptorState/WebViewInterceptorState.ts'
 
 export const notifyInterceptors = (message: any): void => {
-  const ports = WebViewInterceptorState.getAll()
-  if (ports.length === 0) {
+  if (WebViewInterceptorState.isEmpty()) {
     return
   }
+  const ports = WebViewInterceptorState.getAll()
   // TODO use rpc.invoke
   for (const port of ports) {
     port.postMessage({
