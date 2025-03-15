@@ -13,6 +13,6 @@ export const getAll = (): readonly any[] => {
   return Object.values(interceptors)
 }
 
-export const isEmpty = () => {
+export const isEmpty = (): boolean => {
   return Object.keys(interceptors).length === 0
 }
