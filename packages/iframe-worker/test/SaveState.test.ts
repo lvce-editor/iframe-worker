@@ -48,7 +48,8 @@ test('saveState - handles errors', async () => {
   })
   const result = await SaveState.saveState()
   expect(result).toEqual([])
-  expect(consoleSpy).toHaveBeenCalled()
+  expect(consoleSpy).toHaveBeenCalledTimes(1)
+  expect(consoleSpy).toHaveBeenCalledWith(new Error('Failed to save state: test error'))
   consoleSpy.mockRestore()
 })
 
