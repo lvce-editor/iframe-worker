@@ -15,6 +15,7 @@ export const createWebViewRpc = async (
   origin: string,
 ): Promise<any> => {
   // deprecated below
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
   const webViewInfo: WebView = {
     rpc,
