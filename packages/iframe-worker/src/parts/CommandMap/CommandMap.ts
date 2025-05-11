@@ -1,5 +1,6 @@
 import * as Create2 from '../Create2/Create2.ts'
 import * as Create3 from '../Create3/Create3.ts'
+import * as ExecuteCommand from '../ExecuteCommand/ExecuteCommand.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
@@ -13,4 +14,5 @@ export const commandMap = {
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
   'WebView.registerInterceptor': WebViewInterceptor.registerInterceptor,
   'WebView.unregisterInterceptor': WebViewInterceptor.unregisterInterceptor,
+  'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
 }
