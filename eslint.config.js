@@ -18,7 +18,7 @@ export default [
   {
     files: ['**/*.ts'],
     rules: {
-      // '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+      'jest/no-restricted-jest-methods': 'off',
     },
   },
 ]
