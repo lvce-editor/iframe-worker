@@ -1,6 +1,6 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import * as GetSecret from '../src/parts/GetSecret/GetSecret.ts'
 import { RpcId } from '@lvce-editor/rpc-registry'
+import * as GetSecret from '../src/parts/GetSecret/GetSecret.ts'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 const mockRpc = {
