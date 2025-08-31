@@ -7,5 +7,6 @@ export const saveState = async (): Promise<any> => {
 }
 
 export const getSavedState = async (): Promise<any> => {
+  // @ts-ignore
   return Rpc.invoke('WebView.getSavedState')
 }
