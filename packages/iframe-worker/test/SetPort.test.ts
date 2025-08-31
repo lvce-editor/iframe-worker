@@ -1,5 +1,5 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import * as RpcId from '../src/parts/RpcId/RpcId.ts'
+import { RpcId } from '@lvce-editor/rpc-registry'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
