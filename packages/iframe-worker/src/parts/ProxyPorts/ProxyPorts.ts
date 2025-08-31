@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+ 
 export const proxyPorts = (port1: MessagePort, port2: MessagePort): void => {
   port1.addEventListener('message', (event: any) => {
     port2.postMessage(event.data)
