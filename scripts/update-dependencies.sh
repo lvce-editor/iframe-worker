@@ -31,6 +31,7 @@ cd packages/build                                   && updateDependencies && cd 
 cd packages/e2e                                     && updateDependencies && cd ../.. &&
 cd packages/memory                                  && updateDependencies && cd ../.. &&
 cd packages/server                                  && updateDependencies && cd ../.. &&
+cd packages/iframe-worker                           && updateDependencies && cd ../.. &&
 
 echo "Great Success!"
 
