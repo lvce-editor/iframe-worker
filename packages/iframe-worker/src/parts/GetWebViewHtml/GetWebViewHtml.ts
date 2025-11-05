@@ -2,8 +2,7 @@ export const getWebViewHtml = (baseUrl: string, locationOrigin: string, elements
   if (!elements) {
     return ''
   }
-  const middle: string[] = []
-  middle.push('<meta charset="utf-8">')
+  const middle: string[] = ['<meta charset="utf-8">']
   for (const element of elements) {
     switch (element.type) {
       case 'title':
