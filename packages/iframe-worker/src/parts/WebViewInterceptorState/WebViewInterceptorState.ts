@@ -1,6 +1,5 @@
 const interceptors = Object.create(null)
 
- 
 export const add = (id: number, port: MessagePort): void => {
   interceptors[id] = port
 }
