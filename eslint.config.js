@@ -5,9 +5,6 @@ export default [
   ...config.default,
   ...actions.default,
   {
-    ignores: ['src/iframeWorkerMain.ts'],
-  },
-  {
     ignores: [
       '**/server/**',
       '**/e2e/**',
