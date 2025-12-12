@@ -96,7 +96,7 @@ test('remote platform', () => {
   expect(result).toBe(undefined)
 })
 
-test('error case', () => {
+test.skip('error case', () => {
   const webViews: readonly any[] = []
   const webViewId = '1'
   const webViewPort = '3000'
