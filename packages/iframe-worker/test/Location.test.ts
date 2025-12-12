@@ -4,10 +4,10 @@ import * as Location from '../src/parts/Location/Location.ts'
 beforeAll(() => {
   // @ts-ignore
   globalThis.location = {
-    origin: 'https://example.com',
     host: 'example.com',
-    protocol: 'https:',
+    origin: 'https://example.com',
     port: '443',
+    protocol: 'https:',
   }
 })
 

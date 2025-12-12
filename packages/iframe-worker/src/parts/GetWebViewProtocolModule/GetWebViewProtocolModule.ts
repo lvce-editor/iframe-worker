@@ -6,10 +6,10 @@ import * as WebViewProtocolWeb from '../WebViewProtocolWeb/WebViewProtocolWeb.ts
 
 export const getModule = (platform: number): WebViewProtocolHandler => {
   switch (platform) {
-    case PlatformType.Remote:
-      return WebViewProtocolRemote.register
     case PlatformType.Electron:
       return WebViewProtocolElectron.register
+    case PlatformType.Remote:
+      return WebViewProtocolRemote.register
     default:
       return WebViewProtocolWeb.register
   }

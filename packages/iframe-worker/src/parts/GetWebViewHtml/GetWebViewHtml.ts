@@ -5,17 +5,17 @@ export const getWebViewHtml = (baseUrl: string, locationOrigin: string, elements
   const middle: string[] = ['<meta charset="utf-8">']
   for (const element of elements) {
     switch (element.type) {
-      case 'title':
-        middle.push(`<title>${element.value}</title>`)
-
+      case 'css':
+        middle.push(`<link rel="stylesheet" href="${locationOrigin}${baseUrl}/${element.path}" />`)
         break
       case 'script':
         middle.push(`<script type="module" src="${locationOrigin}${assetDir}/js/preview-injected.js"></script>`)
         middle.push(`<script type="module" src="${locationOrigin}${baseUrl}/${element.path}"></script>`)
 
         break
-      case 'css':
-        middle.push(`<link rel="stylesheet" href="${locationOrigin}${baseUrl}/${element.path}" />`)
+      case 'title':
+        middle.push(`<title>${element.value}</title>`)
+
         break
       default:
         break

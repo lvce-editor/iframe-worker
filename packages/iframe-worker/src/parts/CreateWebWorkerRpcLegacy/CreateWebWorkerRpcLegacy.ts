@@ -18,11 +18,11 @@ export const createWebViewRpc = async (
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const rpc = await GetWebViewWorkerRpc.getWebViewWorkerRpc(rpcInfo)
   const webViewInfo: WebView = {
+    origin,
+    portId: portId,
     rpc,
     webViewId: webView.id,
-    portId: portId,
     webViewUid,
-    origin,
   }
   RpcState.set(portId, webViewInfo)
   await rpc.invoke('LoadFile.loadFile', rpcInfo.url)
@@ -33,5 +33,5 @@ export const createWebViewRpc = async (
   const { port1, port2 } = GetPortTuple.getPortTuple()
   await CreateSecondaryWebViewConnection.createSecondaryWebViewConnection(webViewUid, origin, port1)
   await rpc.invokeAndTransfer('_WebView.setPort', portId, port2)
-  await rpc.invoke('_WebView.create', { id: portId, savedState, webViewId: webView.id, uri })
+  await rpc.invoke('_WebView.create', { id: portId, savedState, uri, webViewId: webView.id })
 }

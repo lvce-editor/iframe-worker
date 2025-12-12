@@ -17,11 +17,11 @@ test('saveState - with states', async () => {
     invoke: jest.fn().mockResolvedValue({ state: 'test' }),
   } as any
   RpcState.set(1, {
+    origin: 'test',
+    portId: 1,
     rpc: mockRpc,
     webViewId: 'test-id',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test',
   })
   const result = await SaveState.saveState()
   expect(result).toEqual([
@@ -40,11 +40,11 @@ test('saveState - handles errors', async () => {
   } as any
   const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
   RpcState.set(1, {
+    origin: 'test',
+    portId: 1,
     rpc: mockRpc,
     webViewId: 'test-id',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test',
   })
   const result = await SaveState.saveState()
   expect(result).toEqual([])
@@ -63,18 +63,18 @@ test('saveState - multiple states', async () => {
     invoke: jest.fn().mockResolvedValue({ state: 'test2' }),
   } as any
   RpcState.set(1, {
+    origin: 'test',
+    portId: 1,
     rpc: mockRpc1,
     webViewId: 'test-id-1',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test',
   })
   RpcState.set(2, {
+    origin: 'test',
+    portId: 2,
     rpc: mockRpc2,
     webViewId: 'test-id-2',
-    portId: 2,
     webViewUid: 2,
-    origin: 'test',
   })
   const result = await SaveState.saveState()
   expect(result).toEqual([

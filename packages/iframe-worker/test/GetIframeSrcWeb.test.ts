@@ -3,22 +3,22 @@ import * as GetIframeSrcWeb from '../src/parts/GetIframeSrcWeb/GetIframeSrcWeb.t
 
 test('getIframeSrc', () => {
   const webView = {
-    remotePath: '/test/path/index.html',
-    path: '/local/path/index.html',
     elements: [
       {
-        type: 'script',
         src: '/main.js',
+        type: 'script',
       },
     ],
+    path: '/local/path/index.html',
+    remotePath: '/test/path/index.html',
   }
   const locationOrigin = 'http://localhost:3000'
   const assetDir = ''
 
   const result = GetIframeSrcWeb.getIframeSrc(webView, locationOrigin, assetDir)
   expect(result).toEqual({
-    iframeSrc: expect.any(String),
     iframeContent: '',
+    iframeSrc: expect.any(String),
     webViewRoot: '',
   })
 })

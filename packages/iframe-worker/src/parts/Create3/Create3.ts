@@ -26,13 +26,13 @@ import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const create3 = async ({
+  assetDir,
   id,
-  uri,
   isGitpod,
   platform,
-  assetDir,
-  webViewScheme,
+  uri,
   useNewWebViewHandler,
+  webViewScheme,
 }: {
   readonly platform: number
   readonly id: number
@@ -76,7 +76,7 @@ export const create3 = async ({
 
   const webView = GetWebView.getWebView(webViews, webViewId)
 
-  const { iframeSrc, webViewRoot, iframeContent } = iframeResult
+  const { iframeContent, iframeSrc, webViewRoot } = iframeResult
   const frameAncestors = GetWebViewFrameAncestors.getWebViewFrameAncestors(locationProtocol, locationHost)
 
   const frameTitle = GetWebViewTitle.getWebViewTitle(webView)
@@ -132,10 +132,10 @@ export const create3 = async ({
 
   await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
   return {
-    iframeSrc,
-    sandbox,
-    portId,
-    origin,
     csp: iframeCsp,
+    iframeSrc,
+    origin,
+    portId,
+    sandbox,
   }
 }

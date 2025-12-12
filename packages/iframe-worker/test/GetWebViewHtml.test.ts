@@ -20,8 +20,8 @@ test('script element', () => {
   const locationOrigin = 'http://localhost:3000'
   const elements: readonly any[] = [
     {
-      type: 'script',
       src: '/main.js',
+      type: 'script',
     },
   ]
   const assetDir = ''
@@ -41,8 +41,8 @@ test('style element', () => {
   const locationOrigin = 'http://localhost:3000'
   const elements: readonly any[] = [
     {
-      type: 'style',
       href: '/styles.css',
+      type: 'style',
     },
   ]
   const assetDir = ''
@@ -80,12 +80,12 @@ test('multiple elements', () => {
   const locationOrigin = 'http://localhost:3000'
   const elements: readonly any[] = [
     {
-      type: 'script',
       src: '/main.js',
+      type: 'script',
     },
     {
-      type: 'css',
       path: '/styles.css',
+      type: 'css',
     },
   ]
   const assetDir = ''
@@ -106,8 +106,8 @@ test('unknown element type', () => {
   const locationOrigin = 'http://localhost:3000'
   const elements: readonly any[] = [
     {
-      type: 'unknown',
       src: '/file.txt',
+      type: 'unknown',
     },
   ]
   const assetDir = ''

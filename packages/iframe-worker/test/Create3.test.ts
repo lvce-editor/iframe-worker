@@ -10,10 +10,10 @@ const GetWebViews = {
 }
 
 const Location = {
-  getProtocol: jest.fn(),
   getHost: jest.fn(),
   getOrigin: jest.fn(),
   getPort: jest.fn(),
+  getProtocol: jest.fn(),
 }
 
 const RendererProcess = {
@@ -57,34 +57,34 @@ beforeEach(() => {
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([
     {
-      id: 'test-webview',
       contentSecurityPolicy: ["default-src 'none'"],
-      sandbox: ['allow-scripts'],
-      path: '/test/index.html',
-      remotePath: '/test/index.html',
-      selector: ['.xyz'],
-      uri: 'test://uri',
       elements: [
         {
           type: 'title',
           value: 'Test',
         },
         {
-          type: 'script',
           path: 'index.js',
+          type: 'script',
         },
       ],
+      id: 'test-webview',
+      path: '/test/index.html',
+      remotePath: '/test/index.html',
+      sandbox: ['allow-scripts'],
+      selector: ['.xyz'],
+      uri: 'test://uri',
     },
   ])
 })
 
 test('create3 - basic functionality', async () => {
   const params = {
-    id: 1,
-    uri: 'test://example.xyz',
-    platform: 1,
-    isGitpod: false,
     assetDir: '',
+    id: 1,
+    isGitpod: false,
+    platform: 1,
+    uri: 'test://example.xyz',
     webViewScheme: 'lvce-oss-webview',
   }
 
@@ -109,11 +109,11 @@ test('create3 - remote platform', async () => {
   SharedProcess.invoke.mockResolvedValue('/test/root')
 
   const params = {
-    id: 1,
-    uri: 'test://example.xyz',
-    platform: 3,
-    isGitpod: false,
     assetDir: '',
+    id: 1,
+    isGitpod: false,
+    platform: 3,
+    uri: 'test://example.xyz',
     webViewScheme: 'lvce-oss-webview',
   }
 
@@ -128,11 +128,11 @@ test.skip('create3 - no iframe result', async () => {
   GetWebViews.getWebViews.mockResolvedValue([])
 
   const params = {
-    id: 1,
-    uri: 'test://example.xyz',
-    platform: 1,
-    isGitpod: false,
     assetDir: '',
+    id: 1,
+    isGitpod: false,
+    platform: 1,
+    uri: 'test://example.xyz',
     webViewScheme: 'lvce-oss-webview',
   }
 
@@ -146,11 +146,11 @@ test('error case', async () => {
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
 
   const params = {
-    id: 1,
-    uri: 'test://example.xyz',
-    platform: 1,
-    isGitpod: false,
     assetDir: '',
+    id: 1,
+    isGitpod: false,
+    platform: 1,
+    uri: 'test://example.xyz',
     webViewScheme: 'lvce-oss-webview',
   }
 
