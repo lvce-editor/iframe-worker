@@ -1,8 +1,8 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
 
 const WebViewServer = {
-  registerProtocol: jest.fn(),
   create: jest.fn(),
+  registerProtocol: jest.fn(),
   setInfo: jest.fn(),
 }
 

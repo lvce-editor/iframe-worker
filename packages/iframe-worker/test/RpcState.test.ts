@@ -11,11 +11,11 @@ test('set and get', () => {
     invoke: jest.fn(),
   } as any
   const mockWebView: WebView = {
+    origin: 'test-origin',
+    portId: 1,
     rpc,
     webViewId: 'test-id',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test-origin',
   }
   RpcState.set(1, mockWebView)
   expect(RpcState.get(1)).toBe(mockWebView)
@@ -26,11 +26,11 @@ test('has', () => {
     invoke: jest.fn(),
   } as any
   const mockWebView: WebView = {
+    origin: 'test-origin',
+    portId: 1,
     rpc,
     webViewId: 'test-id',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test-origin',
   }
   RpcState.set(1, mockWebView)
   expect(RpcState.has(1)).toBe(true)
@@ -42,18 +42,18 @@ test('getAll', () => {
     invoke: jest.fn(),
   } as any
   const mockWebView1: WebView = {
+    origin: 'test-origin',
+    portId: 1,
     rpc,
     webViewId: 'test-id-1',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test-origin',
   }
   const mockWebView2: WebView = {
+    origin: 'test-origin',
+    portId: 2,
     rpc,
     webViewId: 'test-id-2',
-    portId: 2,
     webViewUid: 2,
-    origin: 'test-origin',
   }
   RpcState.set(1, mockWebView1)
   RpcState.set(2, mockWebView2)
@@ -68,11 +68,11 @@ test('reset', () => {
     invoke: jest.fn(),
   } as any
   const mockWebView: WebView = {
+    origin: 'test-origin',
+    portId: 1,
     rpc,
     webViewId: 'test-id',
-    portId: 1,
     webViewUid: 1,
-    origin: 'test-origin',
   }
   RpcState.set(1, mockWebView)
   RpcState.reset()

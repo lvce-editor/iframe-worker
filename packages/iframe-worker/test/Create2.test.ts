@@ -10,9 +10,9 @@ const GetWebViews = {
 }
 
 const Location = {
-  getProtocol: jest.fn(),
   getHost: jest.fn(),
   getOrigin: jest.fn(),
+  getProtocol: jest.fn(),
 }
 
 const RendererProcess = {
@@ -50,20 +50,20 @@ beforeEach(() => {
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([
     {
-      id: 'test-webview',
       contentSecurityPolicy: ["default-src 'none'"],
-      sandbox: ['allow-scripts'],
-      path: '/test',
       elements: [
         {
           type: 'title',
           value: 'Test',
         },
         {
-          type: 'script',
           path: 'index.js',
+          type: 'script',
         },
       ],
+      id: 'test-webview',
+      path: '/test',
+      sandbox: ['allow-scripts'],
     },
   ])
 })
@@ -71,12 +71,12 @@ beforeEach(() => {
 test('create2 - basic functionality', async () => {
   const params = {
     id: 1,
-    webViewPort: '3000',
-    webViewId: 'test-webview',
+    isGitpod: false,
+    platform: 1,
     previewServerId: 1,
     uri: 'test://uri',
-    platform: 1,
-    isGitpod: false,
+    webViewId: 'test-webview',
+    webViewPort: '3000',
   }
 
   const result = await Create2.create2(params)
@@ -103,12 +103,12 @@ test('create2 - remote platform', async () => {
 
   const params = {
     id: 1,
-    webViewPort: '3000',
-    webViewId: 'test-webview',
+    isGitpod: false,
+    platform: 3,
     previewServerId: 1,
     uri: 'test://uri',
-    platform: 3,
-    isGitpod: false,
+    webViewId: 'test-webview',
+    webViewPort: '3000',
   }
 
   const result = await Create2.create2(params)
@@ -123,12 +123,12 @@ test.skip('create2 - no iframe result', async () => {
 
   const params = {
     id: 1,
-    webViewPort: '3000',
-    webViewId: 'test-webview',
+    isGitpod: false,
+    platform: 1,
     previewServerId: 1,
     uri: 'test://uri',
-    platform: 1,
-    isGitpod: false,
+    webViewId: 'test-webview',
+    webViewPort: '3000',
   }
 
   const result = await Create2.create2(params)
@@ -142,12 +142,12 @@ test('error case', async () => {
 
   const params = {
     id: 1,
-    webViewPort: '3000',
-    webViewId: 'test-webview',
+    isGitpod: false,
+    platform: 1,
     previewServerId: 1,
     uri: 'test://uri',
-    platform: 1,
-    isGitpod: false,
+    webViewId: 'test-webview',
+    webViewPort: '3000',
   }
 
   await expect(Create2.create2(params)).rejects.toThrow('test error')

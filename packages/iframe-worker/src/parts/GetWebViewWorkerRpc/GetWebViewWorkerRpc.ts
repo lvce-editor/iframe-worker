@@ -10,8 +10,8 @@ export const getWebViewWorkerRpc = async (rpcInfo: any): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
     commandMap: WebViewRpcCommandMap.commandMap,
-    messagePort: port2,
     isMessagePortOpen: true,
+    messagePort: port2,
   })
   await ExtensionHostWorker.invokeAndTransfer('WebView.createWebViewWorkerRpc', rpcInfo, port1)
   const rpc = await rpcPromise

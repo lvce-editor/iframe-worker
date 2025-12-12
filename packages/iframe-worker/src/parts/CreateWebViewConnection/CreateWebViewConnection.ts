@@ -5,9 +5,9 @@ import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 export const createWebViewConnection = async (uid: number, origin: string): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
-    messagePort: port2,
-    isMessagePortOpen: false,
     commandMap: {},
+    isMessagePortOpen: false,
+    messagePort: port2,
   })
   const portType = 'test'
   await RendererWorker.invokeAndTransfer('WebView.setPort', uid, port1, origin, portType)

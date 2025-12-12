@@ -18,12 +18,14 @@ export const register: WebViewProtocolHandler = async (
   // TODO pass coop / coep configuration to server
   await WebViewServer.create(previewServerId, useNewWebViewHandler) // TODO move this up
   await WebViewServer.start(previewServerId, webViewPort) // TODO move this up
-  await (useNewWebViewHandler ? WebViewServer.setInfo2({
-      webViewRoot,
-      webViewId,
-      contentSecurityPolicy: csp,
-      iframeContent,
-      remotePathPrefix,
-    }) : WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix));
+  await (useNewWebViewHandler
+    ? WebViewServer.setInfo2({
+        contentSecurityPolicy: csp,
+        iframeContent,
+        remotePathPrefix,
+        webViewId,
+        webViewRoot,
+      })
+    : WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix))
   // TODO make this work in gitpod also
 }

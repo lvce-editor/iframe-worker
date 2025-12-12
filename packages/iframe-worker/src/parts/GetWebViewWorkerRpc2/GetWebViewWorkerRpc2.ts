@@ -7,8 +7,8 @@ export const getWebViewWorkerRpc2 = async (rpcInfo: any): Promise<Rpc> => {
   const { port1, port2 } = GetPortTuple.getPortTuple()
   const rpcPromise = MessagePortRpcParent.create({
     commandMap: WebViewRpcCommandMap.commandMap,
-    messagePort: port2,
     isMessagePortOpen: true,
+    messagePort: port2,
   })
   // TODO
   // 1. ask extension host worker to ask renderer worker to ask renderer process to create a worker with given url

@@ -6,8 +6,8 @@ export const getWebViewInfo = (webViewId: string): WebViewInfo | undefined => {
   for (const value of Object.values(rpcs)) {
     if (value.webViewId === webViewId) {
       return {
-        uid: value.webViewUid,
         origin: value.origin,
+        uid: value.webViewUid,
       }
     }
   }

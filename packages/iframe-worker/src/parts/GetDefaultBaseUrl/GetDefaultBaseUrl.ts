@@ -1,5 +1,5 @@
 export const getDefaultBaseUrl = (webView: any): string => {
-  const { remotePath, path } = webView
+  const { path, remotePath } = webView
   if (remotePath) {
     if (remotePath.endsWith('/index.html')) {
       return remotePath.slice(0, -'/index.html'.length)

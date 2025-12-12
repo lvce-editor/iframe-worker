@@ -22,14 +22,14 @@ import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const create2 = async ({
+  assetDir = '',
   id,
-  webViewPort,
-  webViewId,
+  isGitpod,
+  platform,
   previewServerId,
   uri,
-  platform,
-  isGitpod,
-  assetDir = '',
+  webViewId,
+  webViewPort,
   webViewScheme = Scheme.WebView,
 }: {
   readonly platform: number
@@ -74,7 +74,7 @@ export const create2 = async ({
   const webView = GetWebView.getWebView(webViews, webViewId)
 
   // TODO move all of this to iframe worker
-  const { iframeSrc, webViewRoot, iframeContent } = iframeResult
+  const { iframeContent, iframeSrc, webViewRoot } = iframeResult
   const frameAncestors = GetWebViewFrameAncestors.getWebViewFrameAncestors(locationProtocol, locationHost)
 
   const frameTitle = GetWebViewTitle.getWebViewTitle(webView)
@@ -115,10 +115,10 @@ export const create2 = async ({
   const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
   return {
-    iframeSrc,
-    sandbox,
-    portId,
-    origin,
     csp: iframeCsp,
+    iframeSrc,
+    origin,
+    portId,
+    sandbox,
   }
 }

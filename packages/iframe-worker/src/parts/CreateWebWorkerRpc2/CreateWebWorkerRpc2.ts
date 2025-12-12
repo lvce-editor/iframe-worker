@@ -18,11 +18,11 @@ export const createWebWorkerRpc2 = async (
 ): Promise<any> => {
   const rpc = await GetWebViewWorkerRpc2.getWebViewWorkerRpc2(rpcInfo)
   const webViewInfo: WebView = {
+    origin,
+    portId: portId,
     rpc,
     webViewId: webView.id,
-    portId: portId,
     webViewUid,
-    origin,
   }
   RpcState.set(portId, webViewInfo)
 
@@ -47,5 +47,5 @@ export const createWebWorkerRpc2 = async (
   port4.start()
 
   await rpc.invokeAndTransfer('_WebView.setPort', portId, port4)
-  await rpc.invoke('_WebView.create', { id: portId, savedState, webViewId: webView.id, uri })
+  await rpc.invoke('_WebView.create', { id: portId, savedState, uri, webViewId: webView.id })
 }

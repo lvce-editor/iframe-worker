@@ -9,10 +9,10 @@ import * as WebViewInterceptor from '../WebViewInterceptor/WebViewInterceptor.ts
 export const commandMap = {
   'WebView.create2': Create2.create2,
   'WebView.create3': Create3.create3,
-  'WebView.saveState': SaveState.saveState,
+  'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
   'WebView.getSecret': GetSecret.getSecret,
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
   'WebView.registerInterceptor': WebViewInterceptor.registerInterceptor,
+  'WebView.saveState': SaveState.saveState,
   'WebView.unregisterInterceptor': WebViewInterceptor.unregisterInterceptor,
-  'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
 }
