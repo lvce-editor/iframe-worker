@@ -4,6 +4,6 @@ export const name = 'search.focus'
 
 export const skip = true
 
-export const test: Test = async ({ FileSystem, Workspace, Main, Editor, Locator, expect }) => {
+export const test: Test = async () => {
   // TODO add search focus test
 }
