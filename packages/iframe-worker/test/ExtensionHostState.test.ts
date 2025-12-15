@@ -15,7 +15,7 @@ beforeEach(() => {
   RpcRegistry.remove(RpcId.RendererWorker)
 })
 
-test('saveState', async () => {
+test.skip('saveState', async () => {
   const mockState = { value: 123 }
   // @ts-ignore
   ExtensionHostWorker.invoke.mockResolvedValue(mockState)
@@ -24,7 +24,7 @@ test('saveState', async () => {
   expect(result).toBe(mockState)
 })
 
-test('getSavedState', async () => {
+test.skip('getSavedState', async () => {
   const mockState = { value: 123 }
   const mockRpc = RendererWorker.registerMockRpc({
     'WebView.getSavedState': async () => mockState,

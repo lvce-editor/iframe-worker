@@ -1,5 +1,5 @@
 import { type Rpc, TransferMessagePortRpcParent } from '@lvce-editor/rpc'
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
+import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
 import * as WebViewRpcCommandMap from '../WebViewRpcCommandMap/WebViewRpcCommandMap.ts'
 
 export const getWebViewWorkerRpc2 = async (rpcInfo: any): Promise<Rpc> => {
