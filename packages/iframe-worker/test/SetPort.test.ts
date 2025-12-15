@@ -4,7 +4,7 @@ import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
 test('setPort', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'WebView.compatRendererProcessInvokeAndTransfer': jest.fn(),
+    'WebView.compatRendererProcessInvokeAndTransfer': async () => {},
   })
   const uid = 1
   const { port1 } = new MessageChannel()
