@@ -66,15 +66,11 @@ beforeEach(() => {
   ])
 })
 
-<<<<<<< HEAD
 test('create2 - basic functionality', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-=======
-test.skip('create2 - basic functionality', async () => {
->>>>>>> origin/main
   const params = {
     id: 1,
     isGitpod: false,
@@ -106,15 +102,11 @@ test.skip('create2 - basic functionality', async () => {
   })
 })
 
-<<<<<<< HEAD
 test('create2 - remote platform', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-=======
-test.skip('create2 - remote platform', async () => {
->>>>>>> origin/main
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
 
@@ -157,15 +149,11 @@ test.skip('create2 - no iframe result', async () => {
   expect(result).toBeUndefined()
 })
 
-<<<<<<< HEAD
 test('error case', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-=======
-test.skip('error case', async () => {
->>>>>>> origin/main
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
 

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import { RendererWorker as Rpc } from '@lvce-editor/rpc-registry'
-=======
 import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
->>>>>>> origin/main
+import * as Rpc from '../Rpc/Rpc.ts'
 import * as CreateAndLoadWebView from '../CreateAndLoadWebView/CreateAndLoadWebView.ts'
 import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
