@@ -4,12 +4,13 @@ import * as ExecuteCommand from '../ExecuteCommand/ExecuteCommand.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
 import { handleMessagePort2 } from '../HandleMessagePort/HandleMessagePort.ts'
+import { initialize } from '../Initialize/Initialize.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as WebViewInterceptor from '../WebViewInterceptor/WebViewInterceptor.ts'
 
 export const commandMap = {
   'Iframes.handleMessagePort': handleMessagePort2,
-  'Iframes.initialize': handleMessagePort2,
+  'Iframes.initialize': initialize,
   'WebView.create2': Create2.create2,
   'WebView.create3': Create3.create3,
   'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
