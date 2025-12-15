@@ -1,6 +1,6 @@
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { GetRemoteUrlOptions } from '../GetRemoteUrlOptions/GetRemoteUrlOptions.ts'
 import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as RpcState from '../RpcState/RpcState.ts'
 
 // TODO if webViewId is provided,
