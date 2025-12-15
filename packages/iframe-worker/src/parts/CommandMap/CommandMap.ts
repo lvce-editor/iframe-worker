@@ -9,6 +9,7 @@ import * as WebViewInterceptor from '../WebViewInterceptor/WebViewInterceptor.ts
 
 export const commandMap = {
   'Iframes.handleMessagePort': handleMessagePort2,
+  'Iframes.initialize': handleMessagePort2,
   'WebView.create2': Create2.create2,
   'WebView.create3': Create3.create3,
   'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
