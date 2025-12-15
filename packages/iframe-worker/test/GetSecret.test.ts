@@ -9,6 +9,7 @@ const mockRpc = {
 
 beforeEach(() => {
   mockRpc.invoke.mockReset()
+  RpcRegistry.remove(RpcId.RendererWorker)
   RpcRegistry.set(RpcId.RendererWorker, mockRpc)
 })
 
