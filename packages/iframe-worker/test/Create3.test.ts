@@ -161,11 +161,9 @@ test('create3 - no iframe result', async () => {
     webViewScheme: 'lvce-oss-webview',
   }
 
-  const result = await Create3.create3(params)
-
-  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
+  await expect(Create3.create3(params)).rejects.toThrow()
+  expect(mockRpc.invocations.length).toBe(0)
   expect(mockExtensionHostRpc.invocations.length).toBe(0)
-  expect(result).toBeUndefined()
 })
 
 test('error case', async () => {
