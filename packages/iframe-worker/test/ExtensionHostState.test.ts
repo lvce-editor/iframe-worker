@@ -6,8 +6,6 @@ const ExtensionHostWorker = {
   invoke: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts', () => ExtensionHostWorker)
-
 const ExtensionHostState = await import('../src/parts/ExtensionHost/ExtensionHostState.ts')
 
 beforeEach(() => {

@@ -30,7 +30,6 @@ const WebViewProtocol = {
   register: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts', () => ExtensionHostWorker)
 jest.unstable_mockModule('../src/parts/GetWebViews/GetWebViews.ts', () => GetWebViews)
 jest.unstable_mockModule('../src/parts/Location/Location.ts', () => Location)
 jest.unstable_mockModule('../src/parts/RendererProcess/RendererProcess.ts', () => RendererProcess)
