@@ -1,8 +1,10 @@
+import type { Test } from '@lvce-editor/test-with-playwright'
+
 export const name = 'sample.webview-provider-message-modern'
 
 export const skip = 1
 
-export const test = async ({ expect, Extension, FileSystem, Main, WebView }) => {
+export const test: Test = async ({ expect, Extension, FileSystem, Main, WebView }) => {
   // arrange
   await Extension.addWebExtension(new URL(`../fixtures/${name}`, import.meta.url).toString())
   const tmpDir = await FileSystem.getTmpDir()
