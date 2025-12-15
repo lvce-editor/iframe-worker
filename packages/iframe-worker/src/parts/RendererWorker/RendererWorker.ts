@@ -9,3 +9,5 @@ export const invokeAndTransfer = async (method: string, ...params: readonly any[
   // @ts-ignore
   return Rpc.invokeAndTransfer('WebView.compatRendererWorkerInvokeAndTransfer', method, ...params)
 }
+
+export { RendererWorker } from '@lvce-editor/rpc-registry'
