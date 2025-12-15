@@ -1,7 +1,7 @@
 import { beforeEach, expect, test } from '@jest/globals'
 import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 import * as RendererProcess from '../src/parts/RendererProcess/RendererProcess.ts'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 beforeEach(() => {
   RpcRegistry.remove(RpcId.RendererWorker)

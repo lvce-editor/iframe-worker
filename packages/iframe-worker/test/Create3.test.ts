@@ -1,11 +1,6 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionHost, RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
-
-const ExtensionHostWorker = {
-  invoke: jest.fn(),
-  invokeAndTransfer: jest.fn(),
-}
 
 const GetWebViews = {
   getWebViews: jest.fn(),
@@ -35,7 +30,6 @@ const CreateWebViewRpc = {
   createWebViewRpc: jest.fn(),
 }
 
-jest.unstable_mockModule('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts', () => ExtensionHostWorker)
 jest.unstable_mockModule('../src/parts/GetWebViews/GetWebViews.ts', () => GetWebViews)
 jest.unstable_mockModule('../src/parts/Location/Location.ts', () => Location)
 jest.unstable_mockModule('../src/parts/RendererProcess/RendererProcess.ts', () => RendererProcess)
@@ -48,6 +42,7 @@ const Create3 = await import('../src/parts/Create3/Create3.ts')
 beforeEach(() => {
   jest.resetAllMocks()
   RpcRegistry.remove(RpcId.RendererWorker)
+  RpcRegistry.remove(RpcId.ExtensionHost)
   Location.getProtocol.mockReturnValue('http:')
   Location.getHost.mockReturnValue('localhost:3000')
   Location.getOrigin.mockReturnValue('http://localhost:3000')
@@ -81,6 +76,10 @@ test.skip('create3 - basic functionality', async () => {
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
+  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
+    'ExtensionHostWebView.create': async () => {},
+    'ExtensionHostWebView.load': async () => {},
+  })
   const params = {
     assetDir: '',
     id: 1,
@@ -94,6 +93,7 @@ test.skip('create3 - basic functionality', async () => {
 
   expect(GetWebViews.getWebViews).toHaveBeenCalled()
   expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
+  expect(mockExtensionHostRpc.invocations).toEqual([['ExtensionHostWebView.create'], ['ExtensionHostWebView.load']])
   expect(WebViewProtocol.register).toHaveBeenCalled()
   expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
   expect(result).toBeDefined()
@@ -111,6 +111,10 @@ test.skip('create3 - remote platform', async () => {
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
+  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
+    'ExtensionHostWebView.create': async () => {},
+    'ExtensionHostWebView.load': async () => {},
+  })
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
 
@@ -127,6 +131,7 @@ test.skip('create3 - remote platform', async () => {
 
   expect(SharedProcess.invoke).toHaveBeenCalledWith('Platform.getRoot')
   expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
+  expect(mockExtensionHostRpc.invocations).toEqual([['ExtensionHostWebView.create'], ['ExtensionHostWebView.load']])
   expect(result).toBeDefined()
 })
 
