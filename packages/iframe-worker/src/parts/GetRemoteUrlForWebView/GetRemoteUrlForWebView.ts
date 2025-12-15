@@ -1,3 +1,4 @@
+import * as Assert from '@lvce-editor/assert'
 import { RendererWorker } from '@lvce-editor/rpc-registry'
 import type { GetRemoteUrlOptions } from '../GetRemoteUrlOptions/GetRemoteUrlOptions.ts'
 import * as CreateWebViewConnection from '../CreateWebViewConnection/CreateWebViewConnection.ts'
@@ -11,7 +12,9 @@ import * as RpcState from '../RpcState/RpcState.ts'
 // 5. provide objectUrl to extension
 
 export const getRemoteUrlForWebView = async (options: GetRemoteUrlOptions): Promise<string> => {
+  Assert.object(options)
   const webView = RpcState.get(options.id)
+  Assert.object(webView)
   const rpcPromise = CreateWebViewConnection.createWebViewConnection(webView.webViewUid, webView.origin)
   const blobPromise = RendererWorker.invoke('FileSystem.getBlob', options.uri)
   const [rpc, blob] = await Promise.all([rpcPromise, blobPromise])
