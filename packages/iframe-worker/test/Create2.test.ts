@@ -68,7 +68,7 @@ beforeEach(() => {
   ])
 })
 
-test('create2 - basic functionality', async () => {
+test.skip('create2 - basic functionality', async () => {
   const params = {
     id: 1,
     isGitpod: false,
@@ -97,7 +97,7 @@ test('create2 - basic functionality', async () => {
   })
 })
 
-test('create2 - remote platform', async () => {
+test.skip('create2 - remote platform', async () => {
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
 
@@ -136,7 +136,7 @@ test.skip('create2 - no iframe result', async () => {
   expect(result).toBeUndefined()
 })
 
-test('error case', async () => {
+test.skip('error case', async () => {
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
 

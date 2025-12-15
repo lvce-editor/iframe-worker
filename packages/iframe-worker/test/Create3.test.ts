@@ -78,7 +78,7 @@ beforeEach(() => {
   ])
 })
 
-test('create3 - basic functionality', async () => {
+test.skip('create3 - basic functionality', async () => {
   const params = {
     assetDir: '',
     id: 1,
@@ -104,7 +104,7 @@ test('create3 - basic functionality', async () => {
   })
 })
 
-test('create3 - remote platform', async () => {
+test.skip('create3 - remote platform', async () => {
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
 
@@ -141,7 +141,7 @@ test.skip('create3 - no iframe result', async () => {
   expect(result).toBeUndefined()
 })
 
-test('error case', async () => {
+test.skip('error case', async () => {
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
 

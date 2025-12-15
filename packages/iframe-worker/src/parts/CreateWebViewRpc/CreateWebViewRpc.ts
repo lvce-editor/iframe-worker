@@ -1,6 +1,6 @@
+import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
 import * as CreateWebWorkerRpc2 from '../CreateWebWorkerRpc2/CreateWebWorkerRpc2.ts'
 import * as CreateWebWorkerRpcLegacy from '../CreateWebWorkerRpcLegacy/CreateWebWorkerRpcLegacy.ts'
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 
 export const createWebViewRpc = async (
   webView: any,

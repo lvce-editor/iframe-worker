@@ -1,6 +1,6 @@
+import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
 import * as CreateAndLoadWebView from '../CreateAndLoadWebView/CreateAndLoadWebView.ts'
 import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
