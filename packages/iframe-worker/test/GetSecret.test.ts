@@ -25,4 +25,7 @@ test('error case', async () => {
   })
   const key = 'test-key'
   await expect(GetSecret.getSecret(key)).rejects.toThrow('test error')
+  expect(mockRpc.invocations).toEqual([
+    ['WebView.compatRendererWorkerInvoke', 'WebView.getSecret', key],
+  ])
 })
