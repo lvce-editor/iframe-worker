@@ -1,17 +1,11 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
-import { RpcId } from '@lvce-editor/rpc-registry'
-import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import { expect, jest, test } from '@jest/globals'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
-const mockRpc: any = {
-  invokeAndTransfer: jest.fn(),
-}
-
-beforeEach(async () => {
-  RpcRegistry.set(RpcId.RendererWorker, mockRpc)
-})
-
 test('setPort', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.setPort': jest.fn(),
+  })
   const uid = 1
   const { port1 } = new MessageChannel()
   const origin = 'http://localhost:3000'
@@ -19,13 +13,7 @@ test('setPort', async () => {
 
   await SetPort.setPort(uid, port1, origin, portType)
 
-  expect(mockRpc.invokeAndTransfer).toHaveBeenCalledTimes(1)
-  expect(mockRpc.invokeAndTransfer).toHaveBeenCalledWith(
-    'WebView.compatRendererProcessInvokeAndTransfer',
-    'WebView.setPort',
-    uid,
-    port1,
-    origin,
-    portType,
-  )
+  expect(mockRpc.invocations).toEqual([
+    ['WebView.compatRendererProcessInvokeAndTransfer', 'WebView.setPort', uid, port1, origin, portType],
+  ])
 })
