@@ -1,5 +1,5 @@
+import { RendererWorker as Rpc } from '@lvce-editor/rpc-registry'
 import type { BaseWebViewInfo } from '../BaseWebViewInfo/BaseWebViewInfo.ts'
-import * as Rpc from '../Rpc/Rpc.ts'
 
 export const getWebViews = async (): Promise<readonly BaseWebViewInfo[]> => {
   // @ts-ignore
