@@ -1,5 +1,5 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import { RendererWorker, RpcId } from '@lvce-editor/rpc-registry'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 const ExtensionHostWorker = {
@@ -40,6 +40,7 @@ test.skip('error case - saveState', async () => {
 })
 
 test.skip('error case - getSavedState', async () => {
+  // @ts-ignore
   Rpc.invoke.mockImplementation(() => Promise.reject(new Error('test error')))
   await expect(ExtensionHostState.getSavedState()).rejects.toThrow('test error')
 })
