@@ -14,9 +14,7 @@ test('invoke', async () => {
   })
   const result = await RendererProcess.invoke('test.command', 'arg1', 'arg2')
   expect(result).toBe(mockResult)
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatRendererProcessInvoke', 'test.command', 'arg1', 'arg2'],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatRendererProcessInvoke', 'test.command', 'arg1', 'arg2']])
 })
 
 test('invokeAndTransfer', async () => {
@@ -27,9 +25,7 @@ test('invokeAndTransfer', async () => {
   })
   const result = await RendererProcess.invokeAndTransfer('test.command', transferable, 'arg1')
   expect(result).toBe(mockResult)
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatRendererProcessInvokeAndTransfer', 'test.command', transferable, 'arg1'],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatRendererProcessInvokeAndTransfer', 'test.command', transferable, 'arg1']])
 })
 
 test('invoke - error case', async () => {
@@ -50,7 +46,5 @@ test('invokeAndTransfer - error case', async () => {
     },
   })
   await expect(RendererProcess.invokeAndTransfer('test.command', transferable)).rejects.toThrow('test error')
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatRendererProcessInvokeAndTransfer', 'test.command', transferable],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatRendererProcessInvokeAndTransfer', 'test.command', transferable]])
 })

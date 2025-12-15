@@ -12,9 +12,7 @@ test('invoke', async () => {
     'WebView.compatExtensionHostWorkerInvoke': async () => {},
   })
   await ExtensionHostWorker.invoke('test.method', 'arg1', 'arg2')
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatExtensionHostWorkerInvoke', 'test.method', 'arg1', 'arg2'],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatExtensionHostWorkerInvoke', 'test.method', 'arg1', 'arg2']])
 })
 
 test('invokeAndTransfer', async () => {
@@ -22,9 +20,7 @@ test('invokeAndTransfer', async () => {
     'WebView.compatExtensionHostWorkerInvokeAndTransfer': async () => {},
   })
   await ExtensionHostWorker.invokeAndTransfer('test.method', 'arg1', 'arg2')
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatExtensionHostWorkerInvokeAndTransfer', 'test.method', 'arg1', 'arg2'],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatExtensionHostWorkerInvokeAndTransfer', 'test.method', 'arg1', 'arg2']])
 })
 
 test('error case', async () => {
