@@ -1,15 +1,11 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
-
-const Rpc = {
-  invoke: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
+import { beforeEach, expect, test } from '@jest/globals'
+import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 const GetWebViews = await import('../src/parts/GetWebViews/GetWebViews.ts')
 
-beforeEach(async () => {
-  Rpc.invoke.mockReset()
+beforeEach(() => {
+  RpcRegistry.remove(RpcId.RendererWorker)
 })
 
 test('getWebViews', async () => {
@@ -17,15 +13,20 @@ test('getWebViews', async () => {
     { id: 1, type: 'preview' },
     { id: 2, type: 'custom' },
   ]
-  // @ts-ignore
-  Rpc.invoke.mockResolvedValue(mockWebViews)
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.getWebViews': async () => mockWebViews,
+  })
   const result = await GetWebViews.getWebViews()
   expect(result).toEqual(mockWebViews)
-  expect(Rpc.invoke).toHaveBeenCalledWith('WebView.getWebViews')
+  expect(mockRpc.invocations).toEqual([['WebView.getWebViews']])
 })
 
 test('error case', async () => {
-  // @ts-ignore
-  Rpc.invoke.mockRejectedValue(new Error('test error'))
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.getWebViews': async () => {
+      throw new Error('test error')
+    },
+  })
   await expect(GetWebViews.getWebViews()).rejects.toThrow('test error')
+  expect(mockRpc.invocations).toEqual([['WebView.getWebViews']])
 })

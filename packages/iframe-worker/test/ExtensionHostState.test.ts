@@ -1,20 +1,18 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
+import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 const ExtensionHostWorker = {
   invoke: jest.fn(),
 }
 
-const Rpc = {
-  invoke: jest.fn(),
-}
-
 jest.unstable_mockModule('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts', () => ExtensionHostWorker)
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
 
 const ExtensionHostState = await import('../src/parts/ExtensionHost/ExtensionHostState.ts')
 
 beforeEach(() => {
   jest.resetAllMocks()
+  RpcRegistry.remove(RpcId.RendererWorker)
 })
 
 test('saveState', async () => {
@@ -28,11 +26,12 @@ test('saveState', async () => {
 
 test('getSavedState', async () => {
   const mockState = { value: 123 }
-  // @ts-ignore
-  Rpc.invoke.mockResolvedValue(mockState)
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.getSavedState': async () => mockState,
+  })
   const result = await ExtensionHostState.getSavedState()
-  expect(Rpc.invoke).toHaveBeenCalledWith('WebView.getSavedState')
   expect(result).toBe(mockState)
+  expect(mockRpc.invocations).toEqual([['WebView.getSavedState']])
 })
 
 test.skip('error case - saveState', async () => {
