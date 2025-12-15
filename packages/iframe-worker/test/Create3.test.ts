@@ -93,10 +93,7 @@ test('create3 - basic functionality', async () => {
   const result = await Create3.create3(params)
 
   expect(GetWebViews.getWebViews).toHaveBeenCalled()
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
-    ['WebView.getSavedState'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
   expect(WebViewProtocol.register).toHaveBeenCalled()
   expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
   expect(result).toBeDefined()
@@ -129,10 +126,7 @@ test('create3 - remote platform', async () => {
   const result = await Create3.create3(params)
 
   expect(SharedProcess.invoke).toHaveBeenCalledWith('Platform.getRoot')
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
-    ['WebView.getSavedState'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
   expect(result).toBeDefined()
 })
 
@@ -155,10 +149,7 @@ test.skip('create3 - no iframe result', async () => {
 
   const result = await Create3.create3(params)
 
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
-    ['WebView.getSavedState'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
   expect(result).toBeUndefined()
 })
 
@@ -180,4 +171,5 @@ test('error case', async () => {
   }
 
   await expect(Create3.create3(params)).rejects.toThrow('test error')
+  expect(mockRpc.invocations).toEqual([])
 })

@@ -84,10 +84,7 @@ test('create2 - basic functionality', async () => {
   const result = await Create2.create2(params)
 
   expect(GetWebViews.getWebViews).toHaveBeenCalled()
-  expect(mockRpc.invocations).toEqual([
-    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
-    ['WebView.getSavedState'],
-  ])
+  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
   expect(WebViewProtocol.register).toHaveBeenCalled()
   expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
   expect(ExtensionHostWorker.invokeAndTransfer).toHaveBeenCalled()
