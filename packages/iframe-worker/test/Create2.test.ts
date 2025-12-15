@@ -125,6 +125,7 @@ test.skip('create2 - remote platform', async () => {
 })
 
 test.skip('create2 - no iframe result', async () => {
+  // @ts-ignore
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
