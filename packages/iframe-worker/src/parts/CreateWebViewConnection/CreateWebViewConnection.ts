@@ -15,4 +15,3 @@ export const createWebViewConnection = async (uid: number, origin: string): Prom
   const rpc = await rpcPromise
   return rpc
 }
-f
