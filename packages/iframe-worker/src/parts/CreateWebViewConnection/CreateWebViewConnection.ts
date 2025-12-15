@@ -1,13 +1,17 @@
-import { type Rpc, TransferMessagePortRpcParent } from '@lvce-editor/rpc'
-import { RendererWorker } from '@lvce-editor/rpc-registry'
+import { MessagePortRpcParent, type Rpc } from '@lvce-editor/rpc'
+import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
+import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
 
 export const createWebViewConnection = async (uid: number, origin: string): Promise<Rpc> => {
-  const rpc = await TransferMessagePortRpcParent.create({
+  const { port1, port2 } = GetPortTuple.getPortTuple()
+  const rpcPromise = MessagePortRpcParent.create({
     commandMap: {},
-    async send(port) {
-      const portType = 'test'
-      await RendererWorker.invokeAndTransfer('WebView.setPort', uid, port, origin, portType)
-    },
+    isMessagePortOpen: false,
+    messagePort: port2,
   })
+  const portType = 'test'
+  await RendererWorker.invokeAndTransfer('WebView.setPort', uid, port1, origin, portType)
+  // TODO dispose rpc to avoid memory leak
+  const rpc = await rpcPromise
   return rpc
 }
