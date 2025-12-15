@@ -42,7 +42,6 @@ const Create3 = await import('../src/parts/Create3/Create3.ts')
 beforeEach(() => {
   jest.resetAllMocks()
   RpcRegistry.remove(RpcId.RendererWorker)
-  RpcRegistry.remove(RpcId.ExtensionHost)
   Location.getProtocol.mockReturnValue('http:')
   Location.getHost.mockReturnValue('localhost:3000')
   Location.getOrigin.mockReturnValue('http://localhost:3000')
@@ -71,7 +70,7 @@ beforeEach(() => {
   ])
 })
 
-test.skip('create3 - basic functionality', async () => {
+test('create3 - basic functionality', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
@@ -106,7 +105,7 @@ test.skip('create3 - basic functionality', async () => {
   })
 })
 
-test.skip('create3 - remote platform', async () => {
+test('create3 - remote platform', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
@@ -135,10 +134,14 @@ test.skip('create3 - remote platform', async () => {
   expect(result).toBeDefined()
 })
 
-test.skip('create3 - no iframe result', async () => {
+test('create3 - no iframe result', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
+  })
+  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
+    'ExtensionHostWebView.create': async () => {},
+    'ExtensionHostWebView.load': async () => {},
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([])
@@ -155,13 +158,18 @@ test.skip('create3 - no iframe result', async () => {
   const result = await Create3.create3(params)
 
   expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
+  expect(mockExtensionHostRpc.invocations).toEqual([])
   expect(result).toBeUndefined()
 })
 
-test.skip('error case', async () => {
+test('error case', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
+  })
+  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
+    'ExtensionHostWebView.create': async () => {},
+    'ExtensionHostWebView.load': async () => {},
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
@@ -177,4 +185,5 @@ test.skip('error case', async () => {
 
   await expect(Create3.create3(params)).rejects.toThrow('test error')
   expect(mockRpc.invocations).toEqual([])
+  expect(mockExtensionHostRpc.invocations).toEqual([])
 })
