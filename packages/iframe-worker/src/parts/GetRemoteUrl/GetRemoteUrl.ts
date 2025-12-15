@@ -16,6 +16,10 @@ export const getRemoteUrl = async (options: GetRemoteUrlOptions): Promise<string
     }
     return `/remote/${uri}`
   }
+  if ((platform === PlatformType.Remote || platform === PlatformType.Electron) && protocol === 'file') {
+    const rest = uri.slice(7)
+    return `/remote${rest}`
+  }
   if (platform === PlatformType.Electron && !protocol) {
     if (uri.startsWith('/')) {
       return `/remote${uri}`
