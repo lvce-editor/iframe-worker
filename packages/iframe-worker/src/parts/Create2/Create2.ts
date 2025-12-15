@@ -1,4 +1,4 @@
-import * as ExtensionHostWorker from '../ExtensionHostWorker/ExtensionHostWorker.ts'
+import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
 import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
