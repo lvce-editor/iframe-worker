@@ -129,6 +129,10 @@ test('create3 - remote platform', async () => {
   const result = await Create3.create3(params)
 
   expect(SharedProcess.invoke).toHaveBeenCalledWith('Platform.getRoot')
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
+    ['WebView.getSavedState'],
+  ])
   expect(result).toBeDefined()
 })
 
@@ -151,6 +155,10 @@ test.skip('create3 - no iframe result', async () => {
 
   const result = await Create3.create3(params)
 
+  expect(mockRpc.invocations).toEqual([
+    ['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'],
+    ['WebView.getSavedState'],
+  ])
   expect(result).toBeUndefined()
 })
 
