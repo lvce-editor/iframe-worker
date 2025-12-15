@@ -1,30 +1,38 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
-
-const Rpc = {
-  invoke: jest.fn(),
-  invokeAndTransfer: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
-
-const ExtensionHostWorker = await import('../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts')
+import { beforeEach, expect, test } from '@jest/globals'
+import { RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as ExtensionHostWorker from '../src/parts/ExtensionHostWorker/ExtensionHostWorker.ts'
 
 beforeEach(() => {
-  Rpc.invoke.mockReset()
-  Rpc.invokeAndTransfer.mockReset()
+  RpcRegistry.remove(RpcId.RendererWorker)
 })
 
 test('invoke', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.compatExtensionHostWorkerInvoke': async () => {},
+  })
   await ExtensionHostWorker.invoke('test.method', 'arg1', 'arg2')
-  expect(Rpc.invoke).toHaveBeenCalledWith('WebView.compatExtensionHostWorkerInvoke', 'test.method', 'arg1', 'arg2')
+  expect(mockRpc.invocations).toEqual([
+    ['WebView.compatExtensionHostWorkerInvoke', 'test.method', 'arg1', 'arg2'],
+  ])
 })
 
 test('invokeAndTransfer', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.compatExtensionHostWorkerInvokeAndTransfer': async () => {},
+  })
   await ExtensionHostWorker.invokeAndTransfer('test.method', 'arg1', 'arg2')
-  expect(Rpc.invokeAndTransfer).toHaveBeenCalledWith('WebView.compatExtensionHostWorkerInvokeAndTransfer', 'test.method', 'arg1', 'arg2')
+  expect(mockRpc.invocations).toEqual([
+    ['WebView.compatExtensionHostWorkerInvokeAndTransfer', 'test.method', 'arg1', 'arg2'],
+  ])
 })
 
 test('error case', async () => {
-  Rpc.invoke.mockImplementation(() => Promise.reject(new Error('test error')))
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.compatExtensionHostWorkerInvoke': async () => {
+      throw new Error('test error')
+    },
+  })
   await expect(ExtensionHostWorker.invoke('test.method')).rejects.toThrow('test error')
+  expect(mockRpc.invocations).toEqual([['WebView.compatExtensionHostWorkerInvoke', 'test.method']])
 })

@@ -13,7 +13,5 @@ test('setPort', async () => {
 
   await SetPort.setPort(uid, port1, origin, portType)
 
-  expect(mockRpc.invocations).toEqual([
-    ['WebView.compatRendererProcessInvokeAndTransfer', 'WebView.setPort', uid, port1, origin, portType],
-  ])
+  expect(mockRpc.invocations).toEqual([['WebView.compatRendererProcessInvokeAndTransfer', 'WebView.setPort', uid, port1, origin, portType]])
 })
