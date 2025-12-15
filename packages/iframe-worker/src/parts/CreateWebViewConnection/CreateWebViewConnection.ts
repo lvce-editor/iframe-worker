@@ -1,5 +1,5 @@
 import { type Rpc, TransferMessagePortRpcParent } from '@lvce-editor/rpc'
-import * as RendererWorker from '../RendererWorker/RendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
 
 export const createWebViewConnection = async (uid: number, origin: string): Promise<Rpc> => {
   const rpc = await TransferMessagePortRpcParent.create({
