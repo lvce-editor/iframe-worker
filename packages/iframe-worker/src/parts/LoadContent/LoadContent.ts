@@ -36,6 +36,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
     root = await SharedProcess.invoke('Platform.getRoot')
   }
   const webViews = await GetWebViews.getWebViews()
+  console.log({ webViews })
   const webViewId = GetWebViewId.getWebViewId(webViews, uri)
   const locationProtocol = Location.getProtocol()
   const locationHost = Location.getHost()
