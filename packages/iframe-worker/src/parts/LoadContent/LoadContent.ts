@@ -38,6 +38,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   const webViews = await GetWebViews.getWebViews()
   console.log({ webViews })
   const webViewId = GetWebViewId.getWebViewId(webViews, uri)
+  console.log({ uri, webViewId })
   const locationProtocol = Location.getProtocol()
   const locationHost = Location.getHost()
   const locationOrigin = Location.getOrigin()
