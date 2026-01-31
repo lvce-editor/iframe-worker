@@ -9,7 +9,12 @@ export const renderItems = (oldState: IframeState, newState: IframeState): any =
       childCount: 1,
       type: VirtualDomElements.Div,
     },
-    text('hllo world'),
+    {
+      childCount: 0,
+      src: 'https://example.com',
+      // @ts-ignore
+      type: VirtualDomElements.Iframe,
+    },
   ]
   return [ViewletCommand.SetDom2, id, dom]
 }
