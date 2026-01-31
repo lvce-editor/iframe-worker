@@ -1,9 +1,9 @@
 import { ViewletCommand } from '@lvce-editor/constants'
-import { VirtualDomElements, text } from '@lvce-editor/virtual-dom-worker'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { IframeState } from '../IframeState/IframeState.ts'
 
 export const renderItems = (oldState: IframeState, newState: IframeState): any => {
-  const { id } = newState
+  const { id, iframeSrc } = newState
   const dom = [
     {
       childCount: 1,
@@ -11,7 +11,7 @@ export const renderItems = (oldState: IframeState, newState: IframeState): any =
     },
     {
       childCount: 0,
-      src: 'https://example.com',
+      src: iframeSrc,
       // @ts-ignore
       type: VirtualDomElements.Iframe,
     },
