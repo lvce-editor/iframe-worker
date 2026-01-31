@@ -12,12 +12,8 @@ export const renderItems = (oldState: IframeState, newState: IframeState): any =
     },
     {
       childCount: 0,
-<<<<<<< HEAD
       onLoad: DomEventListenerFunctions.HandleIframeLoad,
-      src: 'https://example.com',
-=======
       src: iframeSrc,
->>>>>>> feature/load2
       // @ts-ignore
       type: VirtualDomElements.Iframe,
     },

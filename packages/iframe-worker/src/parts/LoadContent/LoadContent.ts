@@ -27,6 +27,11 @@ import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
+const connectRpc = async (webView, savedState, uri, portId, id, origin): Promise<void> => {
+  // TODO
+  await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+}
+
 export const loadContent = async (state: IframeState, savedState: any): Promise<IframeState> => {
   // @ts-ignore
   const { assetDir, id, platform, uri, webViewScheme } = state
@@ -128,7 +133,12 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
 
   // TODO need to send port to webview to create connection
 
-  await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+  // TODO maybe need to create hidden iframe first
+
+  // TODO would need to wait somehow for iframe to be connected
+  setTimeout(async () => {
+    await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+  }, 2000)
   return {
     ...state,
     csp: iframeCsp,
