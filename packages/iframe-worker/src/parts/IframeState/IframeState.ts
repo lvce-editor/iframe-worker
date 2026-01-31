@@ -9,7 +9,7 @@ export interface IframeState {
   readonly platform: number
   readonly portId: number
   readonly previewServerId: number
-  readonly sandbox: string[]
+  readonly sandbox: readonly string[]
   readonly srcDoc: string
   readonly uri: string
   readonly webViewScheme: string
