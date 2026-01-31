@@ -31,6 +31,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   // @ts-ignore
   const { assetDir, id, platform, uri, webViewScheme } = state
 
+<<<<<<< HEAD
   let root = ''
   if (platform === PlatformType.Remote) {
     root = await SharedProcess.invoke('Platform.getRoot')
@@ -122,6 +123,10 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   // // }
 
   // await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+=======
+  // TODO get iframe src
+  // TODO load webview props and register protocol
+>>>>>>> feature/iframe8
   return {
     ...state,
     csp: iframeCsp,
