@@ -10,6 +10,7 @@ import { getCommandIds, wrapCommand } from '../IframeStates/IframeStates.ts'
 import { initialize } from '../Initialize/Initialize.ts'
 import { loadContent } from '../LoadContent/LoadContent.ts'
 import { render2 } from '../Render2/Render2.ts'
+import { renderEventListeners } from '../RenderEventListeners/RenderEventListeners.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
 import * as WebViewInterceptor from '../WebViewInterceptor/WebViewInterceptor.ts'
 
@@ -27,6 +28,7 @@ export const commandMap = {
   'WebView.loadContent': wrapCommand(loadContent),
   'WebView.registerInterceptor': WebViewInterceptor.registerInterceptor,
   'WebView.render2': render2,
+  'WebView.renderEventListeners': renderEventListeners,
   'WebView.saveState': SaveState.saveState,
   'WebView.unregisterInterceptor': WebViewInterceptor.unregisterInterceptor,
 }
