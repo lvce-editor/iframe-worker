@@ -28,6 +28,7 @@ import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const loadContent = async (state: IframeState, savedState: any): Promise<IframeState> => {
+<<<<<<< HEAD
   // @ts-ignore
   const { assetDir, id, platform, uri, webViewScheme } = state
 
@@ -121,6 +122,10 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   // // }
 
   // await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+=======
+  // TODO get iframe src
+  // TODO load webview props and register protocol
+>>>>>>> feature/iframe8
   return {
     ...state,
     csp: iframeCsp,
