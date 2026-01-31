@@ -1,5 +1,6 @@
+import { initializeExtensionHost } from '../InitializeExtensionHost/InitializeExtensionHost.ts'
 import { initializeRendererWorker } from '../InitializeRendererWorker/InitializeRendererWorker.ts'
 
 export const listen = async (): Promise<void> => {
-  await initializeRendererWorker()
+  await Promise.all([initializeRendererWorker(), initializeExtensionHost()])
 }
