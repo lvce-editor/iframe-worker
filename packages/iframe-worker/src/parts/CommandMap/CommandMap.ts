@@ -6,7 +6,7 @@ import * as ExecuteCommand from '../ExecuteCommand/ExecuteCommand.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
 import { handleMessagePort2 } from '../HandleMessagePort/HandleMessagePort.ts'
-import { wrapCommand } from '../IframeStates/IframeStates.ts'
+import { getCommandIds, wrapCommand } from '../IframeStates/IframeStates.ts'
 import { initialize } from '../Initialize/Initialize.ts'
 import { loadContent } from '../LoadContent/LoadContent.ts'
 import * as SaveState from '../SaveState/SaveState.ts'
@@ -20,6 +20,7 @@ export const commandMap = {
   'WebView.create4': create4,
   'WebView.diff2': diff2,
   'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
+  'WebView.getCommandIds': getCommandIds,
   'WebView.getSecret': GetSecret.getSecret,
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
   'WebView.loadContent': wrapCommand(loadContent),
