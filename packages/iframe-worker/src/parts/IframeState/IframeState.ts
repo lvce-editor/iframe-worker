@@ -2,7 +2,7 @@ export interface IframeState {
   readonly credentialless: boolean
   readonly csp: string
   readonly height: number
-  readonly id: string
+  readonly id: number
   readonly iframeSrc: string
   readonly origin: string
   readonly portId: number

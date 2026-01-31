@@ -1,8 +1,8 @@
-import { IframeState } from '../IframeState/IframeState.ts'
+import type { IframeState } from '../IframeState/IframeState.ts'
 import * as IframeStates from '../IframeStates/IframeStates.ts'
 
 // TODO parentUid might ot be needed
-export const create = (
+export const create4 = (
   id: number,
   uri: string,
   x: number,
@@ -15,58 +15,20 @@ export const create = (
   assetDir: string = '',
 ): void => {
   const state: IframeState = {
-    assetDir,
-    confirmDelete: false,
-    confirmPaste: false,
-    cutItems: [],
-    decorations: [],
-    deltaY: 0,
-    dropTargets: [],
-    editingErrorMessage: '',
-    editingIcon: '',
-    editingIndex: -1,
-    editingSelectionEnd: 0,
-    editingSelectionStart: 0,
-    editingValue: '',
-    errorMessageLeft: 0,
-    errorMessageTop: 0,
-    errorMessageWidth: 0,
-    excluded: [],
-    fileIconCache: Object.create(null),
-    finalDeltaY: 0,
-    focus: 0,
-    focused: false,
-    focusedIndex: -1,
-    focusWord: '',
-    focusWordTimeout: 800,
-    handleOffset: 0,
+    credentialless: true,
+    csp: '',
     height,
-    hoverIndex: -1,
-    icons: [],
-    initial: false,
-    inputSource: 0,
-    isPointerDown: false,
-    items: [],
-    maxIndent: 0,
-    maxLineY: 0,
-    minLineY: 0,
-    parentUid,
-    pasteShouldMove: false,
-    platform,
-    pointerDownIndex: -1,
-    root: '',
-    scrollBarActive: false,
-    scrollBarHeight: 0,
-    sourceControlDecorations: false,
-    sourceControlIgnoredUris: [],
-    uid: id,
-    useChevrons: false,
-    version: 0,
-    visibleExplorerItems: [],
+    id,
+    iframeSrc: '',
+    origin: '',
+    portId: 0,
+    previewServerId: 1,
+    sandbox: [],
+    srcDoc: '',
+    uri,
     width,
-    x,
+    x: x - 1,
     y,
   }
-  IframeStates.set(state.uid, state, state)
-  return state
+  IframeStates.set(state.id, state, state)
 }
