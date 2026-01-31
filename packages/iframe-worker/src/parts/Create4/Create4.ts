@@ -12,6 +12,7 @@ export const create4 = (id: number, uri: string, x: number, y: number, width: nu
     height,
     id,
     iframeSrc: '',
+    iframeTitle: '',
     origin: '',
     platform,
     portId: 0,

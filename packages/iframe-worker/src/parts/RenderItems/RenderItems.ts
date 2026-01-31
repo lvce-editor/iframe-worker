@@ -4,7 +4,7 @@ import type { IframeState } from '../IframeState/IframeState.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
 export const renderItems = (oldState: IframeState, newState: IframeState): any => {
-  const { id, iframeSrc } = newState
+  const { id, iframeSrc, iframeTitle } = newState
   const dom = [
     {
       childCount: 1,
@@ -16,6 +16,7 @@ export const renderItems = (oldState: IframeState, newState: IframeState): any =
       src: iframeSrc,
       // @ts-ignore
       type: VirtualDomElements.Iframe,
+      title: iframeTitle,
     },
   ]
   return [ViewletCommand.SetDom2, id, dom]

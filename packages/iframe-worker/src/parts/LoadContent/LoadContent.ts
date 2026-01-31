@@ -143,6 +143,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
     ...state,
     csp: iframeCsp,
     iframeSrc,
+    iframeTitle: frameTitle,
     origin,
     portId,
     sandbox,
