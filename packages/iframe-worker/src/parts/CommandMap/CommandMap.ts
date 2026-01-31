@@ -5,6 +5,7 @@ import { diff2 } from '../Diff2/Diff2.ts'
 import * as ExecuteCommand from '../ExecuteCommand/ExecuteCommand.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
+import { handleIframeLoad } from '../HandleIframeLoad/HandleIframeLoad.ts'
 import { handleMessagePort2 } from '../HandleMessagePort/HandleMessagePort.ts'
 import { getCommandIds, wrapCommand } from '../IframeStates/IframeStates.ts'
 import { initialize } from '../Initialize/Initialize.ts'
@@ -25,6 +26,7 @@ export const commandMap = {
   'WebView.getCommandIds': getCommandIds,
   'WebView.getSecret': GetSecret.getSecret,
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
+  'WebView.handleIframeLoad': wrapCommand(handleIframeLoad),
   'WebView.loadContent': wrapCommand(loadContent),
   'WebView.registerInterceptor': WebViewInterceptor.registerInterceptor,
   'WebView.render2': render2,
