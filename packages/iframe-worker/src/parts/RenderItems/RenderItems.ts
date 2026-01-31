@@ -1,5 +1,5 @@
 import { ViewletCommand } from '@lvce-editor/constants'
-import { VirtualDomElements, text } from '@lvce-editor/virtual-dom-worker'
+import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { IframeState } from '../IframeState/IframeState.ts'
 
 export const renderItems = (oldState: IframeState, newState: IframeState): any => {
