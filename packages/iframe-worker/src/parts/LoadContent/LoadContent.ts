@@ -57,7 +57,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
     platform,
     assetDir,
     webViewScheme,
-    true || false,
+    true,
   )
 
   console.log({ iframeResult })
@@ -86,43 +86,47 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   const credentialless = GetCredentialLess.getCredentialLess(locationHost)
 
   // // TODO remove this
-  // await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
+  await Rpc.invoke('ExtensionHostManagement.activateByEvent', `onWebView:${webViewId}`)
 
-  // const portId = Id.create()
+  const portId = Id.create()
 
-  // const remotePathPrefix = '/remote'
-  // await WebViewProtocol.register(
-  //   previewServerId,
-  //   webViewPort,
-  //   frameAncestors,
-  //   webViewRoot,
-  //   csp,
-  //   iframeContent,
-  //   platform,
-  //   webViewId,
-  //   remotePathPrefix,
-  //   useNewWebViewHandler,
-  // )
+  const useNewWebViewHandler = true
 
-  // await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
-  // const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
+  const remotePathPrefix = '/remote'
+  await WebViewProtocol.register(
+    previewServerId,
+    webViewPort,
+    frameAncestors,
+    webViewRoot,
+    csp,
+    iframeContent,
+    platform,
+    webViewId,
+    remotePathPrefix,
+    useNewWebViewHandler,
+  )
 
-  // // const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'
+  console.log({ id, iframeSrc, platform, sandbox })
 
-  // // if (hasOldRpc) {
-  // //   const { port1, port2 } = GetPortTuple.getPortTuple()
-  // //   const portType = ''
-  // //   await SetPort.setPort(id, port1, origin, portType)
-  // //   await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin, webView)
-  // // }
+  await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
+  const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
+
+  // const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'
+
+  // if (hasOldRpc) {
+  //   const { port1, port2 } = GetPortTuple.getPortTuple()
+  //   const portType = ''
+  //   await SetPort.setPort(id, port1, origin, portType)
+  //   await ExtensionHostWorker.invokeAndTransfer('ExtensionHostWebView.create', webViewId, port2, uri, id, origin, webView)
+  // }
 
   // const savedState = await GetSavedWebViewState.getSavedWebViewState(webViewId)
 
-  // // if (hasOldRpc) {
-  // //   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
-  // // }
+  // if (hasOldRpc) {
+  //   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
+  // }
 
-  // await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
+  await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
   return {
     ...state,
     csp: iframeCsp,

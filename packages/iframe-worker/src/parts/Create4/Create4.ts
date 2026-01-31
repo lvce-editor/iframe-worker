@@ -1,3 +1,4 @@
+import * as Assert from '@lvce-editor/assert'
 import type { IframeState } from '../IframeState/IframeState.ts'
 import * as IframeStates from '../IframeStates/IframeStates.ts'
 
@@ -9,11 +10,11 @@ export const create4 = (
   y: number,
   width: number,
   height: number,
-  args: any,
-  parentUid: any,
   platform: number = 0,
   assetDir: string = '',
 ): void => {
+  Assert.number(platform)
+  Assert.string(assetDir)
   const state: IframeState = {
     assetDir,
     credentialless: true,
