@@ -15,14 +15,14 @@ export const create4 = (
   assetDir: string = '',
 ): void => {
   const state: IframeState = {
-    assetDir: '',
+    assetDir,
     credentialless: true,
     csp: '',
     height,
     id,
     iframeSrc: '',
     origin: '',
-    platform: 0,
+    platform,
     portId: 0,
     previewServerId: 1,
     sandbox: [],
