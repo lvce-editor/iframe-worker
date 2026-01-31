@@ -108,7 +108,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
 
   console.log({ id, iframeSrc, platform, sandbox })
 
-  await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
+  // await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
 
   // const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'
@@ -125,6 +125,8 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   // if (hasOldRpc) {
   //   await ExtensionHostWorker.invoke('ExtensionHostWebView.load', webViewId, savedState)
   // }
+
+  // TODO need to send port to webview to create connection
 
   await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
   return {
