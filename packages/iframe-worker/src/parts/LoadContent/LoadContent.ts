@@ -1,13 +1,8 @@
-import { ExtensionHost } from '@lvce-editor/rpc-registry'
-import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
-import type { IframeState } from '../IframeState/IframeState.ts'
 import * as CreateAndLoadWebView from '../CreateAndLoadWebView/CreateAndLoadWebView.ts'
 import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
 import * as GetIframeSrc from '../GetIframeSrc/GetIframeSrc.ts'
-import * as GetPortTuple from '../GetPortTuple/GetPortTuple.ts'
 import * as GetPreviewServerId from '../GetPreviewServerId/GetPreviewServerId.ts'
-import * as GetSavedWebViewState from '../GetSavedWebViewState/GetSavedWebViewState.ts'
 import * as GetWebView from '../GetWebView/GetWebView.ts'
 import * as GetWebViewCsp from '../GetWebViewCsp/GetWebViewCsp.ts'
 import * as GetWebViewFrameAncestors from '../GetWebViewFrameAncestors/GetWebViewFrameAncestors.ts'
@@ -19,18 +14,12 @@ import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
+import type { IframeState } from '../IframeState/IframeState.ts'
 import * as Location from '../Location/Location.ts'
-import * as PlatformState from '../PlatformState/PlatformState.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
-import * as SetPort from '../SetPort/SetPort.ts'
 import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
-
-const connectRpc = async (webView, savedState, uri, portId, id, origin): Promise<void> => {
-  // TODO
-  await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
-}
 
 export const loadContent = async (state: IframeState, savedState: any): Promise<IframeState> => {
   // @ts-ignore
