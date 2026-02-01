@@ -113,7 +113,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
 
   console.log({ id, iframeSrc, platform, sandbox })
 
-  // await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
+  await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
 
   // const hasOldRpc = !webView || !webView.rpc || typeof webView.rpc !== 'string'

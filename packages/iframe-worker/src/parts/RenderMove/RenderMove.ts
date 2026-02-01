@@ -3,8 +3,9 @@ import { VirtualDomElements } from '@lvce-editor/virtual-dom-worker'
 import type { IframeState } from '../IframeState/IframeState.ts'
 import * as DomEventListenerFunctions from '../DomEventListenerFunctions/DomEventListenerFunctions.ts'
 
-export const renderItems = (oldState: IframeState, newState: IframeState): any => {
+export const renderMove = (oldState: IframeState, newState: IframeState): any => {
   const { id, iframeSrc, iframeTitle } = newState
+  // TODO add command to move iframe to correct parent node
   const dom = [
     {
       childCount: 1,
