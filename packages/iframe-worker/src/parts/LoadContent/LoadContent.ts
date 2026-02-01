@@ -138,7 +138,10 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   // TODO would need to wait somehow for iframe to be connected
   setTimeout(async () => {
     await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
-  }, 2000)
+  }, 0)
+
+  // TODO maybe use  the createwebview api
+
   return {
     ...state,
     csp: iframeCsp,
