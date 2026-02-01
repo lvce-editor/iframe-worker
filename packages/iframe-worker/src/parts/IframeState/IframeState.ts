@@ -5,6 +5,7 @@ export interface IframeState {
   readonly height: number
   readonly id: number
   readonly iframeSrc: string
+  readonly iframeTitle: string
   readonly origin: string
   readonly platform: number
   readonly portId: number
