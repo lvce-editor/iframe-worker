@@ -14,7 +14,6 @@ export const createWebViewRpc = async (
     return
   }
   const rpcInfo = await ExtensionHostWorker.invoke('WebView.getRpcInfo', webView.rpc)
-  console.log({ rpcInfo })
   if (rpcInfo && rpcInfo.type === 'web-worker-2') {
     return CreateWebWorkerRpc2.createWebWorkerRpc2(rpcInfo, webView, savedState, uri, portId, webViewUid, origin)
   }
