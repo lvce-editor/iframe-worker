@@ -1,3 +1,4 @@
+import type { IframeState } from '../IframeState/IframeState.ts'
 import * as CreateAndLoadWebView from '../CreateAndLoadWebView/CreateAndLoadWebView.ts'
 import * as CreateWebViewRpc from '../CreateWebViewRpc/CreateWebViewRpc.ts'
 import * as GetCredentialLess from '../GetCredentialLess/GetCredentialLess.ts'
@@ -14,7 +15,6 @@ import * as GetWebViews from '../GetWebViews/GetWebViews.ts'
 import * as GetWebViewSandBox from '../GetWebViewSandBox/GetWebViewSandBox.ts'
 import * as GetWebViewTitle from '../GetWebViewTitle/GetWebViewTitle.ts'
 import * as Id from '../Id/Id.ts'
-import type { IframeState } from '../IframeState/IframeState.ts'
 import * as Location from '../Location/Location.ts'
 import * as PlatformType from '../PlatformType/PlatformType.ts'
 import * as Rpc from '../Rpc/Rpc.ts'
@@ -53,8 +53,6 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
     webViewScheme,
     true,
   )
-
-  console.log({ iframeResult })
 
   if (!iframeResult) {
     return state
@@ -99,8 +97,6 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
     remotePathPrefix,
     useNewWebViewHandler,
   )
-
-  console.log({ id, iframeSrc, platform, sandbox })
 
   await CreateAndLoadWebView.createAndLoadWebView(id, iframeSrc, sandbox, iframeCsp, credentialless, permissionPolicyString, frameTitle)
   const origin = GetWebViewOrigin.getWebViewOrigin(webViewPort, platform, webViewScheme, webViewId)
