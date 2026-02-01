@@ -8,6 +8,7 @@ export const renderItems = (oldState: IframeState, newState: IframeState): any =
     {
       childCount: 0,
       className: 'iframe-wrapper',
+      'data-id': id,
       type: VirtualDomElements.Div,
     },
   ]
