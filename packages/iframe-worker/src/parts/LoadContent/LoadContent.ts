@@ -22,7 +22,6 @@ import * as SharedProcess from '../SharedProcess/SharedProcess.ts'
 import * as WebViewProtocol from '../WebViewProtocol/WebViewProtocol.ts'
 
 export const loadContent = async (state: IframeState, savedState: any): Promise<IframeState> => {
-  // @ts-ignore
   const { assetDir, id, platform, uri, webViewScheme } = state
 
   let root = ''
