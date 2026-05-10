@@ -74,12 +74,12 @@ beforeEach(() => {
 
 test('create3 - basic functionality', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   const params = {
     assetDir: '',
@@ -111,12 +111,12 @@ test('create3 - basic functionality', async () => {
 
 test('create3 - remote platform', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
@@ -142,12 +142,12 @@ test('create3 - remote platform', async () => {
 
 test('create3 - no iframe result', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([])
@@ -168,12 +168,12 @@ test('create3 - no iframe result', async () => {
 
 test('error case', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))

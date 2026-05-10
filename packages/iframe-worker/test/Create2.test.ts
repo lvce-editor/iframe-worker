@@ -67,7 +67,7 @@ beforeEach(() => {
 
 test.skip('create2 - basic functionality', async () => {
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const params = {
@@ -101,7 +101,7 @@ test.skip('create2 - basic functionality', async () => {
 test.skip('create2 - remote platform', async () => {
   // @ts-ignore
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   // @ts-ignore
@@ -127,7 +127,7 @@ test.skip('create2 - remote platform', async () => {
 test.skip('create2 - no iframe result', async () => {
   // @ts-ignore
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   // @ts-ignore
@@ -152,7 +152,7 @@ test.skip('create2 - no iframe result', async () => {
 test.skip('error case', async () => {
   // @ts-ignore
   using mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   // @ts-ignore

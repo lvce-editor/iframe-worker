@@ -20,12 +20,12 @@ export const register: WebViewProtocolHandler = async (
   await WebViewServer.start(previewServerId, webViewPort) // TODO move this up
   await (useNewWebViewHandler
     ? WebViewServer.setInfo2({
-        contentSecurityPolicy: csp,
-        iframeContent,
-        remotePathPrefix,
-        webViewId,
-        webViewRoot,
-      })
+      contentSecurityPolicy: csp,
+      iframeContent,
+      remotePathPrefix,
+      webViewId,
+      webViewRoot,
+    })
     : WebViewServer.setHandler(previewServerId, frameAncestors, webViewRoot, csp, iframeContent, remotePathPrefix))
   // TODO make this work in gitpod also
 }
