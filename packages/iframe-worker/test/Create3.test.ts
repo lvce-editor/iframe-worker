@@ -73,13 +73,13 @@ beforeEach(() => {
 })
 
 test('create3 - basic functionality', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   const params = {
     assetDir: '',
@@ -110,13 +110,13 @@ test('create3 - basic functionality', async () => {
 })
 
 test('create3 - remote platform', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
@@ -141,13 +141,13 @@ test('create3 - remote platform', async () => {
 })
 
 test('create3 - no iframe result', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([])
@@ -167,13 +167,13 @@ test('create3 - no iframe result', async () => {
 })
 
 test('error case', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
+  using mockRpc = RendererWorker.registerMockRpc({
+    'ExtensionHostManagement.activateByEvent': async () => { },
     'WebView.getSavedState': async () => [],
   })
   const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+    'ExtensionHostWebView.create': async () => { },
+    'ExtensionHostWebView.load': async () => { },
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))

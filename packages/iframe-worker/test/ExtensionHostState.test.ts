@@ -24,7 +24,7 @@ test.skip('saveState', async () => {
 
 test.skip('getSavedState', async () => {
   const mockState = { value: 123 }
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'WebView.getSavedState': async () => mockState,
   })
   const result = await ExtensionHostState.getSavedState()

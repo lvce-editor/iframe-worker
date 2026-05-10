@@ -124,7 +124,7 @@ export const loadContent = async (state: IframeState, savedState: any): Promise<
   await CreateWebViewRpc.createWebViewRpc(webView, savedState, uri, portId, id, origin)
   // }, 0)
 
-  // TODO maybe use  the createwebview api
+  // TODO maybe use the create webview API
 
   return {
     ...state,
