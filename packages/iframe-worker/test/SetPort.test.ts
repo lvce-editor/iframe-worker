@@ -3,7 +3,7 @@ import { RendererWorker } from '@lvce-editor/rpc-registry'
 import * as SetPort from '../src/parts/SetPort/SetPort.ts'
 
 test('setPort', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererProcessInvokeAndTransfer': async () => {},
   })
   const uid = 1

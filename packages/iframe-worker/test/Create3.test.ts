@@ -73,7 +73,7 @@ beforeEach(() => {
 })
 
 test('create3 - basic functionality', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
@@ -110,7 +110,7 @@ test('create3 - basic functionality', async () => {
 })
 
 test('create3 - remote platform', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
@@ -141,7 +141,7 @@ test('create3 - remote platform', async () => {
 })
 
 test('create3 - no iframe result', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
@@ -167,7 +167,7 @@ test('create3 - no iframe result', async () => {
 })
 
 test('error case', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })

@@ -8,7 +8,7 @@ beforeEach(() => {
 })
 
 test.skip('getSecret', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererWorkerInvoke': async () => 'test-secret-value',
   })
   const key = 'test-key'
@@ -18,7 +18,7 @@ test.skip('getSecret', async () => {
 })
 
 test.skip('error case', async () => {
-  const mockRpc = RendererWorker.registerMockRpc({
+  using mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererWorkerInvoke': async () => {
       throw new Error('test error')
     },

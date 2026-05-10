@@ -24,8 +24,8 @@ export const getWebViewWorkerRpc2 = async (rpcInfo: any): Promise<Rpc> => {
 // this creates in total
 // 1 iframe
 // 1 worker
-// 6 messageports
+// 6 message ports
 
-// one way to reduce the number of messageports could be to route the worker events
+// one way to reduce the number of message ports could be to route the worker events
 // through the iframe worker. However that could introduce some overhead / latency
 // compared to direct connections
