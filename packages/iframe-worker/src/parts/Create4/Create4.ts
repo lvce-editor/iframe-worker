@@ -35,5 +35,5 @@ export const create4 = (
     x: x - 1,
     y,
   }
-  IframeStates.set(state.id, state, state)
+  IframeStates.set(id, state, state)
 }

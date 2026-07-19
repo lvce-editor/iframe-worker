@@ -4,6 +4,7 @@ import * as tsconfig from '@lvce-editor/eslint-plugin-tsconfig'
 
 export default [
   ...config.default,
+  ...config.recommendedVirtualDom,
   ...actions.default,
   ...tsconfig.default,
   {
