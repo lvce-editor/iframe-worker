@@ -1,7 +1,7 @@
-import * as ExtensionHostState from '../ExtensionHost/ExtensionHostState.ts'
+import * as SavedWebViewState from '../SavedWebViewState/SavedWebViewState.ts'
 
 export const getSavedWebViewState = async (id: string): Promise<any> => {
-  const states = await ExtensionHostState.getSavedState()
+  const states = await SavedWebViewState.getSavedState()
   if (!states) {
     return undefined
   }

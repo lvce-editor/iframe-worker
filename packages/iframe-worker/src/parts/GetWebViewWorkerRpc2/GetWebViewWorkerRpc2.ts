@@ -1,17 +1,17 @@
 import { type Rpc, TransferMessagePortRpcParent } from '@lvce-editor/rpc'
-import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import * as WebViewRpcCommandMap from '../WebViewRpcCommandMap/WebViewRpcCommandMap.ts'
 
 export const getWebViewWorkerRpc2 = async (rpcInfo: any): Promise<Rpc> => {
   const rpc = await TransferMessagePortRpcParent.create({
     commandMap: WebViewRpcCommandMap.commandMap,
     async send(port) {
-      await ExtensionHostWorker.invokeAndTransfer('WebView.createWebViewWorkerRpc2', rpcInfo, port)
+      await ExtensionManagementWorker.invokeAndTransfer('Extensions.createWebViewWorkerRpc2', rpcInfo, port)
     },
   })
   // TODO
-  // 1. ask extension host worker to ask renderer worker to ask renderer process to create a worker with given url
-  // 2. send the port through renderer worker to renderer process to the worker for a direct connection
+  // 1. ask extension management to create a worker with the requested url
+  // 2. send the port through extension management to that worker for a direct connection
   // TODO rpc module should start the port
   return rpc
 }

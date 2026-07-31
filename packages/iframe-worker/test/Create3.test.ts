@@ -1,5 +1,5 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import { ExtensionHost, RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker, RpcId, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
 
 const GetWebViews = {
@@ -74,12 +74,10 @@ beforeEach(() => {
 
 test('create3 - basic functionality', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+  using managementRpc = ExtensionManagementWorker.registerMockRpc({
+    'Extensions.activateByEvent': async () => {},
   })
   const params = {
     assetDir: '',
@@ -93,10 +91,9 @@ test('create3 - basic functionality', async () => {
   const result = await Create3.create3(params)
 
   expect(GetWebViews.getWebViews).toHaveBeenCalled()
-  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
-  expect(mockExtensionHostRpc.invocations.length).toBeGreaterThanOrEqual(2)
-  expect(mockExtensionHostRpc.invocations[0][0]).toBe('ExtensionHostWebView.create')
-  expect(mockExtensionHostRpc.invocations[1][0]).toBe('ExtensionHostWebView.load')
+  expect(mockRpc.invocations).toEqual([['WebView.getSavedState']])
+  expect(managementRpc.invocations).toEqual([['Extensions.activateByEvent', 'onWebView:test-webview', '', 1]])
+  expect(CreateWebViewRpc.createWebViewRpc).toHaveBeenCalledTimes(1)
   expect(WebViewProtocol.register).toHaveBeenCalled()
   expect(RendererProcess.invoke).toHaveBeenCalledTimes(2)
   expect(result).toBeDefined()
@@ -111,12 +108,10 @@ test('create3 - basic functionality', async () => {
 
 test('create3 - remote platform', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+  using managementRpc = ExtensionManagementWorker.registerMockRpc({
+    'Extensions.activateByEvent': async () => {},
   })
   // @ts-ignore
   SharedProcess.invoke.mockResolvedValue('/test/root')
@@ -133,21 +128,18 @@ test('create3 - remote platform', async () => {
   const result = await Create3.create3(params)
 
   expect(SharedProcess.invoke).toHaveBeenCalledWith('Platform.getRoot')
-  expect(mockRpc.invocations).toEqual([['ExtensionHostManagement.activateByEvent', 'onWebView:test-webview'], ['WebView.getSavedState']])
-  expect(mockExtensionHostRpc.invocations.length).toBeGreaterThanOrEqual(2)
-  expect(mockExtensionHostRpc.invocations[0][0]).toBe('ExtensionHostWebView.create')
-  expect(mockExtensionHostRpc.invocations[1][0]).toBe('ExtensionHostWebView.load')
+  expect(mockRpc.invocations).toEqual([['WebView.getSavedState']])
+  expect(managementRpc.invocations).toEqual([['Extensions.activateByEvent', 'onWebView:test-webview', '', 3]])
+  expect(CreateWebViewRpc.createWebViewRpc).toHaveBeenCalledTimes(1)
   expect(result).toBeDefined()
 })
 
 test('create3 - no iframe result', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+  using managementRpc = ExtensionManagementWorker.registerMockRpc({
+    'Extensions.activateByEvent': async () => {},
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockResolvedValue([])
@@ -163,17 +155,15 @@ test('create3 - no iframe result', async () => {
 
   await expect(Create3.create3(params)).rejects.toThrow()
   expect(mockRpc.invocations.length).toBe(0)
-  expect(mockExtensionHostRpc.invocations.length).toBe(0)
+  expect(managementRpc.invocations).toEqual([])
 })
 
 test('error case', async () => {
   const mockRpc = RendererWorker.registerMockRpc({
-    'ExtensionHostManagement.activateByEvent': async () => {},
     'WebView.getSavedState': async () => [],
   })
-  const mockExtensionHostRpc = ExtensionHost.registerMockRpc({
-    'ExtensionHostWebView.create': async () => {},
-    'ExtensionHostWebView.load': async () => {},
+  using managementRpc = ExtensionManagementWorker.registerMockRpc({
+    'Extensions.activateByEvent': async () => {},
   })
   // @ts-ignore
   GetWebViews.getWebViews.mockRejectedValue(new Error('test error'))
@@ -189,5 +179,5 @@ test('error case', async () => {
 
   await expect(Create3.create3(params)).rejects.toThrow('test error')
   expect(mockRpc.invocations).toEqual([])
-  expect(mockExtensionHostRpc.invocations.length).toBe(0)
+  expect(managementRpc.invocations).toEqual([])
 })
