@@ -1,11 +1,11 @@
+import { defineConfig } from 'eslint/config'
 import * as config from '@lvce-editor/eslint-config'
-import * as actions from '@lvce-editor/eslint-plugin-github-actions'
 import * as tsconfig from '@lvce-editor/eslint-plugin-tsconfig'
 
-export default [
+export default defineConfig([
   ...config.default,
   ...config.recommendedVirtualDom,
-  ...actions.default,
+  ...config.recommendedActions,
   ...tsconfig.default,
   {
     ignores: [
@@ -52,4 +52,4 @@ export default [
       'tsconfig/module-resolution': 'off',
     },
   },
-]
+])
