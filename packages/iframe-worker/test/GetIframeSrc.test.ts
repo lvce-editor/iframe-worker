@@ -1,5 +1,4 @@
 import { beforeEach, expect, jest, test } from '@jest/globals'
-import * as GetIframeSrc from '../src/parts/GetIframeSrc/GetIframeSrc.ts'
 import * as PlatformType from '../src/parts/PlatformType/PlatformType.ts'
 
 const GetIframeSrcWeb = {
@@ -17,6 +16,8 @@ const GetWebView = {
 jest.unstable_mockModule('../src/parts/GetIframeSrcWeb/GetIframeSrcWeb.ts', () => GetIframeSrcWeb)
 jest.unstable_mockModule('../src/parts/GetIframeSrcRemote/GetIframeSrcRemote.ts', () => GetIframeSrcRemote)
 jest.unstable_mockModule('../src/parts/GetWebView/GetWebView.ts', () => GetWebView)
+
+const GetIframeSrc = await import('../src/parts/GetIframeSrc/GetIframeSrc.ts')
 
 const webViewScheme = 'lvce-oss-webview:'
 
@@ -58,7 +59,7 @@ test('web platform', () => {
     useNewWebViewHandler,
   )
 
-  expect(result).toBe(undefined)
+  expect(result).toBe(expectedResult)
 })
 
 test('remote platform', () => {
@@ -93,10 +94,10 @@ test('remote platform', () => {
     useNewWebViewHandler,
   )
 
-  expect(result).toBe(undefined)
+  expect(result).toBe(expectedResult)
 })
 
-test.skip('error case', () => {
+test('error case', () => {
   const webViews: readonly any[] = []
   const webViewId = '1'
   const webViewPort = '3000'
@@ -127,5 +128,5 @@ test.skip('error case', () => {
       webViewScheme,
       useNewWebViewHandler,
     ),
-  ).toThrow(/Failed to construct webview iframe src: TypeError: Cannot destructure property 'remotePath'/)
+  ).toThrow('Failed to construct webview iframe src: test error')
 })
