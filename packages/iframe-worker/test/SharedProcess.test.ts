@@ -1,23 +1,26 @@
-import { beforeEach, expect, jest, test } from '@jest/globals'
-
-const Rpc = {
-  invoke: jest.fn(),
-}
-
-jest.unstable_mockModule('../src/parts/Rpc/Rpc.ts', () => Rpc)
-
-const SharedProcess = await import('../src/parts/SharedProcess/SharedProcess.ts')
+import { beforeEach, expect, test } from '@jest/globals'
+import { RendererWorker, RpcId } from '@lvce-editor/rpc-registry'
+import * as RpcRegistry from '../src/parts/RpcRegistry/RpcRegistry.ts'
+import * as SharedProcess from '../src/parts/SharedProcess/SharedProcess.ts'
 
 beforeEach(() => {
-  Rpc.invoke.mockReset()
+  RpcRegistry.remove(RpcId.RendererWorker)
 })
 
-test.skip('invoke', async () => {
+test('invoke', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.compatSharedProcessInvoke': async () => {},
+  })
   await SharedProcess.invoke('test.method', 'arg1', 'arg2')
-  expect(Rpc.invoke).toHaveBeenCalledWith('WebView.compatSharedProcessInvoke', 'test.method', 'arg1', 'arg2')
+  expect(mockRpc.invocations).toEqual([['WebView.compatSharedProcessInvoke', 'test.method', 'arg1', 'arg2']])
 })
 
-test.skip('error case', async () => {
-  Rpc.invoke.mockImplementation(() => Promise.reject(new Error('test error')))
+test('error case', async () => {
+  const mockRpc = RendererWorker.registerMockRpc({
+    'WebView.compatSharedProcessInvoke': async () => {
+      throw new Error('test error')
+    },
+  })
   await expect(SharedProcess.invoke('test.method')).rejects.toThrow('test error')
+  expect(mockRpc.invocations).toEqual([['WebView.compatSharedProcessInvoke', 'test.method']])
 })
