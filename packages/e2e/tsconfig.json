@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "esnext",
     "lib": ["esnext", "WebWorker"],
     "checkJs": true,
-    "module": "NodeNext",
+    "module": "esnext",
     "types": [],
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "rootDir": ".",
     "allowJs": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,

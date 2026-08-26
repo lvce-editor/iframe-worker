@@ -13,7 +13,7 @@ test('getWebViews', async () => {
     { id: 1, type: 'preview' },
     { id: 2, type: 'custom' },
   ]
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.getWebViews': async () => mockWebViews,
   })
   const result = await GetWebViews.getWebViews()
@@ -22,7 +22,7 @@ test('getWebViews', async () => {
 })
 
 test('error case', async () => {
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.getWebViews': async () => {
       throw new Error('test error')
     },

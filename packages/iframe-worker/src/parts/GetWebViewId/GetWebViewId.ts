@@ -4,7 +4,8 @@ export const getWebViewId = (webViews: readonly any[], uri: string): string => {
     return webViewId
   }
   for (const webView of webViews) {
-    for (const selector of webView.selector || []) {
+    const selectors = webView.selector || []
+    for (const selector of selectors) {
       if (uri.endsWith(selector)) {
         return webView.id
       }

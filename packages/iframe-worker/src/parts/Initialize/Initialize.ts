@@ -1,5 +1,5 @@
 import { TransferMessagePortRpcParent } from '@lvce-editor/rpc'
-import { ExtensionHost, RendererWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker, RendererWorker } from '@lvce-editor/rpc-registry'
 import * as PlatformState from '../PlatformState/PlatformState.ts'
 
 export const initialize = async (platform: number): Promise<void> => {
@@ -7,8 +7,8 @@ export const initialize = async (platform: number): Promise<void> => {
   const rpc = await TransferMessagePortRpcParent.create({
     commandMap: {},
     async send(port) {
-      await RendererWorker.sendMessagePortToExtensionHostWorker(port, 0)
+      await RendererWorker.sendMessagePortToExtensionManagementWorker(port, 0)
     },
   })
-  ExtensionHost.set(rpc)
+  ExtensionManagementWorker.set(rpc)
 }

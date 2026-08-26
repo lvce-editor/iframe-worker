@@ -1,4 +1,4 @@
-import { ExtensionHost as ExtensionHostWorker } from '@lvce-editor/rpc-registry'
+import { ExtensionManagementWorker } from '@lvce-editor/rpc-registry'
 import * as CreateWebWorkerRpc2 from '../CreateWebWorkerRpc2/CreateWebWorkerRpc2.ts'
 import * as CreateWebWorkerRpcLegacy from '../CreateWebWorkerRpcLegacy/CreateWebWorkerRpcLegacy.ts'
 
@@ -13,7 +13,7 @@ export const createWebViewRpc = async (
   if (!webView || !webView.rpc || typeof webView.rpc !== 'string') {
     return
   }
-  const rpcInfo = await ExtensionHostWorker.invoke('WebView.getRpcInfo', webView.rpc)
+  const rpcInfo = await ExtensionManagementWorker.invoke('Extensions.getRpcInfo', webView.rpc)
   if (rpcInfo && rpcInfo.type === 'web-worker-2') {
     return CreateWebWorkerRpc2.createWebWorkerRpc2(rpcInfo, webView, savedState, uri, portId, webViewUid, origin)
   }

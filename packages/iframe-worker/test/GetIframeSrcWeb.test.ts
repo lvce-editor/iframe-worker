@@ -23,9 +23,9 @@ test('getIframeSrc', () => {
   })
 })
 
-test.skip('error case - missing required properties', () => {
+test('missing elements returns undefined', () => {
   const webView = {}
   const locationOrigin = 'http://localhost:3000'
   const assetDir = ''
-  expect(() => GetIframeSrcWeb.getIframeSrc(webView, locationOrigin, assetDir)).toThrow()
+  expect(GetIframeSrcWeb.getIframeSrc(webView, locationOrigin, assetDir)).toBeUndefined()
 })

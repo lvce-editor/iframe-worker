@@ -9,7 +9,7 @@ beforeEach(() => {
 
 test('invoke', async () => {
   const mockResult = { success: true }
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererProcessInvoke': async () => mockResult,
   })
   const result = await RendererProcess.invoke('test.command', 'arg1', 'arg2')
@@ -20,7 +20,7 @@ test('invoke', async () => {
 test('invokeAndTransfer', async () => {
   const mockResult = { success: true }
   const transferable = new ArrayBuffer(8)
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererProcessInvokeAndTransfer': async () => mockResult,
   })
   const result = await RendererProcess.invokeAndTransfer('test.command', transferable, 'arg1')
@@ -29,7 +29,7 @@ test('invokeAndTransfer', async () => {
 })
 
 test('invoke - error case', async () => {
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererProcessInvoke': async () => {
       throw new Error('test error')
     },
@@ -40,7 +40,7 @@ test('invoke - error case', async () => {
 
 test('invokeAndTransfer - error case', async () => {
   const transferable = new ArrayBuffer(8)
-  using mockRpc = RendererWorker.registerMockRpc({
+  const mockRpc = RendererWorker.registerMockRpc({
     'WebView.compatRendererProcessInvokeAndTransfer': async () => {
       throw new Error('test error')
     },
