@@ -3,6 +3,7 @@ import { create4 } from '../Create4/Create4.ts'
 import { diff2 } from '../Diff2/Diff2.ts'
 import * as ExecuteCommand from '../ExecuteCommand/ExecuteCommand.ts'
 import * as GetSecret from '../GetSecret/GetSecret.ts'
+import { getTitle } from '../GetTitle/GetTitle.ts'
 import * as GetWebViewInfo from '../GetWebViewInfo/GetWebViewInfo.ts'
 import { handleIframeLoad } from '../HandleIframeLoad/HandleIframeLoad.ts'
 import { handleMessagePort2 } from '../HandleMessagePort/HandleMessagePort.ts'
@@ -23,6 +24,7 @@ export const commandMap = {
   'WebView.executeExternalCommand': ExecuteCommand.executeCommand,
   'WebView.getCommandIds': getCommandIds,
   'WebView.getSecret': GetSecret.getSecret,
+  'WebView.getTitle': getTitle,
   'WebView.getWebViewInfo': GetWebViewInfo.getWebViewInfo,
   'WebView.handleIframeLoad': wrapCommand(handleIframeLoad),
   'WebView.loadContent': wrapCommand(loadContent),
