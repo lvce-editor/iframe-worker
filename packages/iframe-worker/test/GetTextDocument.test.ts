@@ -9,9 +9,9 @@ beforeEach(() => {
 
 test('returns the matching active editor document', async () => {
   RendererWorker.registerMockRpc({
-    'GetActiveEditor.getTextDocumentWithScroll': async () => ({ text: 'content', uri: 'file:///test.md', scrollTop: 20 }),
+    'GetActiveEditor.getTextDocumentWithScroll': async () => ({ scrollTop: 20, text: 'content', uri: 'file:///test.md' }),
   })
-  await expect(GetTextDocument.getTextDocument('file:///test.md')).resolves.toEqual({ text: 'content', uri: 'file:///test.md', scrollTop: 20 })
+  await expect(GetTextDocument.getTextDocument('file:///test.md')).resolves.toEqual({ scrollTop: 20, text: 'content', uri: 'file:///test.md' })
 })
 
 test('returns undefined for another document', async () => {
