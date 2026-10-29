@@ -1,5 +1,6 @@
-import { initializeRendererWorker } from '../InitializeRendererWorker/InitializeRendererWorker.ts'
+import { RendererWorker } from '@lvce-editor/rpc-registry'
+import * as CommandMap from '../CommandMap/CommandMap.ts'
 
 export const listen = async (): Promise<void> => {
-  await initializeRendererWorker()
+  await RendererWorker.initializeRendererWorkerForWorker(CommandMap.commandMap)
 }
